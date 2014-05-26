@@ -1,0 +1,9 @@
+/vendor
+composer.phar
+composer.lock
+.DS_Store
+Thumbs.db
+ftpsync.settings
+sftp-config.json
+cresk.png
+.environment

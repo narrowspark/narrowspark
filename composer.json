@@ -1,0 +1,29 @@
+{
+    "name": "narrowspark/brainwave",
+    "type": "library",
+    "description": "a",
+    "keywords": ["framework", "narrowspark"],
+    "license": "MIT",
+    "homepage": "http://github.com/narrowspark/brainwave",
+    "authors": [
+        {
+          "name": "Daniel Bannert",
+          "email": "d.bannert@anolilab.de",
+          "homepage": "http://www.narrowspark.de",
+          "role": "Developer"
+        }
+    ],
+    "require": {
+        "narrowspark/framework": "0.8.0.*@dev"
+    },
+    "autoload": {
+        "classmap": [
+            "app/models",
+            "app/global",
+            "app/commands",
+            "app/database",
+            "app/controllers"
+        ]
+    },
+    "minimum-stability": "dev"
+}
