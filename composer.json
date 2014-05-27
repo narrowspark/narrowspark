@@ -1,7 +1,7 @@
 {
     "name": "narrowspark/brainwave",
     "type": "library",
-    "description": "a",
+    "description": "The Brainwave Framework.",
     "keywords": ["framework", "narrowspark"],
     "license": "MIT",
     "homepage": "http://github.com/narrowspark/brainwave",
@@ -9,7 +9,7 @@
         {
           "name": "Daniel Bannert",
           "email": "d.bannert@anolilab.de",
-          "homepage": "http://www.narrowspark.de",
+          "homepage": "http://www.anolilab.de",
           "role": "Developer"
         }
     ],
@@ -24,6 +24,11 @@
             "app/database",
             "app/controllers"
         ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.8.0-dev"
+        }
     },
     "minimum-stability": "dev"
 }
