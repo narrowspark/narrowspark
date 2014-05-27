@@ -1,10 +1,10 @@
 {
-    "name": "narrowspark/brainwave",
+    "name": "narrowspark/narrowspark",
     "type": "library",
     "description": "The Brainwave Framework.",
     "keywords": ["framework", "narrowspark"],
     "license": "MIT",
-    "homepage": "http://github.com/narrowspark/brainwave",
+    "homepage": "http://github.com/narrowspark/narrowspark",
     "authors": [
         {
           "name": "Daniel Bannert",
