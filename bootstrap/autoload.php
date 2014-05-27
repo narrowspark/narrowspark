@@ -45,7 +45,6 @@ if (file_exists($compiled = __DIR__.'/vendor/compiled.php'))
 |
 */
 \Brainwave\Support\Autoloader\ClassLoader::register();
-
 \Brainwave\Support\Autoloader\ClassLoader::addDirectories(
     array(
         realpath(__DIR__.'/../app').'/models',
