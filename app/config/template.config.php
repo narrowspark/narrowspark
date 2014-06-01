@@ -27,16 +27,16 @@
 $config = array(
     'view.template.paths' => array(
         // packages
-        'packages' => realpath(__DIR__.'../../../public/packages/'),
+        'packages' => dirname(dirname(dirname(__FILE__))).'/public/packages/',
         //public
-        'public' => realpath(__DIR__.'../../../app/views/public/'),
-        'admin' => realpath(__DIR__.'../../../app/views/admin/'),
-        'error' => realpath(__DIR__.'../../../app/views/error/'),
-        'login' => realpath(__DIR__.'../../../app/views/login/'),
-        'email' => realpath(__DIR__.'../../../app/views/emails/'),
-        'maintenance' => realpath(__DIR__.'../../../app/views/maintenance/'),
+        'public' => dirname(dirname(__FILE__)).'/views/public/',
+        'admin' => dirname(dirname(__FILE__)).'/views/admin/',
+        'error' => dirname(dirname(__FILE__)).'/views/error/',
+        'login' => dirname(dirname(__FILE__)).'/views/login/',
+        'email' => dirname(dirname(__FILE__)).'/views/emails/',
+        'maintenance' => dirname(dirname(__FILE__)).'/views/maintenance/',
     ),
-    'view.default.template.path' => realpath(__DIR__.'../../../app/views'),
-    'view.cache' => array('cache' => realpath(__DIR__.'../../../app/storage/views/')),
-    'view.asset' => realpath(__DIR__.'../../../public/assets')
+    'view.default.template.path' => dirname(dirname(__FILE__)).'/views',
+    'view.cache' => array('cache' => dirname(dirname(__FILE__)).'/storage/views/'),
+    'view.asset' => dirname(dirname(dirname(__FILE__))).'/public/assets'
 );
