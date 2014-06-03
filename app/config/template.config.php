@@ -25,17 +25,6 @@
  *
  */
 $config = array(
-    'view.template.paths' => array(
-        // packages
-        'packages' => dirname(dirname(dirname(__FILE__))).'/public/packages/',
-        //public
-        'public' => dirname(dirname(__FILE__)).'/views/public/',
-        'admin' => dirname(dirname(__FILE__)).'/views/admin/',
-        'error' => dirname(dirname(__FILE__)).'/views/error/',
-        'login' => dirname(dirname(__FILE__)).'/views/login/',
-        'email' => dirname(dirname(__FILE__)).'/views/emails/',
-        'maintenance' => dirname(dirname(__FILE__)).'/views/maintenance/',
-    ),
     'view.default.template.path' => dirname(dirname(__FILE__)).'/views',
     'view.cache' => array('cache' => dirname(dirname(__FILE__)).'/storage/views/'),
     'view.asset' => dirname(dirname(dirname(__FILE__))).'/public/assets'

@@ -1,8 +1,8 @@
 {
     "name": "narrowspark/narrowspark",
     "type": "library",
-    "description": "The Brainwave Framework.",
-    "keywords": ["framework", "narrowspark"],
+    "description": "Brainwave Framework for Creative People.",
+    "keywords": ["framework", "narrowspark", "slim", "router"],
     "license": "MIT",
     "homepage": "http://github.com/narrowspark/narrowspark",
     "authors": [
@@ -19,7 +19,6 @@
     "autoload": {
         "classmap": [
             "app/models",
-            "app/global",
             "app/commands",
             "app/database",
             "app/controllers"
@@ -27,7 +26,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.8.0-dev"
+            "dev-master": "0.8.3-dev"
         }
     },
     "minimum-stability": "dev"

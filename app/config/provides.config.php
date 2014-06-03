@@ -25,7 +25,5 @@
  *
  */
 $config = array(
-    'app.provides' => array(
 
-    ),
 );
