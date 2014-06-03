@@ -49,6 +49,18 @@ $config = array(
     */
     'view.default.template.path' => dirname(dirname(__FILE__)).'/views',
 
+     /*
+    |--------------------------------------------------------------------------
+    | View Default Path
+    |--------------------------------------------------------------------------
+    |
+    | Most templating systems load templates from disk. Here you may specify
+    | an path that should be checked for your views. Of course
+    | the usual Brainwave view path has already been registered for you.
+    |
+    */
+    'view.template.paths' => array(),
+
     /*
     |--------------------------------------------------------------------------
     | View Storage Path

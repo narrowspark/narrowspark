@@ -1,8 +1,8 @@
 {
     "name": "narrowspark/narrowspark",
     "type": "library",
-    "description": "Brainwave Framework for Creative People.",
-    "keywords": ["framework", "narrowspark", "slim", "router"],
+    "description": "Narrowspark Framework for Creative People.",
+    "keywords": ["framework", "narrowspark", "slim", "router", "brainwave"],
     "license": "MIT",
     "homepage": "http://github.com/narrowspark/narrowspark",
     "authors": [
