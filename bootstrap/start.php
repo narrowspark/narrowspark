@@ -1,6 +1,33 @@
 <?php
 
+use \Brainwave\Support\Facades;
 use \Brainwave\Workbench\Workbench;
+
+/*
+|--------------------------------------------------------------------------
+| Set PHP Error Reporting Options
+|--------------------------------------------------------------------------
+|
+| Here we will set the strictest error reporting options, and also turn
+| off PHP's error reporting, since all errors will be handled by the
+| framework and we don't want any output leaking back to the user.
+|
+*/
+
+error_reporting(-1);
+
+/*
+|--------------------------------------------------------------------------
+| Bind Paths
+|--------------------------------------------------------------------------
+|
+| Here we are binding the paths configured in paths.php to the app. You
+| should not be changing these here. If you need to change these you
+| may do so within the paths.php file and they will be bound here.
+|
+*/
+
+Workbench::bindInstallPaths(require __DIR__.'/paths.php');
 
 /*
 |--------------------------------------------------------------------------
@@ -13,23 +40,29 @@ use \Brainwave\Workbench\Workbench;
 | the responses back to the browser and delight these users.
 |
 */
+
 $app = new Workbench();
-$app['debug'] = true;
-$app['mode'] = 'development';
 
 /*
 |--------------------------------------------------------------------------
-| Environment
+| Detect The Application Environment
 |--------------------------------------------------------------------------
 |
-| Detect the cresk environment
+| Brainwave takes a dead simple approach to your application environments
+| so you can just specify a machine name for the host that matches a
+| given environment, then we will automatically detect it for you.
 |
 */
+
 foreach (require realpath(__DIR__.'/../').'/.environment' as $key => $value) {
+    $_ENV[$key] = $value;
+
+    $_SERVER[$key] = $value;
+
     putenv(sprintf('%s=%s', $key, $value));
 }
 
-App::detectEnvironment(
+$app->detectEnvironment(
     function () {
         return getenv('APPLICATION_ENV');
     }
@@ -37,15 +70,32 @@ App::detectEnvironment(
 
 /*
 |--------------------------------------------------------------------------
-| Bind Paths
+| Register Application Exception Handling
 |--------------------------------------------------------------------------
 |
-| Here we are binding the paths configured in paths.php to the app. You
-| should not be changing these here. If you need to change these you
-| may do so within the paths.php file and they will be bound here.
+| We will go ahead and register the application exception handling here
+| which will provide a great output of exception details and a stack
+| trace in the case of exceptions while an application is running.
 |
 */
-App::bindInstallPaths(require __DIR__.'/paths.php');
+
+$app['exception']->register();
+
+if (getenv('APPLICATION_ENV') != 'testing') ini_set('display_errors', 'Off');
+
+/*
+|--------------------------------------------------------------------------d33
+| Load The Brainwave Facades
+|--------------------------------------------------------------------------
+|
+| The facades provide a terser static interface over the various parts
+| of the application, allowing their methods to be accessed through
+| a mixtures of magic methods and facade derivatives. It's slick.
+|
+*/
+
+Facades::clearResolvedInstances();
+$app['facades']->registerFacade($app['settings']->get('app.aliases', array()))->registerAliases();
 
 /*
 |---------------------------------------------------------------
@@ -54,7 +104,7 @@ App::bindInstallPaths(require __DIR__.'/paths.php');
 |
 | Hosts have a habbit of setting stupid settings for various
 | things. These settings should help provide maximum compatibility
-| for CreskCms
+| for Brainwave
 |
 */
 
@@ -64,39 +114,51 @@ set_include_path(dirname(__FILE__));
 // Some hosts (was it GoDaddy? complained without this
 @ini_set('cgi.fix_pathinfo', 0);
 
-// PHP 5.3 will BITCH without this
-if (ini_get('date.timezone') == '') {
-    date_default_timezone_set('UTC');
-}
+/*
+|--------------------------------------------------------------------------
+| Set The Default Timezone
+|--------------------------------------------------------------------------
+|
+| Here we will set the default timezone for PHP. PHP is notoriously mean
+| if the timezone is not explicitly set. This will be used by each of
+| the PHP date and date-time functions throughout the application.
+|
+*/
 
-App::configFiles();
-
-// TODO
-//App::add(App::make('firewall'));
+date_default_timezone_set($app['settings']->get('timezone', 'UTC'));
 
 /*
 |--------------------------------------------------------------------------
-| Install
+| Set The Default Timezone
 |--------------------------------------------------------------------------
 |
+| Here we will set the default timezone for PHP. PHP is notoriously mean
+| if the timezone is not explicitly set. This will be used by each of
+| the PHP date and date-time functions throughout the application.
 |
+*/
+
+\Brainwave\Support\Autoloader\AutoLoader::addDirectories(
+    $app['settings']->get('app.autoloaded.paths', array(
+        realpath(__DIR__.'/../app').'/models',
+        realpath(__DIR__.'/../app').'/routes',
+        realpath(__DIR__.'/../app').'/global',
+        realpath(__DIR__.'/../app').'/controllers',
+    ))
+);
+
+/*
+|--------------------------------------------------------------------------
+| Load The Application Routes
+|--------------------------------------------------------------------------
+|
+| The Application routes are kept separate from the application starting
+| just to keep the file a little cleaner. We'll go ahead and load in
+| all of the routes now and return the application to the callers.
 |
 */
 
 require realpath(__DIR__.'/../app').'/routes.php';
-
-/*
-|--------------------------------------------------------------------------
-| Setup Patchwork UTF-8 Handling
-|--------------------------------------------------------------------------
-|
-| The Patchwork library provides solid handling of UTF-8 strings as well
-| as provides replacements for all mb_* and iconv type functions that
-| are not available by default in PHP. We'll setup this stuff here.
-|
-*/
-
-Patchwork\Utf8\Bootup::initMbstring();
 
 /*
 |--------------------------------------------------------------------------
@@ -109,7 +171,8 @@ Patchwork\Utf8\Bootup::initMbstring();
 | and wonderful applications we have created for them.
 |
 */
-App::run();
+
+$app->run();
 
 /*
 |--------------------------------------------------------------------------
@@ -124,4 +187,5 @@ App::run();
 | Flush the output buffer.
 |
 */
-App::shutdown();
+
+$app->shutdown();

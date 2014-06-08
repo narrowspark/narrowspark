@@ -36,7 +36,20 @@ if (file_exists($compiled = __DIR__.'/vendor/compiled.php'))
 
 /*
 |--------------------------------------------------------------------------
-| Register The Laravel Brainwave Loader
+| Setup Patchwork UTF-8 Handling
+|--------------------------------------------------------------------------
+|
+| The Patchwork library provides solid handling of UTF-8 strings as well
+| as provides replacements for all mb_* and iconv type functions that
+| are not available by default in PHP. We'll setup this stuff here.
+|
+*/
+
+Patchwork\Utf8\Bootup::initMbstring();
+
+/*
+|--------------------------------------------------------------------------
+| Register The Brainwave Loader
 |--------------------------------------------------------------------------
 |
 | We register an auto-loader "behind" the Composer loader that can load
@@ -44,12 +57,4 @@ if (file_exists($compiled = __DIR__.'/vendor/compiled.php'))
 | regenerated for the application. We'll add it to the stack here.
 |
 */
-\Brainwave\Support\Autoloader\ClassLoader::register();
-\Brainwave\Support\Autoloader\ClassLoader::addDirectories(
-    array(
-        realpath(__DIR__.'/../app').'/models',
-        realpath(__DIR__.'/../app').'/routes',
-        realpath(__DIR__.'/../app').'/global',
-        realpath(__DIR__.'/../app').'/controllers',
-    )
-);
+\Brainwave\Support\Autoloader\AutoLoader::register();

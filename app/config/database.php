@@ -24,7 +24,7 @@
  * @since   0.8.0-dev
  *
  */
-$config = array(
+return array(
     'db.options' => array(
         'dsn'      => 'mysql:host='.getenv('DB_HOST').';dbname='.getenv('DB_DATABASE_NAME'),
         'username' => getenv('DB_DATABASE_USER'),

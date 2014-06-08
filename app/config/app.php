@@ -24,7 +24,7 @@
  * @since   0.8.0-dev
  *
  */
-$config = array(
+return array(
 
     /*
     |--------------------------------------------------------------------------
@@ -37,7 +37,20 @@ $config = array(
     |
     */
 
-    'debug' => false,
+    'debug' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Debug Mode
+    |--------------------------------------------------------------------------
+    |
+    | When your application is in debug mode, detailed error messages with
+    | stack traces will be shown on every error that occurs within your
+    | application. If disabled, a simple generic error page is shown.
+    |
+    */
+
+    'app.mode' => 'development',
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +91,6 @@ $config = array(
     */
 
     'crypt.key' => 'YourSecretKey!!!',
-
     'crypt.cipher' => MCRYPT_RIJNDAEL_256,
 
     /*
@@ -93,13 +105,14 @@ $config = array(
     */
 
     'app.providers' => array(
-        '\Brainwave\Crypt\CryptServiceProvider' => array(),
-        '\Brainwave\Session\SessionServiceProvider' => array(),
-        '\Brainwave\Flash\FlashServiceProvider' => array(),
-        '\Brainwave\Support\Translator\TranslatorServiceProvider' => array(),
-        '\Brainwave\Event\EventServiceProvider' => array(),
-        '\Brainwave\Cache\CacheServiceProvider' => array(),
-        '\Brainwave\Support\Autoloader\AutoloaderServiceProvider' => array()
+        '\Brainwave\View\ViewServiceProvider'                       => array(),
+        '\Brainwave\Crypt\CryptServiceProvider'                     => array(),
+        '\Brainwave\Flash\FlashServiceProvider'                     => array(),
+        '\Brainwave\Event\EventServiceProvider'                     => array(),
+        '\Brainwave\Cache\CacheServiceProvider'                     => array(),
+        '\Brainwave\Session\SessionServiceProvider'                 => array(),
+        '\Brainwave\Translator\TranslatorServiceProvider'           => array(),
+        '\Brainwave\Support\Autoloader\AutoloaderServiceProvider'   => array(),
     ),
 
     /*
