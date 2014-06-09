@@ -35,7 +35,10 @@ return array(
     | for you.
     |
     */
-    'view.engine' => array('plates' => '\Brainwave\View\Engines\Plates\PlatesEngine'),
+
+    'view.engine' => array(
+        'plates' => '\Brainwave\View\Engines\Plates\PlatesEngine'
+    ),
 
     /*
     |--------------------------------------------------------------------------
@@ -47,6 +50,7 @@ return array(
     | the usual Brainwave view path has already been registered for you.
     |
     */
+
     'view.default.template.path' => dirname(dirname(__FILE__)).'/views',
 
      /*
@@ -59,6 +63,7 @@ return array(
     | the usual Brainwave view path has already been registered for you.
     |
     */
+
     'view.template.paths' => array(),
 
     /*
@@ -71,6 +76,7 @@ return array(
     | the usual Brainwave view path has already been registered for you.
     |
     */
+
     'view.cache' => array('cache' => dirname(dirname(__FILE__)).'/storage/views/'),
 
     /*
@@ -82,7 +88,30 @@ return array(
     | registered for you.
     |
     */
+
     'view.asset' => dirname(dirname(dirname(__FILE__))).'/public/assets',
 
+    /*
+    |--------------------------------------------------------------------------
+    | View Extensions
+    |--------------------------------------------------------------------------
+    |
+    |
+    |
+    |
+    */
+
     'view.extensions' => '.html',
+
+    /*
+    |--------------------------------------------------------------------------
+    | View global Items
+    |--------------------------------------------------------------------------
+    |
+    |
+    |
+    |
+    */
+
+    'view.items' => array(),
 );

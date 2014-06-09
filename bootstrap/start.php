@@ -2,6 +2,7 @@
 
 use \Brainwave\Support\Facades;
 use \Brainwave\Workbench\Workbench;
+use \Brainwave\Support\Autoloader\AutoLoader;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,6 +96,7 @@ if (getenv('APPLICATION_ENV') != 'testing') ini_set('display_errors', 'Off');
 */
 
 Facades::clearResolvedInstances();
+
 $app['facades']->registerFacade($app['settings']->get('app.aliases', array()))->registerAliases();
 
 /*
@@ -138,7 +140,7 @@ date_default_timezone_set($app['settings']->get('timezone', 'UTC'));
 |
 */
 
-\Brainwave\Support\Autoloader\AutoLoader::addDirectories(
+AutoLoader::addDirectories(
     $app['settings']->get('app.autoloaded.paths', array(
         realpath(__DIR__.'/../app').'/models',
         realpath(__DIR__.'/../app').'/routes',

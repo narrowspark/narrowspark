@@ -27,8 +27,10 @@
 
 return array(
 
-    'session.handler' => null,
-    'session.cookies' => array(),
-    'session.flash_key' => 'app.flash',
-    'session.encrypt' => false,
+    'cookies.encrypt' => false,
+    'cookies.lifetime' => '20 minutes',
+    'cookies.path' => '/',
+    'cookies.domain' => null,
+    'cookies.secure' => false,
+    'cookies.httponly' => false,
 );
