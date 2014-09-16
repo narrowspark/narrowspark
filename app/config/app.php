@@ -125,6 +125,18 @@ return array(
 
     /*
     |--------------------------------------------------------------------------
+    | Application Charset
+    |--------------------------------------------------------------------------
+    |
+    |
+    |
+    |
+    */
+
+    'app.language.files' => array(),
+
+    /*
+    |--------------------------------------------------------------------------
     | Encryption Key
     |--------------------------------------------------------------------------
     |
@@ -176,6 +188,18 @@ return array(
 
     /*
     |--------------------------------------------------------------------------
+    | Routes Escape
+    |--------------------------------------------------------------------------
+    |
+    | Escape special chars on route marching
+    | example as /v2.1/ matches /v2.1/, /v2a1/, /v2b1/ and so on...
+    |
+    */
+
+    'route.escape' => false,
+
+    /*
+    |--------------------------------------------------------------------------
     | Routes Case Sensitive
     |--------------------------------------------------------------------------
     |
@@ -221,53 +245,5 @@ return array(
     */
 
    'callable.resolver' => 'CallableResolver',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Autoloaded Service Providers
-    |--------------------------------------------------------------------------
-    |
-    | The service providers listed here will be automatically loaded on the
-    | request to your application. Feel free to add your own services to
-    | this array to grant expanded functionality to your applications.
-    |
-    */
-
-    'app.providers' => array(
-        '\Brainwave\View\ViewServiceProvider'                       => array(),
-        '\Brainwave\Crypt\CryptServiceProvider'                     => array(),
-        '\Brainwave\Flash\FlashServiceProvider'                     => array(),
-        '\Brainwave\Event\EventServiceProvider'                     => array(),
-        '\Brainwave\Cache\CacheServiceProvider'                     => array(),
-        '\Brainwave\Session\SessionServiceProvider'                 => array(),
-        '\Brainwave\Translator\TranslatorServiceProvider'           => array(),
-        '\Brainwave\Support\Autoloader\AutoloaderServiceProvider'   => array(),
-    ),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Class Aliases
-    |--------------------------------------------------------------------------
-    |
-    | This array of class aliases will be registered when this application
-    | is started. However, feel free to register as many as you wish as
-    | the aliases are "lazy" loaded so they don't hinder performance.
-    |
-    */
-
-    'app.aliases' => array(
-        'App'           => '\Brainwave\Support\Facades\App',
-        'Log'           => '\Brainwave\Support\Facades\Log',
-        'Mail'          => '\Brainwave\Support\Facades\Mail',
-        'View'          => '\Brainwave\Support\Facades\View',
-        'Event'         => '\Brainwave\Support\Facades\Event',
-        'Route'         => '\Brainwave\Support\Facades\Route',
-        'Config'        => '\Brainwave\Support\Facades\Config',
-        'Request'       => '\Brainwave\Support\Facades\Request',
-        'Resource'      => '\Brainwave\Support\Facades\Resource',
-        'Response'      => '\Brainwave\Support\Facades\Response',
-        'Services'      => '\Brainwave\Support\Facades\Services',
-        'Autoloader'    => '\Brainwave\Support\Facades\Autoloader',
-    ),
 
 );

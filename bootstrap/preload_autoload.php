@@ -13,7 +13,7 @@ require realpath(__DIR__.'/..').'/vendor/classpreloader/classpreloader/src/Class
 
 use \ClassPreloader\ClassLoader;
 
-$config = ClassLoader::getIncludes(function(ClassLoader $loader) {
+$config = ClassLoader::getIncludes(function (ClassLoader $loader) {
     require_once(realpath(__DIR__.'/..').'/vendor/autoload.php');
     $loader->register();
 });

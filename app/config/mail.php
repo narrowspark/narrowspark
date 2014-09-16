@@ -39,7 +39,7 @@ return array(
     |
     */
 
-    'driver' => 'smtp',
+    'mail.driver' => 'smtp',
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return array(
     |
     */
 
-    'host' => 'smtp.mailgun.org',
+    'mail.host' => 'smtp.mailgun.org',
 
     /*
     |--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ return array(
     |
     */
 
-    'port' => 587,
+    'mail.port' => 587,
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return array(
     |
     */
 
-    'from' => array('address' => null, 'name' => null),
+    'mail.from' => array('address' => null, 'name' => null),
 
     /*
     |--------------------------------------------------------------------------
@@ -91,7 +91,7 @@ return array(
     |
     */
 
-    'encryption' => 'tls',
+    'mail.encryption' => 'tls',
 
     /*
     |--------------------------------------------------------------------------
@@ -104,7 +104,7 @@ return array(
     |
     */
 
-    'username' => null,
+    'mail.username' => null,
 
     /*
     |--------------------------------------------------------------------------
@@ -117,7 +117,7 @@ return array(
     |
     */
 
-    'password' => null,
+    'mail.password' => null,
 
     /*
     |--------------------------------------------------------------------------
@@ -130,19 +130,5 @@ return array(
     |
     */
 
-    'sendmail' => '/usr/sbin/sendmail -bs',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Mail "Pretend"
-    |--------------------------------------------------------------------------
-    |
-    | When this option is enabled, e-mail will not actually be sent over the
-    | web and will instead be written to your application's logs files so
-    | you may inspect the message. This is great for local development.
-    |
-    */
-
-    'pretend' => false,
-
+    'mail.sendmail' => '/usr/sbin/sendmail -bs',
 );

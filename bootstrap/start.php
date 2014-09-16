@@ -1,7 +1,7 @@
 <?php
 
-use \Brainwave\Support\Facades;
 use \Brainwave\Workbench\Workbench;
+use \Brainwave\Workbench\StaticalProxy;
 use \Brainwave\Support\Autoloader\AutoLoader;
 
 /*
@@ -82,7 +82,9 @@ $app->detectEnvironment(
 
 $app['exception']->register();
 
-if (getenv('APPLICATION_ENV') != 'testing') ini_set('display_errors', 'Off');
+if (getenv('APPLICATION_ENV') != 'testing') {
+    ini_set('display_errors', 'Off');
+}
 
 /*
 |--------------------------------------------------------------------------d33
@@ -95,9 +97,9 @@ if (getenv('APPLICATION_ENV') != 'testing') ini_set('display_errors', 'Off');
 |
 */
 
-Facades::clearResolvedInstances();
+StaticalProxy::clearResolvedInstances();
 
-$app['facades']->registerFacade($app['settings']->get('app.aliases', array()))->registerAliases();
+$app['statical']->registerFacade($app['settings']->get('services.aliases', array()))->registerAliases();
 
 /*
 |---------------------------------------------------------------
@@ -131,12 +133,12 @@ date_default_timezone_set($app['settings']->get('timezone', 'UTC'));
 
 /*
 |--------------------------------------------------------------------------
-| Set The Default Timezone
+| Register The Narrowspark Class Loader
 |--------------------------------------------------------------------------
 |
-| Here we will set the default timezone for PHP. PHP is notoriously mean
-| if the timezone is not explicitly set. This will be used by each of
-| the PHP date and date-time functions throughout the application.
+| In addition to using Composer, you may use the Narrowspark class loader to
+| load your controllers and models. This is useful for keeping all of
+| your classes in the "global" namespace without Composer updating.
 |
 */
 

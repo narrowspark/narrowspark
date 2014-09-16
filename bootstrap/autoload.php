@@ -29,8 +29,7 @@ if (function_exists('opcache_is_script_cached')) {
 | by a request.
 |
 */
-if (file_exists($compiled = __DIR__.'/vendor/compiled.php'))
-{
+if (file_exists($compiled = __DIR__.'/vendor/compiled.php')) {
     require $compiled;
 }
 
@@ -45,7 +44,7 @@ if (file_exists($compiled = __DIR__.'/vendor/compiled.php'))
 |
 */
 
-Patchwork\Utf8\Bootup::initMbstring();
+\Patchwork\Utf8\Bootup::initMbstring();
 
 /*
 |--------------------------------------------------------------------------
