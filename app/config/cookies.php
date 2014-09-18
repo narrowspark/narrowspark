@@ -6,7 +6,7 @@
  * @copyright   2014 Daniel Bannert
  * @link        http://www.narrowspark.de
  * @license     http://www.narrowspark.com/license
- * @version     0.9.1-dev
+ * @version     0.9.2-dev
  * @package     Narrowspark/framework
  *
  * For the full copyright and license information, please view the LICENSE

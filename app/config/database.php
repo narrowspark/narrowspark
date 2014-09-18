@@ -6,7 +6,7 @@
  * @copyright   2014 Daniel Bannert
  * @link        http://www.narrowspark.de
  * @license     http://www.narrowspark.com/license
- * @version     0.8.0-dev
+ * @version     0.9.2-dev
  * @package     Narrowspark/framework
  *
  * For the full copyright and license information, please view the LICENSE
@@ -25,10 +25,118 @@
  *
  */
 return array(
-    'db.options' => array(
-        'dsn'      => 'mysql:host='.getenv('DB_HOST').';dbname='.getenv('DB_DATABASE_NAME'),
-        'username' => getenv('DB_DATABASE_USER'),
-        'password' => getenv('DB_DATABASE_PASSWORD'),
-        'frozen'   => getenv('DB_DATABASE_FROZEN'),
+
+    /*
+	|--------------------------------------------------------------------------
+	| Database Connections
+	|--------------------------------------------------------------------------
+	|
+	| All database work in Narrowspark is done through the PHP PDO facilities
+	| so make sure you have the driver for your particular database of
+	| choice installed on your machine before you begin development.
+	|
+	*/
+
+    'db' => array(
+
+        /*
+        |--------------------------------------------------------------------------
+        | Database frozen
+        |--------------------------------------------------------------------------
+        |
+        |
+        */
+
+        'frozen'    => (!empty(getenv('DB_DATABASE_FROZEN'))) ? getenv('DB_DATABASE_FROZEN') : true,
+
+        /*
+        |--------------------------------------------------------------------------
+        | Database type
+        |--------------------------------------------------------------------------
+        |
+        | You can choose between
+        |
+        | MySQL             = mysql
+        | MariaDB           = mariadb
+        | MSSQL             = mssql
+        | Sybase            = sybase
+        | PostgreSQL        = sqlite
+        | Oracle            = pgsql
+        | Google Cloud SQL  = cloudsql
+        | Sqlite            = sqlite
+        |
+        */
+
+        'type'      => (empty(getenv('DB_DATABASE_TYPE'))) ? strtolower(getenv('DB_DATABASE_TYPE')) : 'mysql',
+
+        /*
+        |--------------------------------------------------------------------------
+        | Database server
+        |--------------------------------------------------------------------------
+        |
+        |
+        */
+
+        'server'    => (empty(getenv('DB_HOST'))) ? strtolower(getenv('DB_HOST')) : 'localhost',
+
+        /*
+        |--------------------------------------------------------------------------
+        | Database port
+        |--------------------------------------------------------------------------
+        |
+        |
+        */
+
+        'port'      => '3306',
+
+        /*
+        |--------------------------------------------------------------------------
+        | Database dbname
+        |--------------------------------------------------------------------------
+        |
+        |
+        */
+
+        'dbname'    => getenv('DB_DATABASE_NAME'),
+
+        /*
+        |--------------------------------------------------------------------------
+        | Database username
+        |--------------------------------------------------------------------------
+        |
+        |
+        */
+
+        'username'  => getenv('DB_DATABASE_USER'),
+
+        /*
+        |--------------------------------------------------------------------------
+        | Database password
+        |--------------------------------------------------------------------------
+        |
+        |
+        */
+
+        'password'  => getenv('DB_DATABASE_PASSWORD'),
+
+        /*
+        |--------------------------------------------------------------------------
+        | Database charset
+        |--------------------------------------------------------------------------
+        |
+        |
+        */
+
+        'charset'   => '',
+
+        /*
+        |--------------------------------------------------------------------------
+        | Database option
+        |--------------------------------------------------------------------------
+        |
+        |
+        */
+
+        'option'    => array(),
     )
 );

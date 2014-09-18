@@ -19,6 +19,28 @@ error_reporting(-1);
 
 /*
 |--------------------------------------------------------------------------
+| Check Extensions
+|--------------------------------------------------------------------------
+|
+| Narrowspark requires a few extensions to function. Here we will check the
+| loaded extensions to make sure they are present. If not we'll just
+| bail from here. Otherwise, Composer will crazily fall back code.
+|
+*/
+
+if (!extension_loaded('mcrypt')) {
+    $error = 'Mcrypt PHP extension required.'.PHP_EOL;
+} elseif (!extension_loaded('mcrypt') && !class_exists('\RandomLib\Factory')) {
+    $error = 'Mcrypt not found either \RandomLib\Factory, pls install Mcrypt or RandomLib';
+}
+
+if (!empty($error)) {
+    echo $error;
+    exit(1);
+}
+
+/*
+|--------------------------------------------------------------------------
 | Bind Paths
 |--------------------------------------------------------------------------
 |
@@ -29,20 +51,6 @@ error_reporting(-1);
 */
 
 Workbench::bindInstallPaths(require __DIR__.'/paths.php');
-
-/*
-|--------------------------------------------------------------------------
-| Turn On The Lights
-|--------------------------------------------------------------------------
-|
-| We need to illuminate PHP development, so let's turn on the lights.
-| This bootstraps the framework and gets it ready for use, then it
-| will load up this application so that we can run it and send
-| the responses back to the browser and delight these users.
-|
-*/
-
-$app = new Workbench();
 
 /*
 |--------------------------------------------------------------------------
@@ -63,7 +71,32 @@ foreach (require realpath(__DIR__.'/../').'/.environment' as $key => $value) {
     putenv(sprintf('%s=%s', $key, $value));
 }
 
-$app->detectEnvironment(
+/*
+|--------------------------------------------------------------------------
+| Turn On The Lights
+|--------------------------------------------------------------------------
+|
+| We need to illuminate PHP development, so let's turn on the lights.
+| This bootstraps the framework and gets it ready for use, then it
+| will load up this application so that we can run it and send
+| the responses back to the browser and delight these users.
+|
+*/
+
+$app = new Workbench();
+
+/*
+|--------------------------------------------------------------------------
+| Detect The Application Environment
+|--------------------------------------------------------------------------
+|
+| Laravel takes a dead simple approach to your application environments
+| so you can just specify a machine name for the host that matches a
+| given environment, then we will automatically detect it for you.
+|
+*/
+
+$env = $app->detectEnvironment(
     function () {
         return getenv('APPLICATION_ENV');
     }
@@ -99,7 +132,9 @@ if (getenv('APPLICATION_ENV') != 'testing') {
 
 StaticalProxy::clearResolvedInstances();
 
-$app['statical']->registerFacade($app['settings']->get('services.aliases', array()))->registerAliases();
+$app['statical']->registerFacade(
+    $app['settings']->get('services.aliases', array())
+)->registerAliases();
 
 /*
 |---------------------------------------------------------------
@@ -153,16 +188,52 @@ AutoLoader::addDirectories(
 
 /*
 |--------------------------------------------------------------------------
-| Load The Application Routes
+| Register Booted Start Files
 |--------------------------------------------------------------------------
 |
-| The Application routes are kept separate from the application starting
-| just to keep the file a little cleaner. We'll go ahead and load in
-| all of the routes now and return the application to the callers.
+| Once the application has been booted there are several "start" files
+| we will want to include. We'll register our "booted" handler here
+| so the files are included after the application gets booted up.
 |
 */
 
-require realpath(__DIR__.'/../app').'/routes.php';
+$app->booted(function () use ($app, $env) {
+
+    /*
+    |--------------------------------------------------------------------------
+    | Load The Environment Start Script
+    |--------------------------------------------------------------------------
+    |
+    | The environment start script is only loaded if it exists for the app
+    | environment currently active, which allows some actions to happen
+    | in one environment while not in the other, keeping things clean.
+    |
+    */
+
+    $path = $app['path.app']."/start/{$env}.php";
+
+    if (file_exists($path)) {
+        require $path;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Load The Application Routes
+    |--------------------------------------------------------------------------
+    |
+    | The Application routes are kept separate from the application starting
+    | just to keep the file a little cleaner. We'll go ahead and load in
+    | all of the routes now and return the application to the callers.
+    |
+    */
+
+    $routes = $app['path.app'].'/routes.php';
+
+    if (file_exists($routes)) {
+        require $routes;
+    }
+
+});
 
 /*
 |--------------------------------------------------------------------------

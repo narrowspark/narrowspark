@@ -6,7 +6,7 @@
  * @copyright   2014 Daniel Bannert
  * @link        http://www.narrowspark.de
  * @license     http://www.narrowspark.com/license
- * @version     0.9.1-dev
+ * @version     0.9.2-dev
  * @package     Narrowspark/framework
  *
  * For the full copyright and license information, please view the LICENSE
@@ -45,6 +45,7 @@ return array(
         '\Brainwave\Cookie\CookieServiceProvider'                   => array(),
         '\Brainwave\Session\SessionServiceProvider'                 => array(),
         '\Brainwave\Routing\RoutingServiceProvider'                 => array(),
+        '\Brainwave\Database\DatabaseServiceProvider'               => array(),
         '\Brainwave\Translator\TranslatorServiceProvider'           => array(),
         '\Brainwave\Support\Autoloader\AutoloaderServiceProvider'   => array(),
     ),
@@ -68,11 +69,13 @@ return array(
         'Trans'         => '\Brainwave\Support\Facades\Trans',
         'Event'         => '\Brainwave\Support\Facades\Event',
         'Route'         => '\Brainwave\Support\Facades\Route',
+        'Query'         => '\Brainwave\Support\Facades\Query',
         'Cookie'        => '\Brainwave\Support\Facades\Cookie',
         'Config'        => '\Brainwave\Support\Facades\Config',
         'Request'       => '\Brainwave\Support\Facades\Request',
         'Resource'      => '\Brainwave\Support\Facades\Resource',
         'Response'      => '\Brainwave\Support\Facades\Response',
+        'Database'      => '\Brainwave\Support\Facades\Database',
         'Services'      => '\Brainwave\Support\Facades\Services',
         'Autoloader'    => '\Brainwave\Support\Facades\Autoloader'
     ),
