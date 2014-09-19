@@ -47,7 +47,7 @@ return array(
         |
         */
 
-        'frozen'    => (!empty(getenv('DB_DATABASE_FROZEN'))) ? getenv('DB_DATABASE_FROZEN') : true,
+        'frozen'    => (getenv('DB_DATABASE_FROZEN') !== false) ? getenv('DB_DATABASE_FROZEN') : true,
 
         /*
         |--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return array(
         |
         */
 
-        'type'      => (empty(getenv('DB_DATABASE_TYPE'))) ? strtolower(getenv('DB_DATABASE_TYPE')) : 'mysql',
+        'type'      => (getenv('DB_DATABASE_TYPE') !== false) ? strtolower(getenv('DB_DATABASE_TYPE')) : 'mysql',
 
         /*
         |--------------------------------------------------------------------------
@@ -77,7 +77,7 @@ return array(
         |
         */
 
-        'server'    => (empty(getenv('DB_HOST'))) ? strtolower(getenv('DB_HOST')) : 'localhost',
+        'server'    => (getenv('DB_HOST') !== false) ? strtolower(getenv('DB_HOST')) : 'localhost',
 
         /*
         |--------------------------------------------------------------------------

@@ -13,6 +13,7 @@ define('BRAINWAVE_START', microtime(true));
 | loading of any our classes "manually". Feels great to relax.
 |
 */
+
 if (function_exists('opcache_is_script_cached')) {
     require_once(realpath(__DIR__ . '/..').'/vendor/intahwebz/lowmemoryclassloader/LowMemoryClassloader.php');
 } else {
@@ -29,6 +30,7 @@ if (function_exists('opcache_is_script_cached')) {
 | by a request.
 |
 */
+
 if (file_exists($compiled = __DIR__.'/vendor/compiled.php')) {
     require $compiled;
 }
@@ -56,4 +58,5 @@ if (file_exists($compiled = __DIR__.'/vendor/compiled.php')) {
 | regenerated for the application. We'll add it to the stack here.
 |
 */
-\Brainwave\Support\Autoloader\AutoLoader::register();
+
+\Brainwave\Support\Autoloader\Autoloader::register();
