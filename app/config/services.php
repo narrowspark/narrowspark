@@ -46,6 +46,7 @@ return array(
         '\Brainwave\Session\SessionServiceProvider'                 => array(),
         '\Brainwave\Routing\RoutingServiceProvider'                 => array(),
         '\Brainwave\Database\DatabaseServiceProvider'               => array(),
+        '\Brainwave\Resolvers\ResolverServiceProvider'              => array(),
         '\Brainwave\Translator\TranslatorServiceProvider'           => array(),
         '\Brainwave\Support\Autoloader\AutoloaderServiceProvider'   => array(),
     ),
