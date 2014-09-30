@@ -14,7 +14,7 @@ define('BRAINWAVE_START', microtime(true));
 |
 */
 
-if (function_exists('opcache_is_script_cached')) {
+if (function_exists('opcache_is_script_cached') && class_exists('\Intahwebz\Autoload\LowMemoryClassloader')) {
     require_once(realpath(__DIR__ . '/..').'/vendor/intahwebz/lowmemoryclassloader/LowMemoryClassloader.php');
 } else {
     require_once(realpath(__DIR__.'/..').'/vendor/autoload.php');

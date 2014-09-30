@@ -37,19 +37,20 @@ return array(
     |
     */
 
-    'services.providers' => array(
-        '\Brainwave\View\ViewServiceProvider'                       => array(),
-        '\Brainwave\Crypt\CryptServiceProvider'                     => array(),
-        '\Brainwave\Event\EventServiceProvider'                     => array(),
-        '\Brainwave\Cache\CacheServiceProvider'                     => array(),
-        '\Brainwave\Cookie\CookieServiceProvider'                   => array(),
-        '\Brainwave\Session\SessionServiceProvider'                 => array(),
-        '\Brainwave\Routing\RoutingServiceProvider'                 => array(),
-        '\Brainwave\Database\DatabaseServiceProvider'               => array(),
-        '\Brainwave\Resolvers\ResolverServiceProvider'              => array(),
-        '\Brainwave\Translator\TranslatorServiceProvider'           => array(),
-        '\Brainwave\Support\Autoloader\AutoloaderServiceProvider'   => array(),
-    ),
+    'services.providers' => [
+        '\Brainwave\View\ViewServiceProvider'                       => [],
+        '\Brainwave\Crypt\CryptServiceProvider'                     => [],
+        '\Brainwave\Event\EventServiceProvider'                     => [],
+        '\Brainwave\Cache\CacheServiceProvider'                     => [],
+        '\Brainwave\Cookie\CookieServiceProvider'                   => [],
+        '\Brainwave\Session\SessionServiceProvider'                 => [],
+        '\Brainwave\Routing\RoutingServiceProvider'                 => [],
+        '\Brainwave\Database\DatabaseServiceProvider'               => [],
+        '\Brainwave\Resolvers\ResolverServiceProvider'              => [],
+        '\Brainwave\Translator\TranslatorServiceProvider'           => [],
+        '\Brainwave\Support\Filesystem\FilesystemServiceProvider'   => [],
+        '\Brainwave\Support\Autoloader\AutoloaderServiceProvider'   => [],
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -62,23 +63,24 @@ return array(
     |
     */
 
-    'services.aliases' => array(
+    'services.aliases' => [
         'App'           => '\Brainwave\Support\Facades\App',
         'Log'           => '\Brainwave\Support\Facades\Log',
         'Mail'          => '\Brainwave\Support\Facades\Mail',
         'View'          => '\Brainwave\Support\Facades\View',
         'Trans'         => '\Brainwave\Support\Facades\Trans',
+        'Cache'         => '\Brainwave\Support\Facades\Cache',
         'Event'         => '\Brainwave\Support\Facades\Event',
         'Route'         => '\Brainwave\Support\Facades\Route',
         'Query'         => '\Brainwave\Support\Facades\Query',
         'Cookie'        => '\Brainwave\Support\Facades\Cookie',
         'Config'        => '\Brainwave\Support\Facades\Config',
+        'Caches'        => '\Brainwave\Support\Facades\Caches',
         'Request'       => '\Brainwave\Support\Facades\Request',
         'Resource'      => '\Brainwave\Support\Facades\Resource',
         'Response'      => '\Brainwave\Support\Facades\Response',
         'Database'      => '\Brainwave\Support\Facades\Database',
         'Services'      => '\Brainwave\Support\Facades\Services',
         'Autoloader'    => '\Brainwave\Support\Facades\Autoloader'
-    ),
-
+    ],
 );
