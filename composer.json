@@ -29,9 +29,6 @@
             "dev-master": "0.9.2-dev"
         }
     },
-    "scripts": {
-        "post-autoload-dump": "php vendor/bin/classpreloader.php compile --config=/bootstrap/preload_autoload.php --output=/vendor/preload.php"
-    },
     "config": {
         "bin-dir": "vendor/bin"
     },
