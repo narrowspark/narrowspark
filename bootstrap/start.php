@@ -210,7 +210,7 @@ $app->booted(function () use ($app, $env) {
     |
     */
 
-    $path = $app['path.app']."/start/{$env}.php";
+    $path = $app['path']."/start/{$env}.php";
 
     if (file_exists($path)) {
         require $path;
@@ -227,7 +227,7 @@ $app->booted(function () use ($app, $env) {
     |
     */
 
-    $routes = $app['path.app'].'/routes.php';
+    $routes = $app['path'].'/routes.php';
 
     if (file_exists($routes)) {
         require $routes;

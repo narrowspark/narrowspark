@@ -39,6 +39,7 @@ return array(
 
     'services.providers' => [
         '\Brainwave\View\ViewServiceProvider'                       => [],
+        '\Brainwave\Log\LoggerServiceProvider'                      => [],
         '\Brainwave\Crypt\CryptServiceProvider'                     => [],
         '\Brainwave\Event\EventServiceProvider'                     => [],
         '\Brainwave\Cache\CacheServiceProvider'                     => [],
@@ -48,6 +49,7 @@ return array(
         '\Brainwave\Database\DatabaseServiceProvider'               => [],
         '\Brainwave\Resolvers\ResolverServiceProvider'              => [],
         '\Brainwave\Translator\TranslatorServiceProvider'           => [],
+        '\Brainwave\Serializer\SerializerServiceProvider'           => [],
         '\Brainwave\Support\Filesystem\FilesystemServiceProvider'   => [],
         '\Brainwave\Support\Autoloader\AutoloaderServiceProvider'   => [],
     ],

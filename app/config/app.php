@@ -41,6 +41,21 @@ return array(
 
     /*
     |--------------------------------------------------------------------------
+    | Application Debug Mode
+    |--------------------------------------------------------------------------
+    |
+    | When your application is in debug mode, detailed error messages with
+    | stack traces will be shown on every error that occurs within your
+    | application. If disabled, a simple generic error page is shown.
+    |
+    | Supported: "development", "testing", "production"
+    |
+    */
+
+    'app.mode' => 'development',
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Maintenance
     |--------------------------------------------------------------------------
     |
@@ -48,6 +63,39 @@ return array(
     */
 
     'app.maintenance ' => false,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Exception handler
+    |--------------------------------------------------------------------------
+    |
+    | Supported: "whoops", "plain"
+    |
+    */
+
+    'app.exception.handler' => 'whoops',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Debugbar
+    |--------------------------------------------------------------------------
+    |
+    |
+    |
+    */
+
+    'app.debugbar' => [
+        // Enables/disables PHP Debug Bar
+        'enabled' => true,
+
+        // ServiceManager keys to inject collectors
+        // http://phpdebugbar.com/docs/data-collectors.html
+        'collectors' => array(),
+
+        // ServiceManager key to inject storage
+        // http://phpdebugbar.com/docs/storage.html
+        'storage' => null,
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -71,19 +119,6 @@ return array(
     */
 
     'http.version' => '1.1',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Application Debug Mode
-    |--------------------------------------------------------------------------
-    |
-    | When your application is in debug mode, detailed error messages with
-    | stack traces will be shown on every error that occurs within your
-    | application. If disabled, a simple generic error page is shown.
-    |
-    */
-
-    'app.mode' => 'development',
 
     /*
     |--------------------------------------------------------------------------
@@ -125,7 +160,7 @@ return array(
 
     /*
     |--------------------------------------------------------------------------
-    | Application Charset
+    | Application Language
     |--------------------------------------------------------------------------
     |
     |
@@ -144,7 +179,8 @@ return array(
     | to a random, 32 character string, otherwise these encrypted strings
     | will not be safe. Please do this before deploying an application!
     |
-    | Note: You can find a random 32-character key her : www.narrowspark.de/encryption-key-generator
+    | Note: You can find a random 32-character key her:
+    | www.narrowspark.de/encryption-key-generator
     |
     */
 
