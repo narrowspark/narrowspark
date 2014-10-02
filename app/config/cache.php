@@ -16,6 +16,8 @@
  *
  */
 
+use Brainwave\Support\Facades\Helpers;
+
 /**
  * Cache config
  *
@@ -73,7 +75,7 @@ return array(
     |
     */
 
-    'cache.path' => storagePath().'/cache',
+    'cache.path' => Helpers::storagePath().'/cache',
 
     /*
     |--------------------------------------------------------------------------

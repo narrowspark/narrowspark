@@ -24,7 +24,6 @@
  * @since   0.8.0-dev
  *
  */
-
 return array(
 
     /*
