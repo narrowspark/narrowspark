@@ -16,7 +16,7 @@
  *
  */
 
-use Brainwave\Support\Facades\Helpers;
+use Brainwave\Support\Helpers;
 
 /**
  * Cache config
