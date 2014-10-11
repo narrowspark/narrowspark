@@ -18,15 +18,17 @@
     },
     "autoload": {
         "classmap": [
-            "app/models",
+            "database",
             "app/commands",
-            "app/database",
-            "app/controllers"
+            "app/providers",
+            "database/models",
+            "app/http/middleware",
+            "app/http/controllers"
         ]
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.9.2-dev"
+            "dev-master": "0.9.3-dev"
         }
     },
     "config": {

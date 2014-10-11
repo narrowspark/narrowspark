@@ -54,25 +54,6 @@ Workbench::bindInstallPaths(require __DIR__.'/paths.php');
 
 /*
 |--------------------------------------------------------------------------
-| Detect The Application Environment
-|--------------------------------------------------------------------------
-|
-| Brainwave takes a dead simple approach to your application environments
-| so you can just specify a machine name for the host that matches a
-| given environment, then we will automatically detect it for you.
-|
-*/
-
-foreach (require realpath(__DIR__.'/../').'/.environment' as $key => $value) {
-    $_ENV[$key] = $value;
-
-    $_SERVER[$key] = $value;
-
-    putenv(sprintf('%s=%s', $key, $value));
-}
-
-/*
-|--------------------------------------------------------------------------
 | Turn On The Lights
 |--------------------------------------------------------------------------
 |
@@ -96,11 +77,7 @@ $app = new Workbench();
 |
 */
 
-$env = $app->detectEnvironment(
-    function () {
-        return getenv('APPLICATION_ENV');
-    }
-);
+require __DIR__.'/environment.php';
 
 /*
 |--------------------------------------------------------------------------
