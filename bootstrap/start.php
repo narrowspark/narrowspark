@@ -167,20 +167,4 @@ AutoLoader::addDirectories(
 |
 */
 
-$app->run();
-
-/*
-|--------------------------------------------------------------------------
-| Shutdown The Application
-|--------------------------------------------------------------------------
-|
-| Once the app has finished running, we will fire off the shutdown events
-| so that any final work may be done by the application before we shut
-| down the process. This is the last thing to happen to the request.
-|
-| Force connection close.
-| Flush the output buffer.
-|
-*/
-
-$app->shutdown();
+return $app;

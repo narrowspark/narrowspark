@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 
 /*
@@ -12,8 +13,7 @@
 |
 */
 
-require __DIR__.'/../bootstrap/autoload.php';
-
+require __DIR__.'/bootstrap/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -21,15 +21,29 @@ require __DIR__.'/../bootstrap/autoload.php';
 |--------------------------------------------------------------------------
 |
 | We need to illuminate PHP development, so let's turn on the lights.
-| This bootstraps the framework and gets it ready for use, then it
+| This bootstraps the framework and gets it ready for and then it
 | will load up this application so that we can run it and send
 | the responses back to the browser and delight these users.
 |
 */
 
-$app = require_once __DIR__.'/../bootstrap/start.php';
+$app = require_once __DIR__.'/bootstrap/start.php';
 
-$app->run();
+/*
+|--------------------------------------------------------------------------
+| Load The Cerebro Console Application
+|--------------------------------------------------------------------------
+|
+| We'll need to run the script to load and return the Cerebro console
+| application. We keep this in its own script so that we will load
+| the console application independent of running commands which
+| will allow us to fire commands from Routes when we want to.
+|
+*/
+
+$app->setRequestForConsoleEnvironment();
+
+$cerebro = Brainwave\Console\Application::start($app);
 
 /*
 |--------------------------------------------------------------------------
@@ -46,3 +60,5 @@ $app->run();
 */
 
 $app->shutdown();
+
+exit($cerebro);

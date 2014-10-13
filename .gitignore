@@ -5,7 +5,11 @@ composer.lock
 Thumbs.db
 ftpsync.settings
 sftp-config.json
-cresk.png
-.environment
 us.stackdump
 sync.ffs_db
+tmp/
+.project
+.settings/
+.*.sw*
+.*.un~
+.buildpath
