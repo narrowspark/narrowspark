@@ -18,28 +18,6 @@ use \Brainwave\Workbench\StaticalProxyManager;
 
 error_reporting(-1);
 
-/*
-|--------------------------------------------------------------------------
-| Check Extensions
-|--------------------------------------------------------------------------
-|
-| Narrowspark requires a few extensions to function. Here we will check the
-| loaded extensions to make sure they are present. If not we'll just
-| bail from here. Otherwise, Composer will crazily fall back code.
-|
-*/
-
-if (!extension_loaded('mcrypt')) {
-    $error = 'Mcrypt PHP extension required.'.PHP_EOL;
-} elseif (!extension_loaded('mcrypt') && !class_exists('\RandomLib\Factory')) {
-    $error = 'Mcrypt not found either \RandomLib\Factory, pls install Mcrypt or RandomLib';
-}
-
-if (!empty($error)) {
-    echo $error;
-    exit(1);
-}
-
 require __DIR__.'/environment.php';
 
 /*

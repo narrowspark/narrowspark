@@ -33,7 +33,7 @@
         "post-autoload-dump": "php vendor/bin/classpreloader.php compile --config=/vendor/narrowspark/framework/src/Brainwave/Workbench/Optimize.php --output=/storage/autoload/preload_autoload.php"
     },
     "config": {
-        "bin-dir": "vendor\\bin"
+        "bin-dir": "vendor/bin"
     },
     "minimum-stability": "dev"
 }
