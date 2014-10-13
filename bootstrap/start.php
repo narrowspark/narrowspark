@@ -1,8 +1,9 @@
 <?php
 
 use \Brainwave\Workbench\Workbench;
-use \Brainwave\Workbench\StaticalProxy;
+use \Brainwave\Workbench\AliasLoader;
 use \Brainwave\Support\Autoloader\AutoLoader;
+use \Brainwave\Workbench\StaticalProxyManager;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,8 @@ if (!empty($error)) {
     exit(1);
 }
 
+require __DIR__.'/environment.php';
+
 /*
 |--------------------------------------------------------------------------
 | Bind Paths
@@ -71,13 +74,14 @@ $app = new Workbench();
 | Detect The Application Environment
 |--------------------------------------------------------------------------
 |
-| Laravel takes a dead simple approach to your application environments
+| Narrowspark takes a dead simple approach to your application environments
 | so you can just specify a machine name for the host that matches a
 | given environment, then we will automatically detect it for you.
 |
 */
-
-require __DIR__.'/environment.php';
+$env = $app->detectEnvironment(function () {
+    return getenv('APPLICATION_ENV') ?: 'production';
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -92,7 +96,7 @@ require __DIR__.'/environment.php';
 
 $app['exception']->register();
 
-if (getenv('APPLICATION_ENV') != 'testing') {
+if (getenv('APPLICATION_ENV') !== 'testing') {
     ini_set('display_errors', 'Off');
 }
 
@@ -107,11 +111,20 @@ if (getenv('APPLICATION_ENV') != 'testing') {
 |
 */
 
-StaticalProxy::clearResolvedInstances();
+StaticalProxyManager::clearResolvedInstances();
 
-$app['statical']->registerFacade(
-    $app['settings']->get('services.aliases', array())
-)->registerAliases();
+/*
+|--------------------------------------------------------------------------
+| Register The Alias Loader
+|--------------------------------------------------------------------------
+|
+| The alias loader is responsible for lazy loading the class aliases setup
+| for the application. We will only register it if the "config" service
+| is bound in the application since it contains the alias definitions.
+|
+*/
+
+AliasLoader::getInstance($app['settings']->get('services::aliases', []))->register();
 
 /*
 |---------------------------------------------------------------
@@ -141,7 +154,7 @@ set_include_path(dirname(__FILE__));
 |
 */
 
-date_default_timezone_set($app['settings']->get('timezone', 'UTC'));
+date_default_timezone_set($app['settings']->get('app::timezone', 'UTC'));
 
 /*
 |--------------------------------------------------------------------------
@@ -155,62 +168,14 @@ date_default_timezone_set($app['settings']->get('timezone', 'UTC'));
 */
 
 AutoLoader::addDirectories(
-    $app['settings']->get('app.autoloaded.paths', array(
-        realpath(__DIR__.'/../app').'/models',
-        realpath(__DIR__.'/../app').'/routes',
-        realpath(__DIR__.'/../app').'/global',
-        realpath(__DIR__.'/../app').'/controllers',
-    ))
+    $app['settings']->get('autoload::autoloaded.paths', [
+        $app::$paths['path'].'/commands',
+        $app::$paths['path'].'/http/controllers',
+        $app::$paths['path'].'/http/middleware',
+        $app::$paths['path'].'/providers',
+        $app::$paths['path.database'].'/models',
+    ])
 );
-
-/*
-|--------------------------------------------------------------------------
-| Register Booted Start Files
-|--------------------------------------------------------------------------
-|
-| Once the application has been booted there are several "start" files
-| we will want to include. We'll register our "booted" handler here
-| so the files are included after the application gets booted up.
-|
-*/
-
-$app->booted(function () use ($app, $env) {
-
-    /*
-    |--------------------------------------------------------------------------
-    | Load The Environment Start Script
-    |--------------------------------------------------------------------------
-    |
-    | The environment start script is only loaded if it exists for the app
-    | environment currently active, which allows some actions to happen
-    | in one environment while not in the other, keeping things clean.
-    |
-    */
-
-    $path = $app['path']."/start/{$env}.php";
-
-    if (file_exists($path)) {
-        require $path;
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Load The Application Routes
-    |--------------------------------------------------------------------------
-    |
-    | The Application routes are kept separate from the application starting
-    | just to keep the file a little cleaner. We'll go ahead and load in
-    | all of the routes now and return the application to the callers.
-    |
-    */
-
-    $routes = $app['path'].'/routes.php';
-
-    if (file_exists($routes)) {
-        require $routes;
-    }
-
-});
 
 /*
 |--------------------------------------------------------------------------

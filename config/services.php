@@ -24,7 +24,7 @@
  * @since   0.8.0-dev
  *
  */
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -37,7 +37,7 @@ return array(
     |
     */
 
-    'services.providers' => [
+    'providers' => [
         '\Brainwave\View\ViewServiceProvider'                       => [],
         '\Brainwave\Log\LoggerServiceProvider'                      => [],
         '\Brainwave\Crypt\CryptServiceProvider'                     => [],
@@ -50,7 +50,7 @@ return array(
         '\Brainwave\Database\DatabaseServiceProvider'               => [],
         '\Brainwave\Resolvers\ResolverServiceProvider'              => [],
         '\Brainwave\Translator\TranslatorServiceProvider'           => [],
-        '\Brainwave\Support\Filesystem\FilesystemServiceProvider'   => [],
+        '\Brainwave\Filesystem\FilesystemServiceProvider'           => [],
         '\Brainwave\Support\Autoloader\AutoloaderServiceProvider'   => [],
     ],
 
@@ -65,7 +65,7 @@ return array(
     |
     */
 
-    'services.aliases' => [
+    'aliases' => [
         'DB'            => '\Brainwave\Support\Facades\Database',
         'App'           => '\Brainwave\Support\Facades\App',
         'Log'           => '\Brainwave\Support\Facades\Log',
@@ -86,4 +86,4 @@ return array(
         'Services'      => '\Brainwave\Support\Facades\Services',
         'Autoloader'    => '\Brainwave\Support\Facades\Autoloader'
     ],
-);
+];

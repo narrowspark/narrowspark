@@ -18,21 +18,22 @@
     },
     "autoload": {
         "classmap": [
-            "database",
-            "app/commands",
-            "app/providers",
-            "database/models",
-            "app/http/middleware",
-            "app/http/controllers"
-        ]
+            "database"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        }
     },
     "extra": {
         "branch-alias": {
             "dev-master": "0.9.3-dev"
         }
     },
+    "scripts": {
+        "post-autoload-dump": "php vendor/bin/classpreloader.php compile --config=/vendor/narrowspark/framework/src/Brainwave/Workbench/optimize.php --output=/storage/autoload/preload_autoload.php"
+    },
     "config": {
-        "bin-dir": "vendor/bin"
+        "bin-dir": "vendor\\bin"
     },
     "minimum-stability": "dev"
 }

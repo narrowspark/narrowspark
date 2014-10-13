@@ -26,7 +26,7 @@ use Brainwave\Support\Helpers;
  * @since   0.8.0-dev
  *
  */
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -37,7 +37,7 @@ return array(
     | using the Caching library.
     |
     */
-    'cache.supported.drivers' => [
+    'supported.drivers' => [
         'apc'       => '\\Brainwave\\Cache\\Driver\\ApcCache',
         'array'     => '\\Brainwave\\Cache\\Driver\\ArrayCache',
         'file'      => '\\Brainwave\\Cache\\Driver\\FileCache',
@@ -62,7 +62,7 @@ return array(
     |
     */
 
-    'cache.driver' => 'file',
+    'driver' => 'file',
 
     /*
     |--------------------------------------------------------------------------
@@ -75,7 +75,7 @@ return array(
     |
     */
 
-    'cache.path' => Helpers::storagePath().'/cache',
+    'path' => Helpers::storagePath().'/cache',
 
     /*
     |--------------------------------------------------------------------------
@@ -88,7 +88,7 @@ return array(
     |
     */
 
-    'cache.memcached' => [
+    'memcached' => [
         [
             'host' => '127.0.0.1',
             'port' => 11211,
@@ -106,7 +106,7 @@ return array(
     |
     */
 
-    'cache.caches' => [
+    'caches' => [
 
     ],
 
@@ -116,10 +116,10 @@ return array(
     |--------------------------------------------------------------------------
     |
     | When utilizing a RAM based store such as APC or Memcached, there might
-    | be other applications utilizing the same cache. So, we'll specify a
+    | be other applications utilizing the same  So, we'll specify a
     | value to get prefixed to all our keys so we can avoid collisions.
     |
     */
 
-    'cache.prefix' => 'narrowspark',
-);
+    'prefix' => 'narrowspark',
+];

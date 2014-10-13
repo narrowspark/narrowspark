@@ -24,7 +24,7 @@
  * @since   0.8.0-dev
  *
  */
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -36,9 +36,9 @@ return array(
     |
     */
 
-    'view.engine' => array(
+    'engine' => [
         'plates' => '\Brainwave\View\Engines\Plates\PlatesEngine'
-    ),
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +51,7 @@ return array(
     |
     */
 
-    'view.default.template.path' => dirname(dirname(__FILE__)).'/resources/views',
+    'default.template.path' => dirname(dirname(__FILE__)).'/resources/views',
 
      /*
     |--------------------------------------------------------------------------
@@ -64,7 +64,7 @@ return array(
     |
     */
 
-    'view.template.paths' => array(),
+    'template.paths' => [],
 
     /*
     |--------------------------------------------------------------------------
@@ -72,12 +72,12 @@ return array(
     |--------------------------------------------------------------------------
     |
     | Most templating systems load templates from disk. Here you may specify
-    | an path that should be checked for your view. Of course
+    | an path that should be checked for your  Of course
     | the usual Brainwave view path has already been registered for you.
     |
     */
 
-    'view.cache' => array('cache' => dirname(dirname(__FILE__)).'/storage/views/'),
+    'cache' => ['cache' => dirname(dirname(__FILE__)).'/storage/views/'],
 
     /*
     |--------------------------------------------------------------------------
@@ -89,7 +89,7 @@ return array(
     |
     */
 
-    'view.asset' => dirname(dirname(dirname(__FILE__))).'/public/',
+    'asset' => dirname(dirname(dirname(__FILE__))).'/public/',
 
     /*
     |--------------------------------------------------------------------------
@@ -101,7 +101,7 @@ return array(
     |
     */
 
-    'view.extensions' => '.html',
+    'extensions' => '.html',
 
     /*
     |--------------------------------------------------------------------------
@@ -113,5 +113,5 @@ return array(
     |
     */
 
-    'view.items' => array(),
-);
+    'items' => [],
+];

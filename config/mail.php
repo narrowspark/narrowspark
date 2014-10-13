@@ -24,7 +24,7 @@
  * @since   0.8.0-dev
  *
  */
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -32,14 +32,14 @@ return array(
     |--------------------------------------------------------------------------
     |
     | Laravel supports both SMTP and PHP's "mail" function as drivers for the
-    | sending of e-mail. You may specify which one you're using throughout
-    | your application here. By default, Laravel is setup for SMTP mail.
+    | sending of e- You may specify which one you're using throughout
+    | your application here. By default, Laravel is setup for SMTP
     |
     | Supported: "smtp", "mail", "sendmail"
     |
     */
 
-    'mail.driver' => 'smtp',
+    'driver' => 'smtp',
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return array(
     |
     */
 
-    'mail.host' => 'smtp.mailgun.org',
+    'host' => 'smtp.mailgun.org',
 
     /*
     |--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ return array(
     |
     */
 
-    'mail.port' => 587,
+    'port' => 587,
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return array(
     |
     */
 
-    'mail.from' => array('address' => null, 'name' => null),
+    'from' => array('address' => null, 'name' => null),
 
     /*
     |--------------------------------------------------------------------------
@@ -91,7 +91,7 @@ return array(
     |
     */
 
-    'mail.encryption' => 'tls',
+    'encryption' => 'tls',
 
     /*
     |--------------------------------------------------------------------------
@@ -104,7 +104,7 @@ return array(
     |
     */
 
-    'mail.username' => null,
+    'username' => null,
 
     /*
     |--------------------------------------------------------------------------
@@ -117,7 +117,7 @@ return array(
     |
     */
 
-    'mail.password' => null,
+    'password' => null,
 
     /*
     |--------------------------------------------------------------------------
@@ -130,5 +130,5 @@ return array(
     |
     */
 
-    'mail.sendmail' => '/usr/sbin/sendmail -bs',
-);
+    'sendmail' => '/usr/sbin/sendmail -bs',
+];

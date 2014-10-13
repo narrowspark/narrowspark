@@ -17,13 +17,12 @@
  */
 
 /**
- * Autoload config
+ * Template config
  *
  * @package Narrowspark/narrowspark
  * @author  Daniel Bannert
- * @since   0.8.0-dev
+ * @since   0.9.3-dev
  *
  */
 return [
-
 ];

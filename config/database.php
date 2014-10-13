@@ -17,6 +17,10 @@
  */
 
 /**
+ * All database work in Narrowspark is done through the PHP PDO facilities
+ * so make sure you have the driver for your particular database of
+ * choice installed on your machine before you begin development.
+ *
  * Database config
  *
  * @package Narrowspark/narrowspark
@@ -24,171 +28,157 @@
  * @since   0.8.0-dev
  *
  */
-return array(
+return [
 
     /*
-	|--------------------------------------------------------------------------
-	| Database Connections
-	|--------------------------------------------------------------------------
-	|
-	| All database work in Narrowspark is done through the PHP PDO facilities
-	| so make sure you have the driver for your particular database of
-	| choice installed on your machine before you begin development.
-	|
-	*/
+    |--------------------------------------------------------------------------
+    | PDO Fetch Style
+    |--------------------------------------------------------------------------
+    |
+    | By default, database results will be returned as instances of the PHP
+    | stdClass object; however, you may desire to retrieve records in an
+    | array format for simplicity. Here you can tweak the fetch style.
+    |
+    */
 
-    'database' => [
+    'fetch' => \PDO::FETCH_CLASS,
 
-        /*
-        |--------------------------------------------------------------------------
-        | PDO Fetch Style
-        |--------------------------------------------------------------------------
-        |
-        | By default, database results will be returned as instances of the PHP
-        | stdClass object; however, you may desire to retrieve records in an
-        | array format for simplicity. Here you can tweak the fetch style.
-        |
-        */
+    /*
+    |--------------------------------------------------------------------------
+    | Database frozen
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
 
-        'fetch' => \PDO::FETCH_CLASS,
+    'frozen'    => (getenv('DB_DATABASE_FROZEN') !== false) ? getenv('DB_DATABASE_FROZEN') : true,
 
-        /*
-        |--------------------------------------------------------------------------
-        | Database frozen
-        |--------------------------------------------------------------------------
-        |
-        |
-        */
+    /*
+    |--------------------------------------------------------------------------
+    | Database type
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify which of the database connections below you wish
+    | to use as your default connection for all database work. Of course
+    | you may use many connections at once using the Database library.
+    | You can choose between
+    |
+    | MySQL             = mysql
+    | MariaDB           = mariadb
+    | MSSQL             = mssql
+    | Sybase            = sybase
+    | PostgreSQL        = sqlite
+    | Oracle            = pgsql
+    | Google Cloud SQL  = cloudsql
+    | Sqlite            = sqlite
+    | SqlServer         = sqlsrv
+    |
+    */
 
-        'frozen'    => (getenv('DB_DATABASE_FROZEN') !== false) ? getenv('DB_DATABASE_FROZEN') : true,
+    'default'      => (getenv('DB_DATABASE_TYPE') !== false) ? strtolower(getenv('DB_DATABASE_TYPE')) : 'mysql',
 
-        /*
-        |--------------------------------------------------------------------------
-        | Database type
-        |--------------------------------------------------------------------------
-        |
-        | Here you may specify which of the database connections below you wish
-        | to use as your default connection for all database work. Of course
-        | you may use many connections at once using the Database library.
-        | You can choose between
-        |
-        | MySQL             = mysql
-        | MariaDB           = mariadb
-        | MSSQL             = mssql
-        | Sybase            = sybase
-        | PostgreSQL        = sqlite
-        | Oracle            = pgsql
-        | Google Cloud SQL  = cloudsql
-        | Sqlite            = sqlite
-        | SqlServer         = sqlsrv
-        |
-        */
+    /*
+    |--------------------------------------------------------------------------
+    | Database option
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
 
-        'default'      => (getenv('DB_DATABASE_TYPE') !== false) ? strtolower(getenv('DB_DATABASE_TYPE')) : 'mysql',
+    'option'    => [],
 
-        /*
-        |--------------------------------------------------------------------------
-        | Database option
-        |--------------------------------------------------------------------------
-        |
-        |
-        */
+    /*
+    |--------------------------------------------------------------------------
+    | Database Connections
+    |--------------------------------------------------------------------------
+    |
+    | Here are each of the database connections setup for your application.
+    | Of course, examples of configuring each database platform that is
+    | supported by Narrowspark is shown below to make development simple.
+    |
+    |
+    | All database work in Narrowspark is done through the PHP PDO facilities
+    | so make sure you have the driver for your particular database of
+    | choice installed on your machine before you begin development.
+    |
+    */
 
-        'option'    => [],
+    'connections' => [
 
-        /*
-        |--------------------------------------------------------------------------
-        | Database Connections
-        |--------------------------------------------------------------------------
-        |
-        | Here are each of the database connections setup for your application.
-        | Of course, examples of configuring each database platform that is
-        | supported by Narrowspark is shown below to make development simple.
-        |
-        |
-        | All database work in Narrowspark is done through the PHP PDO facilities
-        | so make sure you have the driver for your particular database of
-        | choice installed on your machine before you begin development.
-        |
-        */
+        'sqlite' => [
+            'driver'   => 'sqlite',
+            'dbname'   => (getenv('DB_DATABASE_NAME') !== false) ?
+                        getenv('DB_DATABASE_NAME') :
+                        __DIR__.'/../database/production.sqlite',
+            'prefix'   => '',
+        ],
 
-        'connections' => [
+        'mysql' => [
+            'driver'    => 'mysql',
+            'server'    => (getenv('DB_HOST') !== false) ? strtolower(getenv('DB_HOST')) : 'localhost',
+            'dbname'    => (getenv('DB_DATABASE_NAME') !== false) ? getenv('DB_DATABASE_NAME') : '',
+            'username'  => (getenv('DB_DATABASE_USER') !== false) ? getenv('DB_DATABASE_USER') : '',
+            'password'  => (getenv('DB_DATABASE_PASSWORD') !== false) ? getenv('DB_DATABASE_PASSWORD') : '',
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+        ],
 
-            'sqlite' => [
-                'driver'   => 'sqlite',
-                'dbname'   => (getenv('DB_DATABASE_NAME') !== false) ?
-                            getenv('DB_DATABASE_NAME') :
-                            __DIR__.'/../database/production.sqlite',
-                'prefix'   => '',
-            ],
+        'mariadb' => [
+            'driver'    => 'mariadb',
+            'server'    => (getenv('DB_HOST') !== false) ? strtolower(getenv('DB_HOST')) : 'localhost',
+            'dbname'    => (getenv('DB_DATABASE_NAME') !== false) ? getenv('DB_DATABASE_NAME') : '',
+            'username'  => (getenv('DB_DATABASE_USER') !== false) ? getenv('DB_DATABASE_USER') : '',
+            'password'  => (getenv('DB_DATABASE_PASSWORD') !== false) ? getenv('DB_DATABASE_PASSWORD') : '',
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+        ],
 
-            'mysql' => [
-                'driver'    => 'mysql',
-                'server'    => (getenv('DB_HOST') !== false) ? strtolower(getenv('DB_HOST')) : 'localhost',
-                'dbname'    => (getenv('DB_DATABASE_NAME') !== false) ? getenv('DB_DATABASE_NAME') : '',
-                'username'  => (getenv('DB_DATABASE_USER') !== false) ? getenv('DB_DATABASE_USER') : '',
-                'password'  => (getenv('DB_DATABASE_PASSWORD') !== false) ? getenv('DB_DATABASE_PASSWORD') : '',
-                'charset'   => 'utf8',
-                'collation' => 'utf8_unicode_ci',
-                'prefix'    => '',
-            ],
+        'pgsql' => [
+            'driver'   => 'pgsql',
+            'server'   => (getenv('DB_HOST') !== false) ? strtolower(getenv('DB_HOST')) : 'localhost',
+            'dbname'   => (getenv('DB_DATABASE_NAME') !== false) ? getenv('DB_DATABASE_NAME') : '',
+            'username' => (getenv('DB_DATABASE_USER') !== false) ? getenv('DB_DATABASE_USER') : '',
+            'password' => (getenv('DB_DATABASE_PASSWORD') !== false) ? getenv('DB_DATABASE_PASSWORD') : '',
+            'charset'  => 'utf8',
+            'prefix'   => '',
+            'schema'   => 'public',
+        ],
 
-            'mariadb' => [
-                'driver'    => 'mariadb',
-                'server'    => (getenv('DB_HOST') !== false) ? strtolower(getenv('DB_HOST')) : 'localhost',
-                'dbname'    => (getenv('DB_DATABASE_NAME') !== false) ? getenv('DB_DATABASE_NAME') : '',
-                'username'  => (getenv('DB_DATABASE_USER') !== false) ? getenv('DB_DATABASE_USER') : '',
-                'password'  => (getenv('DB_DATABASE_PASSWORD') !== false) ? getenv('DB_DATABASE_PASSWORD') : '',
-                'charset'   => 'utf8',
-                'collation' => 'utf8_unicode_ci',
-                'prefix'    => '',
-            ],
+        'sqlsrv' => [
+            'driver'   => 'sqlsrv',
+            'server'   => (getenv('DB_HOST') !== false) ? strtolower(getenv('DB_HOST')) : 'localhost',
+            'dbname'   => (getenv('DB_DATABASE_NAME') !== false) ? getenv('DB_DATABASE_NAME') : '',
+            'username' => (getenv('DB_DATABASE_USER') !== false) ? getenv('DB_DATABASE_USER') : 'root',
+            'password' => (getenv('DB_DATABASE_PASSWORD') !== false) ? getenv('DB_DATABASE_PASSWORD') : '',
+            'prefix'   => '',
+        ],
 
-            'pgsql' => [
-                'driver'   => 'pgsql',
-                'server'   => (getenv('DB_HOST') !== false) ? strtolower(getenv('DB_HOST')) : 'localhost',
-                'dbname'   => (getenv('DB_DATABASE_NAME') !== false) ? getenv('DB_DATABASE_NAME') : '',
-                'username' => (getenv('DB_DATABASE_USER') !== false) ? getenv('DB_DATABASE_USER') : '',
-                'password' => (getenv('DB_DATABASE_PASSWORD') !== false) ? getenv('DB_DATABASE_PASSWORD') : '',
-                'charset'  => 'utf8',
-                'prefix'   => '',
-                'schema'   => 'public',
-            ],
+        'mssql' => [
+            'driver' => 'mssql',
+            'server'   => (getenv('DB_HOST') !== false) ? strtolower(getenv('DB_HOST')) : 'localhost',
+            'dbname'   => (getenv('DB_DATABASE_NAME') !== false) ? getenv('DB_DATABASE_NAME') : '',
+            'username' => (getenv('DB_DATABASE_USER') !== false) ? getenv('DB_DATABASE_USER') : 'root',
+            'password' => (getenv('DB_DATABASE_PASSWORD') !== false) ? getenv('DB_DATABASE_PASSWORD') : '',
+            'prefix'   => '',
+        ],
 
-            'sqlsrv' => [
-                'driver'   => 'sqlsrv',
-                'server'   => (getenv('DB_HOST') !== false) ? strtolower(getenv('DB_HOST')) : 'localhost',
-                'dbname'   => (getenv('DB_DATABASE_NAME') !== false) ? getenv('DB_DATABASE_NAME') : '',
-                'username' => (getenv('DB_DATABASE_USER') !== false) ? getenv('DB_DATABASE_USER') : 'root',
-                'password' => (getenv('DB_DATABASE_PASSWORD') !== false) ? getenv('DB_DATABASE_PASSWORD') : '',
-                'prefix'   => '',
-            ],
+        'oracle' => [
+            'driver' => 'oracle',
+        ],
 
-            'mssql' => [
-                'driver' => 'mssql',
-                'server'   => (getenv('DB_HOST') !== false) ? strtolower(getenv('DB_HOST')) : 'localhost',
-                'dbname'   => (getenv('DB_DATABASE_NAME') !== false) ? getenv('DB_DATABASE_NAME') : '',
-                'username' => (getenv('DB_DATABASE_USER') !== false) ? getenv('DB_DATABASE_USER') : 'root',
-                'password' => (getenv('DB_DATABASE_PASSWORD') !== false) ? getenv('DB_DATABASE_PASSWORD') : '',
-                'prefix'   => '',
-            ],
+        'sybase' => [
+            'driver' => 'sybase',
+        ],
 
-            'oracle' => [
-                'driver' => 'oracle',
-            ],
-
-            'sybase' => [
-                'driver' => 'sybase',
-            ],
-
-            'cloudsql' => [
-                'driver' => 'cloudsql',
-                'server'   => (getenv('DB_HOST') !== false) ? strtolower(getenv('DB_HOST')) : 'localhost',
-                'dbname'   => (getenv('DB_DATABASE_NAME') !== false) ? getenv('DB_DATABASE_NAME') : '',
-                'username' => (getenv('DB_DATABASE_USER') !== false) ? getenv('DB_DATABASE_USER') : 'root',
-                'password' => (getenv('DB_DATABASE_PASSWORD') !== false) ? getenv('DB_DATABASE_PASSWORD') : '',
-                'prefix'   => '',
-            ]
+        'cloudsql' => [
+            'driver' => 'cloudsql',
+            'server'   => (getenv('DB_HOST') !== false) ? strtolower(getenv('DB_HOST')) : 'localhost',
+            'dbname'   => (getenv('DB_DATABASE_NAME') !== false) ? getenv('DB_DATABASE_NAME') : '',
+            'username' => (getenv('DB_DATABASE_USER') !== false) ? getenv('DB_DATABASE_USER') : 'root',
+            'password' => (getenv('DB_DATABASE_PASSWORD') !== false) ? getenv('DB_DATABASE_PASSWORD') : '',
+            'prefix'   => '',
         ]
     ]
-);
+];
