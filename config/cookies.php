@@ -17,7 +17,7 @@
  */
 
 /**
- * Database config
+ * Cookies config
  *
  * @package Narrowspark/narrowspark
  * @author  Daniel Bannert
@@ -35,6 +35,7 @@ return [
     |
     |
     */
+
     'encrypt' => false,
 
     /*
@@ -46,6 +47,7 @@ return [
     |
     |
     */
+
     'lifetime' => '20 minutes',
 
     /*
@@ -57,6 +59,7 @@ return [
     |
     |
     */
+
     'path' => '/',
 
     /*
@@ -68,6 +71,7 @@ return [
     |
     |
     */
+
     'domain' => null,
 
     /*
@@ -79,6 +83,7 @@ return [
     |
     |
     */
+
     'secure' => false,
 
     /*
@@ -90,5 +95,6 @@ return [
     |
     |
     */
+
     'httponly' => false,
 ];
