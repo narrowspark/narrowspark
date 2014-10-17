@@ -31,7 +31,7 @@ if (function_exists('opcache_is_script_cached') && class_exists('\Intahwebz\Auto
 |
 */
 
-if (file_exists($compiled = __DIR__.'/vendor/compiled.php')) {
+if (file_exists($compiled = __DIR__.'/storage/autoload/compiled.php')) {
     require $compiled;
 }
 
