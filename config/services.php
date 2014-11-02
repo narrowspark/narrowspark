@@ -50,8 +50,8 @@ return [
         '\Brainwave\Routing\RoutingServiceProvider'                 => [],
         '\Brainwave\Support\FractalServiceProvider'                 => [],
         '\Brainwave\Database\DatabaseServiceProvider'               => [],
-        '\Brainwave\Resolvers\ResolverServiceProvider'              => [],
         '\Brainwave\Filesystem\FilesystemServiceProvider'           => [],
+        '\Brainwave\Routing\Resolvers\ResolverServiceProvider'      => [],
         '\Brainwave\Support\Autoloader\AutoloaderServiceProvider'   => [],
     ],
 
