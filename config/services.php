@@ -48,6 +48,7 @@ return [
         '\Brainwave\Support\SupportServiceProvider'                 => [],
         '\Brainwave\Session\SessionServiceProvider'                 => [],
         '\Brainwave\Routing\RoutingServiceProvider'                 => [],
+        '\Brainwave\Support\FractalServiceProvider'                 => [],
         '\Brainwave\Database\DatabaseServiceProvider'               => [],
         '\Brainwave\Resolvers\ResolverServiceProvider'              => [],
         '\Brainwave\Filesystem\FilesystemServiceProvider'           => [],

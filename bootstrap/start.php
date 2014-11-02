@@ -57,7 +57,7 @@ $app = new Workbench();
 | given environment, then we will automatically detect it for you.
 |
 */
-$env = $app->detectEnvironment(function () {
+$env = $app['environment']->detectEnvironment(function () {
     return getenv('APPLICATION_ENV') ?: 'production';
 });
 
