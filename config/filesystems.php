@@ -1,0 +1,93 @@
+<?php
+/**
+ * Narrowspark - a PHP 5 framework
+ *
+ * @author      Daniel Bannert <info@anolilab.de>
+ * @copyright   2014 Daniel Bannert
+ * @link        http://www.narrowspark.de
+ * @license     http://www.narrowspark.com/license
+ * @version     0.9.4-dev
+ * @package     Narrowspark/framework
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Narrowspark is an open source PHP 5 framework, based on the Slim framework.
+ *
+ */
+
+use Brainwave\Support\Helper;
+
+/**
+ * Filesystems config
+ *
+ * @package Narrowspark/narrowspark
+ * @author  Daniel Bannert
+ * @since   0.9.3-dev
+ *
+ */
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Filesystem Disk
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify the default filesystem disk that should be used
+    | by the framework. A "local" driver, as well as a variety of cloud
+    | based drivers are available for your choosing. Just store away!
+    |
+    | Supported: "local", "s3", "rackspace"
+    |
+    */
+
+    'default' => 'local',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Cloud Filesystem Disk
+    |--------------------------------------------------------------------------
+    |
+    | Many applications store files both locally and in the cloud. For this
+    | reason, you may specify a default "cloud" driver here. This driver
+    | will be bound as the Cloud disk implementation in the container.
+    |
+    */
+
+    'cloud' => 's3',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Filesystem Disks
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure as many filesystem "disks" as you wish, and you
+    | may even configure multiple disks of the same driver. Defaults have
+    | been setup for each driver as an example of the required options.
+    |
+    */
+
+    'disks' => [
+
+        'local' => [
+            'driver' => 'local',
+            'root'   => Helper::storagePath('app'),
+        ],
+
+        's3' => [
+            'driver' => 's3',
+            'key'    => 'your-key',
+            'secret' => 'your-secret',
+            'bucket' => 'your-bucket',
+        ],
+
+        'rackspace' => [
+            'driver'    => 'rackspace',
+            'username'  => 'your-username',
+            'key'       => 'your-key',
+            'container' => 'your-container',
+            'endpoint'  => 'https://identity.api.rackspacecloud.com/v2.0/',
+            'region'    => 'IAD',
+        ],
+    ]
+];
