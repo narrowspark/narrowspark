@@ -16,7 +16,7 @@
  *
  */
 
-use Brainwave\Support\Helper;
+use Brainwave\Support\Helper as H;
 
 /**
  * Filesystems config
@@ -71,7 +71,7 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root'   => Helper::storagePath('app'),
+            'root'   => H::storagePath('app'),
         ],
 
         's3' => [

@@ -16,7 +16,7 @@
  *
  */
 
-use Brainwave\Support\Helper;
+use Brainwave\Support\Helper as H;
 
 /**
  * Database config
@@ -27,6 +27,7 @@ use Brainwave\Support\Helper;
  *
  */
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Default Session Driver
@@ -40,7 +41,8 @@ return [
     |            "memcached", "redis", "array"
     |
     */
-    'driver' => getenv('SESSION_DRIVER') ?: 'file',
+
+    'driver' => H::env('SESSION_DRIVER', 'file'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +54,9 @@ return [
     | to immediately expire on the browser closing, set that option.
     |
     */
+
     'lifetime'        => 120,
+
     'expire_on_close' => false,
 
     /*
@@ -65,7 +69,8 @@ return [
     | location may be specified. This is only needed for file sessions.
     |
     */
-    'files' => Helper::storagePath('sessions'),
+
+    'files' => H::storagePath('sessions'),
 
     /*
     |--------------------------------------------------------------------------
@@ -77,6 +82,7 @@ return [
     | correspond to a connection in your database configuration options.
     |
     */
+
     'connection' => null,
 
     /*
@@ -89,6 +95,7 @@ return [
     | provided for you; however, you are free to change this as needed.
     |
     */
+
     'table' => 'sessions',
 
     /*
@@ -101,6 +108,7 @@ return [
     | happen on a given request. By default, the odds are 2 out of 100.
     |
     */
+
     'lottery' => [2, 100],
 
     /*
@@ -113,6 +121,7 @@ return [
     | new session cookie is created by the framework for every driver.
     |
     */
+
     'cookie' => 'narrowspark_session',
 
     /*
@@ -125,6 +134,7 @@ return [
     | your application but you are free to change this when necessary.
     |
     */
+
     'path' => '/',
 
     /*
@@ -137,6 +147,7 @@ return [
     | available to in your application. A sensible default has been set.
     |
     */
+
     'domain' => null,
 
     /*
@@ -149,5 +160,6 @@ return [
     | the cookie from being sent to you if it can not be done securely.
     |
     */
+
     'secure' => false,
 ];

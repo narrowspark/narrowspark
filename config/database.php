@@ -16,6 +16,8 @@
  *
  */
 
+use Brainwave\Support\Helper as H;
+
 /**
  * All database work in Narrowspark is done through the PHP PDO facilities
  * so make sure you have the driver for your particular database of
@@ -41,7 +43,7 @@ return [
     |
     */
 
-    'fetch' => \PDO::FETCH_CLASS,
+    'fetch'     => \PDO::FETCH_CLASS,
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +53,7 @@ return [
     |
     */
 
-    'frozen'    => (getenv('DB_DATABASE_FROZEN') !== false) ? getenv('DB_DATABASE_FROZEN') : true,
+    'frozen'    => H::env('DB_DATABASE_FROZEN', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -75,7 +77,7 @@ return [
     |
     */
 
-    'default'      => (getenv('DB_DATABASE_TYPE') !== false) ? strtolower(getenv('DB_DATABASE_TYPE')) : 'mysql',
+    'default'   => strtolower(H::env('DB_DATABASE_TYPE', 'mysql')),
 
     /*
     |--------------------------------------------------------------------------
@@ -107,18 +109,16 @@ return [
 
         'sqlite' => [
             'driver'   => 'sqlite',
-            'dbname'   => (getenv('DB_DATABASE_NAME') !== false) ?
-                        getenv('DB_DATABASE_NAME') :
-                        __DIR__.'/../database/production.sqlite',
+            'dbname'   => H::env('DB_DATABASE_NAME', __DIR__.'/../database/production.sqlite'),
             'prefix'   => '',
         ],
 
         'mysql' => [
             'driver'    => 'mysql',
-            'server'    => (getenv('DB_HOST') !== false) ? strtolower(getenv('DB_HOST')) : 'localhost',
-            'dbname'    => (getenv('DB_DATABASE_NAME') !== false) ? getenv('DB_DATABASE_NAME') : '',
-            'username'  => (getenv('DB_DATABASE_USER') !== false) ? getenv('DB_DATABASE_USER') : '',
-            'password'  => (getenv('DB_DATABASE_PASSWORD') !== false) ? getenv('DB_DATABASE_PASSWORD') : '',
+            'server'    => H::env('DB_DATABASE_TYPE', 'localhost'),
+            'dbname'    => H::env('DB_DATABASE_NAME', ''),
+            'username'  => H::env('DB_DATABASE_USER', ''),
+            'password'  => H::env('DB_DATABASE_PASSWORD', ''),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
@@ -126,10 +126,10 @@ return [
 
         'mariadb' => [
             'driver'    => 'mariadb',
-            'server'    => (getenv('DB_HOST') !== false) ? strtolower(getenv('DB_HOST')) : 'localhost',
-            'dbname'    => (getenv('DB_DATABASE_NAME') !== false) ? getenv('DB_DATABASE_NAME') : '',
-            'username'  => (getenv('DB_DATABASE_USER') !== false) ? getenv('DB_DATABASE_USER') : '',
-            'password'  => (getenv('DB_DATABASE_PASSWORD') !== false) ? getenv('DB_DATABASE_PASSWORD') : '',
+            'server'    => H::env('DB_DATABASE_TYPE', 'localhost'),
+            'dbname'    => H::env('DB_DATABASE_NAME', ''),
+            'username'  => H::env('DB_DATABASE_USER', ''),
+            'password'  => H::env('DB_DATABASE_PASSWORD', ''),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
@@ -137,10 +137,10 @@ return [
 
         'pgsql' => [
             'driver'   => 'pgsql',
-            'server'   => (getenv('DB_HOST') !== false) ? strtolower(getenv('DB_HOST')) : 'localhost',
-            'dbname'   => (getenv('DB_DATABASE_NAME') !== false) ? getenv('DB_DATABASE_NAME') : '',
-            'username' => (getenv('DB_DATABASE_USER') !== false) ? getenv('DB_DATABASE_USER') : '',
-            'password' => (getenv('DB_DATABASE_PASSWORD') !== false) ? getenv('DB_DATABASE_PASSWORD') : '',
+            'server'   => H::env('DB_DATABASE_TYPE', 'localhost'),
+            'dbname'   => H::env('DB_DATABASE_NAME', ''),
+            'username' => H::env('DB_DATABASE_USER', ''),
+            'password' => H::env('DB_DATABASE_PASSWORD', ''),
             'charset'  => 'utf8',
             'prefix'   => '',
             'schema'   => 'public',
@@ -148,19 +148,19 @@ return [
 
         'sqlsrv' => [
             'driver'   => 'sqlsrv',
-            'server'   => (getenv('DB_HOST') !== false) ? strtolower(getenv('DB_HOST')) : 'localhost',
-            'dbname'   => (getenv('DB_DATABASE_NAME') !== false) ? getenv('DB_DATABASE_NAME') : '',
-            'username' => (getenv('DB_DATABASE_USER') !== false) ? getenv('DB_DATABASE_USER') : 'root',
-            'password' => (getenv('DB_DATABASE_PASSWORD') !== false) ? getenv('DB_DATABASE_PASSWORD') : '',
+            'server'   => H::env('DB_DATABASE_TYPE', 'localhost'),
+            'dbname'   => H::env('DB_DATABASE_NAME', ''),
+            'username' => H::env('DB_DATABASE_USER', 'root'),
+            'password' => H::env('DB_DATABASE_PASSWORD', ''),
             'prefix'   => '',
         ],
 
         'mssql' => [
             'driver' => 'mssql',
-            'server'   => (getenv('DB_HOST') !== false) ? strtolower(getenv('DB_HOST')) : 'localhost',
-            'dbname'   => (getenv('DB_DATABASE_NAME') !== false) ? getenv('DB_DATABASE_NAME') : '',
-            'username' => (getenv('DB_DATABASE_USER') !== false) ? getenv('DB_DATABASE_USER') : 'root',
-            'password' => (getenv('DB_DATABASE_PASSWORD') !== false) ? getenv('DB_DATABASE_PASSWORD') : '',
+            'server'   => H::env('DB_DATABASE_TYPE', 'localhost'),
+            'dbname'   => H::env('DB_DATABASE_NAME', ''),
+            'username' => H::env('DB_DATABASE_USER', 'root'),
+            'password' => H::env('DB_DATABASE_PASSWORD', ''),
             'prefix'   => '',
         ],
 
@@ -174,10 +174,10 @@ return [
 
         'cloudsql' => [
             'driver' => 'cloudsql',
-            'server'   => (getenv('DB_HOST') !== false) ? strtolower(getenv('DB_HOST')) : 'localhost',
-            'dbname'   => (getenv('DB_DATABASE_NAME') !== false) ? getenv('DB_DATABASE_NAME') : '',
-            'username' => (getenv('DB_DATABASE_USER') !== false) ? getenv('DB_DATABASE_USER') : 'root',
-            'password' => (getenv('DB_DATABASE_PASSWORD') !== false) ? getenv('DB_DATABASE_PASSWORD') : '',
+            'server'   => H::env('DB_DATABASE_TYPE', 'localhost'),
+            'dbname'   => H::env('DB_DATABASE_NAME', ''),
+            'username' => H::env('DB_DATABASE_USER', 'root'),
+            'password' => H::env('DB_DATABASE_PASSWORD', ''),
             'prefix'   => '',
         ],
     ]

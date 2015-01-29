@@ -16,7 +16,7 @@
  *
  */
 
-use Brainwave\Support\Helper;
+use Brainwave\Support\Helper as H;
 
 /**
  * Cache config
@@ -37,6 +37,7 @@ return [
     | using the Caching library.
     |
     */
+
     'supported.drivers' => [
         'apc'       => '\\Brainwave\\Cache\\Driver\\ApcCache',
         'array'     => '\\Brainwave\\Cache\\Driver\\ArrayCache',
@@ -62,7 +63,7 @@ return [
     |
     */
 
-    'driver' => 'file',
+    'driver' => H::env('CACHE_DRIVER', 'file'),
 
     /*
     |--------------------------------------------------------------------------
@@ -75,7 +76,7 @@ return [
     |
     */
 
-    'path' => Helper::storagePath('cache'),
+    'path' => H::storagePath('cache'),
 
     /*
     |--------------------------------------------------------------------------

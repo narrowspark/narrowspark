@@ -16,7 +16,7 @@
  *
  */
 
-use Brainwave\Support\Helper;
+use Brainwave\Support\Helper as H;
 
 /**
  * Services config
@@ -53,7 +53,7 @@ return [
         'Brainwave\Support\Providers\AutoloaderServiceProvider'              => [],
         'Brainwave\Support\Providers\SupportServiceProvider'                 => [],
         'Brainwave\Translator\Providers\TranslatorServiceProvider'           => [
-            'translator.path' => Helper::app('path.config'),
+            'translator.path' => H::app('path.config'),
         ],
         'Brainwave\View\Providers\ViewServiceProvider'                       => [],
     ],
