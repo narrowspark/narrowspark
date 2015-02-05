@@ -2,35 +2,38 @@
     "name": "narrowspark/narrowspark",
     "type": "library",
     "description": "Narrowspark Framework for Creative People.",
-    "keywords": ["framework", "narrowspark", "slim", "router", "brainwave"],
+    "keywords": ["framework", "narrowspark", "symfony", "router", "brainwave"],
     "license": "MIT",
     "homepage": "http://github.com/narrowspark/narrowspark",
     "authors": [
         {
-          "name": "Daniel Bannert",
-          "email": "d.bannert@anolilab.de",
+          "name"    : "Daniel Bannert",
+          "email"   : "d.bannert@anolilab.de",
           "homepage": "http://www.anolilab.de",
-          "role": "Developer"
+          "role"    : "Developer"
         }
     ],
     "require": {
-        "narrowspark/framework": "dev-develop"
+        "narrowspark/framework"         : "dev-develop"
     },
     "autoload": {
         "classmap": [
             "database"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\"                     : "app/"
         }
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.9.5-dev"
+            "dev-master"                : "0.9.5-dev"
         }
     },
-    "config": {
-        "bin-dir": "vendor/bin"
+    "suggest": {
+        "intahwebz/lowmemoryclassloader": "Narrowspark has support for low memory classloader v1.0.1"
     },
-    "minimum-stability": "dev"
+    "config": {
+        "bin-dir"                       : "vendor/bin"
+    },
+    "minimum-stability"                 : "dev"
 }
