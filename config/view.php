@@ -12,9 +12,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * Narrowspark is an open source PHP 5 framework, based on the Slim framework.
+ * Narrowspark is an open source PHP 5 framework.
  *
  */
+
+use Brainwave\Support\Helper as H;
 
 /**
  * Template config
@@ -40,19 +42,6 @@ return [
         'plates' => '\Brainwave\View\Engines\Plates\PlatesEngine',
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | View Default Path
-    |--------------------------------------------------------------------------
-    |
-    | Most templating systems load templates from disk. Here you may specify
-    | an path that should be checked for your views. Of course
-    | the usual Brainwave view path has already been registered for you.
-    |
-    */
-
-    'default.template.path' => dirname(dirname(__FILE__)).'/resources/views',
-
      /*
     |--------------------------------------------------------------------------
     | View Default Path
@@ -64,7 +53,9 @@ return [
     |
     */
 
-    'template.paths' => [],
+    'template.paths' => [
+        H::app('path.base').'/resources/views',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -77,7 +68,7 @@ return [
     |
     */
 
-    'cache' => ['cache' => dirname(dirname(__FILE__)).'/storage/views/'],
+    'cache' => ['cache' => H::app('path.base').'/storage/views'],
 
     /*
     |--------------------------------------------------------------------------
@@ -89,19 +80,7 @@ return [
     |
     */
 
-    'asset' => dirname(dirname(dirname(__FILE__))).'/public/',
-
-    /*
-    |--------------------------------------------------------------------------
-    | View Extensions
-    |--------------------------------------------------------------------------
-    |
-    |
-    |
-    |
-    */
-
-    'extensions' => '.html',
+    'asset' => H::app('path.public'),
 
     /*
     |--------------------------------------------------------------------------
