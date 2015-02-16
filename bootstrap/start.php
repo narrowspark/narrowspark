@@ -33,18 +33,6 @@ require __DIR__.'/environment.php';
 
 /*
 |--------------------------------------------------------------------------
-| Google App Engine
-|--------------------------------------------------------------------------
-|
-| TODO
-|
-*/
-if (function_exists('get_application_id')) {
-    //$app['environment']['PATH_INFO'] = $_SERVER['REQUEST_URI'];
-}
-
-/*
-|--------------------------------------------------------------------------
 | Register Application Exception Handling
 |--------------------------------------------------------------------------
 |
@@ -113,10 +101,10 @@ date_default_timezone_set($app['settings']->get('app::timezone', 'UTC'));
 AutoLoader::addDirectories(
     $app['settings']->get('autoload::autoloaded.paths', [
         $app->path().'/Commands',
-        $app->path().'/Http/controllers',
-        $app->path().'/Http/middleware',
+        $app->path().'/Http/Controllers',
+        $app->path().'/Http/Middleware',
         $app->path().'/Providers',
-        $app->databasePath().'/models',
+        $app->databasePath().'/Models',
     ])
 );
 
