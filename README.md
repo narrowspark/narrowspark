@@ -2,22 +2,19 @@
 
 A PHP Framework
 
-This package is compliant with [PSR-1], [PSR-2] and [PSR-4]. If you notice compliance oversights,
+This package is compliant with [PSR-1], [PSR-2], [PSR-3] and [PSR-4]. If you notice compliance oversights,
 please send a patch via pull request.
 
+[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 [PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
 [PSR-2]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
+[PSR-3]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md
 [PSR-4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md
-
-### Based on Slim
-
-**[codeguy/Slim](http://github.com/codeguy/Slim)
 
 ### Requirements
 
 The following versions of PHP are supported by this version.
 
-* PHP 5.3
 * PHP 5.4
 * PHP 5.5
 * PHP 5.6

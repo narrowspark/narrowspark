@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "narrowspark/framework": "0.9.3.*@dev"
+        "narrowspark/framework": "dev-develop"
     },
     "autoload": {
         "classmap": [
@@ -26,11 +26,8 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.9.3-dev"
+            "dev-master": "0.9.5-dev"
         }
-    },
-    "scripts": {
-        "post-autoload-dump": "php vendor/bin/classpreloader.php compile --config=/vendor/narrowspark/framework/src/Brainwave/Workbench/Optimize.php --output=/storage/autoload/compiled.php"
     },
     "config": {
         "bin-dir": "vendor/bin"

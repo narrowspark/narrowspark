@@ -14,5 +14,19 @@
 if (file_exists(__DIR__.'/../.env')) {
     \Dotenv::load(__DIR__.'/../');
 
-    \Dotenv::required('APPLICATION_ENV');
+    \Dotenv::required('APP_ENV');
+
+    /*
+    |--------------------------------------------------------------------------
+    | Detect The Application Environment
+    |--------------------------------------------------------------------------
+    |
+    | Narrowspark takes a dead simple approach to your application environments
+    | so you can just specify a machine name for the host that matches a
+    | given environment, then we will automatically detect it for you.
+    |
+    */
+    $app->detectEnvironment(function () {
+        return getenv('APP_ENV') ?: 'production';
+    });
 }

@@ -6,7 +6,7 @@
  * @copyright   2014 Daniel Bannert
  * @link        http://www.narrowspark.de
  * @license     http://www.narrowspark.com/license
- * @version     0.9.2-dev
+ * @version     0.9.4-dev
  * @package     Narrowspark/framework
  *
  * For the full copyright and license information, please view the LICENSE
@@ -16,7 +16,7 @@
  *
  */
 
-use Brainwave\Support\Helpers;
+use Brainwave\Support\Helper;
 
 /**
  * Cache config
@@ -75,7 +75,7 @@ return [
     |
     */
 
-    'path' => Helpers::storagePath().'/cache',
+    'path' => Helper::storagePath('cache'),
 
     /*
     |--------------------------------------------------------------------------
@@ -90,9 +90,9 @@ return [
 
     'memcached' => [
         [
-            'host' => '127.0.0.1',
-            'port' => 11211,
-            'weight' => 100
+            'host'   => '127.0.0.1',
+            'port'   => 11211,
+            'weight' => 100,
         ],
     ],
 

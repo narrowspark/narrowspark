@@ -1,6 +1,8 @@
 #!/usr/bin/env php
 <?php
 
+use Brainwave\Console\Application;
+
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
@@ -43,22 +45,8 @@ $app = require_once __DIR__.'/bootstrap/start.php';
 
 $app->setRequestForConsoleEnvironment();
 
-$cerebro = Brainwave\Console\Application::start($app);
+$cerebro = new Application('cerebro', $app->getVersion());
 
-/*
-|--------------------------------------------------------------------------
-| Shutdown The Application
-|--------------------------------------------------------------------------
-|
-| Once the app has finished running, we will fire off the shutdown events
-| so that any final work may be done by the application before we shut
-| down the process. This is the last thing to happen to the request.
-|
-| Force connection close.
-| Flush the output buffer.
-|
-*/
-
-$app->shutdown();
+$app->run();
 
 exit($cerebro);

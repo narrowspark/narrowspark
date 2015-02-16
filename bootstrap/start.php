@@ -1,37 +1,8 @@
 <?php
 
-use \Brainwave\Workbench\Workbench;
-use \Brainwave\Workbench\AliasLoader;
-use \Brainwave\Support\Autoloader\AutoLoader;
-use \Brainwave\Workbench\StaticalProxyManager;
-
-/*
-|--------------------------------------------------------------------------
-| Set PHP Error Reporting Options
-|--------------------------------------------------------------------------
-|
-| Here we will set the strictest error reporting options, and also turn
-| off PHP's error reporting, since all errors will be handled by the
-| framework and we don't want any output leaking back to the user.
-|
-*/
-
-error_reporting(-1);
-
-require __DIR__.'/environment.php';
-
-/*
-|--------------------------------------------------------------------------
-| Bind Paths
-|--------------------------------------------------------------------------
-|
-| Here we are binding the paths configured in paths.php to the app. You
-| should not be changing these here. If you need to change these you
-| may do so within the paths.php file and they will be bound here.
-|
-*/
-
-Workbench::bindInstallPaths(require __DIR__.'/paths.php');
+use \Brainwave\Application\Application;
+use \Brainwave\Application\AliasLoader;
+use \Brainwave\Support\AutoLoader;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +16,20 @@ Workbench::bindInstallPaths(require __DIR__.'/paths.php');
 |
 */
 
-$app = new Workbench();
+$app = new Application(require __DIR__.'/paths.php');
+
+/*
+|--------------------------------------------------------------------------
+| Set PHP Error Reporting Options
+|--------------------------------------------------------------------------
+|
+| Here we will set the strictest error reporting options, and also turn
+| off PHP's error reporting, since all errors will be handled by the
+| framework and we don't want any output leaking back to the user.
+|
+*/
+
+require __DIR__.'/environment.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -56,23 +40,8 @@ $app = new Workbench();
 |
 */
 if (function_exists('get_application_id')) {
-    $app['environment']['PATH_INFO'] = $_SERVER['REQUEST_URI'];
+    //$app['environment']['PATH_INFO'] = $_SERVER['REQUEST_URI'];
 }
-
-
-/*
-|--------------------------------------------------------------------------
-| Detect The Application Environment
-|--------------------------------------------------------------------------
-|
-| Narrowspark takes a dead simple approach to your application environments
-| so you can just specify a machine name for the host that matches a
-| given environment, then we will automatically detect it for you.
-|
-*/
-$env = $app['environment']->detectEnvironment(function () {
-    return getenv('APPLICATION_ENV') ?: 'production';
-});
 
 /*
 |--------------------------------------------------------------------------
@@ -85,24 +54,7 @@ $env = $app['environment']->detectEnvironment(function () {
 |
 */
 
-$app['exception']->register();
-
-if (getenv('APPLICATION_ENV') !== 'testing') {
-    ini_set('display_errors', 'Off');
-}
-
-/*
-|--------------------------------------------------------------------------d33
-| Load The Brainwave Facades
-|--------------------------------------------------------------------------
-|
-| The facades provide a terser static interface over the various parts
-| of the application, allowing their methods to be accessed through
-| a mixtures of magic methods and facade derivatives. It's slick.
-|
-*/
-
-StaticalProxyManager::clearResolvedInstances();
+$app['exception']->register(getenv('APP_ENV'));
 
 /*
 |--------------------------------------------------------------------------
@@ -160,11 +112,11 @@ date_default_timezone_set($app['settings']->get('app::timezone', 'UTC'));
 
 AutoLoader::addDirectories(
     $app['settings']->get('autoload::autoloaded.paths', [
-        $app::$paths['path'].'/commands',
-        $app::$paths['path'].'/http/controllers',
-        $app::$paths['path'].'/http/middleware',
-        $app::$paths['path'].'/providers',
-        $app::$paths['path.database'].'/models',
+        $app->path().'/Commands',
+        $app->path().'/Http/controllers',
+        $app->path().'/Http/middleware',
+        $app->path().'/Providers',
+        $app->databasePath().'/models',
     ])
 );
 

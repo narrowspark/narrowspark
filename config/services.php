@@ -6,7 +6,7 @@
  * @copyright   2014 Daniel Bannert
  * @link        http://www.narrowspark.de
  * @license     http://www.narrowspark.com/license
- * @version     0.9.2-dev
+ * @version     0.9.4-dev
  * @package     Narrowspark/framework
  *
  * For the full copyright and license information, please view the LICENSE
@@ -15,6 +15,8 @@
  * Narrowspark is an open source PHP 5 framework, based on the Slim framework.
  *
  */
+
+use Brainwave\Support\Helper;
 
 /**
  * Services config
@@ -25,7 +27,6 @@
  *
  */
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -38,21 +39,23 @@ return [
     */
 
     'providers' => [
-        '\Brainwave\View\ViewServiceProvider'                       => [],
-        '\Brainwave\Log\LoggerServiceProvider'                      => [],
-        '\Brainwave\Crypt\CryptServiceProvider'                     => [],
-        '\Brainwave\Event\EventServiceProvider'                     => [],
-        '\Brainwave\Cache\CacheServiceProvider'                     => [],
-        '\Brainwave\Cookie\CookieServiceProvider'                   => [],
-        //'\Brainwave\Console\ConsoleServiceProvider'                 => [],
-        '\Brainwave\Support\SupportServiceProvider'                 => [],
-        '\Brainwave\Session\SessionServiceProvider'                 => [],
-        '\Brainwave\Routing\RoutingServiceProvider'                 => [],
-        '\Brainwave\Support\FractalServiceProvider'                 => [],
-        '\Brainwave\Database\DatabaseServiceProvider'               => [],
-        '\Brainwave\Filesystem\FilesystemServiceProvider'           => [],
-        '\Brainwave\Routing\Resolvers\ResolverServiceProvider'      => [],
-        '\Brainwave\Support\Autoloader\AutoloaderServiceProvider'   => [],
+        'Brainwave\Cache\Providers\CacheServiceProvider'                     => [],
+        'Brainwave\Console\Providers\ConsoleServiceProvider'                 => [],
+        'Brainwave\Cookie\Providers\CookieServiceProvider'                   => [],
+        //'Brainwave\Database\Providers\DatabaseServiceProvider'               => [],
+        'Brainwave\Encrypter\Providers\EncrypterServiceProvider'             => [],
+        'Brainwave\Events\Providers\EventsServiceProvider'                   => [],
+        'Brainwave\Exception\Providers\ExceptionServiceProvider'             => [],
+        'Brainwave\Hashing\Providers\HashingServiceProvider'                 => [],
+        'Brainwave\Log\Providers\LoggerServiceProvider'                      => [],
+        'Brainwave\Routing\Providers\RoutingServiceProvider'                 => [],
+        'Brainwave\Session\Providers\SessionServiceProvider'                 => [],
+        'Brainwave\Support\Providers\AutoloaderServiceProvider'              => [],
+        'Brainwave\Support\Providers\SupportServiceProvider'                 => [],
+        'Brainwave\Translator\Providers\TranslatorServiceProvider'           => [
+            'translator.path' => Helper::app('path.config'),
+        ],
+        'Brainwave\View\Providers\ViewServiceProvider'                       => [],
     ],
 
     /*
@@ -67,24 +70,23 @@ return [
     */
 
     'aliases' => [
-        'DB'            => '\Brainwave\Workbench\Facades\Database',
-        'App'           => '\Brainwave\Workbench\Facades\App',
-        'Log'           => '\Brainwave\Workbench\Facades\Log',
-        'Mail'          => '\Brainwave\Workbench\Facades\Mail',
-        'View'          => '\Brainwave\Workbench\Facades\View',
-        'Trans'         => '\Brainwave\Workbench\Facades\Trans',
-        'Cache'         => '\Brainwave\Workbench\Facades\Cache',
-        'Event'         => '\Brainwave\Workbench\Facades\Event',
-        'Route'         => '\Brainwave\Workbench\Facades\Route',
-        'Query'         => '\Brainwave\Workbench\Facades\Query',
-        'Cookie'        => '\Brainwave\Workbench\Facades\Cookie',
-        'Config'        => '\Brainwave\Workbench\Facades\Config',
-        'Caches'        => '\Brainwave\Workbench\Facades\Caches',
-        'Helpers'       => '\Brainwave\Workbench\Facades\Helpers',
-        'Request'       => '\Brainwave\Workbench\Facades\Request',
-        'Resource'      => '\Brainwave\Workbench\Facades\Resource',
-        'Response'      => '\Brainwave\Workbench\Facades\Response',
-        'Services'      => '\Brainwave\Workbench\Facades\Services',
-        'Autoloader'    => '\Brainwave\Workbench\Facades\Autoloader'
+        'DB'            => '\Brainwave\Database\Facades\Database',
+        'App'           => '\Brainwave\Application\Facades\App',
+        'Log'           => '\Brainwave\Log\Facades\Log',
+        'Mail'          => '\Brainwave\Mail\Facades\Mail',
+        'View'          => '\Brainwave\View\Facades\View',
+        'Trans'         => '\Brainwave\Translator\Facades\Trans',
+        'Cache'         => '\Brainwave\Cache\Facades\Cache',
+        'Events'        => '\Brainwave\Events\Facades\Events',
+        'Route'         => '\Brainwave\Routing\Facades\Route',
+        'Query'         => '\Brainwave\Database\Facades\Query',
+        'Cookie'        => '\Brainwave\Cookie\Facades\Cookie',
+        'Config'        => '\Brainwave\Conifg\Facades\Config',
+        'Caches'        => '\Brainwave\Caches\Facades\Caches',
+        'Helper'        => '\Brainwave\Helpers\Facades\Helper',
+        'Request'       => '\Brainwave\Http\Facades\Request',
+        'Response'      => '\Brainwave\Http\Facades\Response',
+        'Services'      => '\Brainwave\Application\Facades\Services',
+        'Autoloader'    => '\Brainwave\Helpers\Facades\Autoloader',
     ],
 ];

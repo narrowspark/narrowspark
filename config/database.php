@@ -6,7 +6,7 @@
  * @copyright   2014 Daniel Bannert
  * @link        http://www.narrowspark.de
  * @license     http://www.narrowspark.com/license
- * @version     0.9.2-dev
+ * @version     0.9.4-dev
  * @package     Narrowspark/framework
  *
  * For the full copyright and license information, please view the LICENSE
@@ -179,6 +179,6 @@ return [
             'username' => (getenv('DB_DATABASE_USER') !== false) ? getenv('DB_DATABASE_USER') : 'root',
             'password' => (getenv('DB_DATABASE_PASSWORD') !== false) ? getenv('DB_DATABASE_PASSWORD') : '',
             'prefix'   => '',
-        ]
+        ],
     ]
 ];

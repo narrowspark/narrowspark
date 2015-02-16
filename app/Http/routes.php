@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return View::make('plates', 'hello');
+Route::get('/', function ($request, $response) {
+    echo "string";
+    //return View::make('plates', 'hello');
+    return $response;
 });
