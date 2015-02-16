@@ -12,9 +12,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * Narrowspark is an open source PHP 5 framework, based on the Slim framework.
+ * Narrowspark is an open source PHP 5 framework.
  *
  */
+
+use Brainwave\Support\Helper as H;
 
 /**
  * App config
@@ -37,7 +39,7 @@ return [
     |
     */
 
-    'debug' => getenv('APP_DEBUG'),
+    'debug' => H::env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +54,7 @@ return [
     |
     */
 
-    'mode' => 'development',
+    'mode' =>  H::env('APP_MODE', 'development'),
 
     /*
     |--------------------------------------------------------------------------
@@ -87,6 +89,21 @@ return [
     */
 
     'exception.handler' => 'whoops',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Logging Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure the log settings for your application. Out of
+    | the box, Narrowspark uses the Monolog PHP logging library. This gives
+    | you a variety of powerful log handlers / formatters to utilize.
+    |
+    | Available Settings: "single", "daily", "syslog", "errorlog"
+    |
+    */
+
+    'log' => 'daily',
 
     /*
     |--------------------------------------------------------------------------
@@ -152,7 +169,7 @@ return [
     |
     */
 
-    'crypt.key' => '',
+    'crypt.key' => H::env('APP_KEY', 'SomeRandomString'),
 
     /*
     |--------------------------------------------------------------------------

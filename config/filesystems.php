@@ -12,11 +12,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * Narrowspark is an open source PHP 5 framework, based on the Slim framework.
+ * Narrowspark is an open source PHP 5 framework.
  *
  */
 
-use Brainwave\Support\Helper;
+use Brainwave\Support\Helper as H;
 
 /**
  * Filesystems config
@@ -71,7 +71,7 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root'   => Helper::storagePath('app'),
+            'root'   => H::storagePath('app'),
         ],
 
         's3' => [

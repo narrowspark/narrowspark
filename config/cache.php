@@ -12,11 +12,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * Narrowspark is an open source PHP 5 framework, based on the Slim framework.
+ * Narrowspark is an open source PHP 5 framework.
  *
  */
 
-use Brainwave\Support\Helper;
+use Brainwave\Support\Helper as H;
 
 /**
  * Cache config
@@ -37,6 +37,7 @@ return [
     | using the Caching library.
     |
     */
+
     'supported.drivers' => [
         'apc'       => '\\Brainwave\\Cache\\Driver\\ApcCache',
         'array'     => '\\Brainwave\\Cache\\Driver\\ArrayCache',
@@ -62,7 +63,7 @@ return [
     |
     */
 
-    'driver' => 'file',
+    'driver' => H::env('CACHE_DRIVER', 'file'),
 
     /*
     |--------------------------------------------------------------------------
@@ -75,7 +76,7 @@ return [
     |
     */
 
-    'path' => Helper::storagePath('cache'),
+    'path' => H::storagePath('cache'),
 
     /*
     |--------------------------------------------------------------------------

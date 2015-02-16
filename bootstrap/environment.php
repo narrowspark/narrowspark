@@ -12,9 +12,14 @@
 */
 
 if (file_exists(__DIR__.'/../.env')) {
-    \Dotenv::load(__DIR__.'/../');
 
-    \Dotenv::required('APP_ENV');
+    try {
+        \Dotenv::makeMutable();
+        \Dotenv::load(__DIR__.'/../');
+        \Dotenv::required('APP_ENV');
+    } catch (\InvalidArgumentException $e) {
+        //
+    }
 
     /*
     |--------------------------------------------------------------------------
@@ -27,6 +32,6 @@ if (file_exists(__DIR__.'/../.env')) {
     |
     */
     $app->detectEnvironment(function () {
-        return getenv('APP_ENV') ?: 'production';
+        return \Dotenv::findEnvironmentVariable('APP_ENV') ?: 'production';
     });
 }
