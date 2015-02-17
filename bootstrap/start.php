@@ -87,6 +87,8 @@ set_include_path(dirname(__FILE__));
 
 date_default_timezone_set($app['settings']->get('app::timezone', 'UTC'));
 
+mb_internal_encoding('UTF-8');
+
 /*
 |--------------------------------------------------------------------------
 | Register The Narrowspark Class Loader
