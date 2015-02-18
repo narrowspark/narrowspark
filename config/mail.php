@@ -16,6 +16,8 @@
  *
  */
 
+use Brainwave\Support\Helper as H;
+
 /**
  * Mail config
  *
@@ -38,7 +40,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'smtp'),
+    'driver' => H::env('MAIL_DRIVER', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +53,7 @@ return [
     |
     */
 
-    'host' => env('SMTP_HOST', 'smtp.mailgun.org'),
+    'host' => H::env('SMTP_HOST', 'smtp.mailgun.org'),
 
     /*
     |--------------------------------------------------------------------------
@@ -64,7 +66,7 @@ return [
     |
     */
 
-    'port' => env('SMTP_PORT', 587),
+    'port' => H::env('SMTP_PORT', 587),
 
     /*
     |--------------------------------------------------------------------------
@@ -103,7 +105,7 @@ return [
     |
     */
 
-    'username' => env('SMTP_USERNAME'),
+    'username' => H::env('SMTP_USERNAME'),
 
     /*
     |--------------------------------------------------------------------------
@@ -116,7 +118,7 @@ return [
     |
     */
 
-    'password' => env('SMTP_PASSWORD'),
+    'password' => H::env('SMTP_PASSWORD'),
 
     /*
     |--------------------------------------------------------------------------
