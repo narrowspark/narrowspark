@@ -180,5 +180,5 @@ return [
             'password' => H::env('DB_DATABASE_PASSWORD', ''),
             'prefix'   => '',
         ],
-    ]
+    ],
 ];
