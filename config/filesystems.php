@@ -89,5 +89,5 @@ return [
             'endpoint'  => 'https://identity.api.rackspacecloud.com/v2.0/',
             'region'    => 'IAD',
         ],
-    ]
+    ],
 ];

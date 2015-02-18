@@ -1,7 +1,7 @@
 <?php
 
-use \Brainwave\Application\Application;
 use \Brainwave\Application\AliasLoader;
+use \Brainwave\Application\Application;
 use \Brainwave\Support\AutoLoader;
 
 /*
