@@ -16,6 +16,9 @@
     "require": {
         "narrowspark/framework"         : "dev-develop"
     },
+    "require-dev": {
+        "fabpot/php-cs-fixer"           : "~1.5"
+    },
     "autoload": {
         "classmap": [
             "database"
