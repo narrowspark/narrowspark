@@ -9,10 +9,10 @@ use \Brainwave\Support\AutoLoader;
 | Turn On The Lights
 |--------------------------------------------------------------------------
 |
-| We need to illuminate PHP development, so let's turn on the lights.
+| We need to illuminate PHP development, so let us turn on the lights.
 | This bootstraps the framework and gets it ready for use, then it
 | will load up this application so that we can run it and send
-| the responses back to the browser and delight these users.
+| the responses back to the browser and delight our users.
 |
 */
 
@@ -64,7 +64,7 @@ AliasLoader::getInstance($app['settings']->get('services::aliases', []))->regist
 |
 | Hosts have a habbit of setting stupid settings for various
 | things. These settings should help provide maximum compatibility
-| for Brainwave
+| for narrowspark
 |
 */
 
@@ -100,15 +100,18 @@ mb_internal_encoding('UTF-8');
 |
 */
 
-AutoLoader::addDirectories(
-    $app['settings']->get('autoload::autoloaded.paths', [
+$folder = array_merge(
+    $app['settings']->get('autoload::autoloaded.paths', []),
+    [
         $app->path().'/Commands',
         $app->path().'/Http/Controllers',
         $app->path().'/Http/Middleware',
         $app->path().'/Providers',
         $app->databasePath().'/Models',
-    ])
+    ]
 );
+
+AutoLoader::addDirectories($folder);
 
 /*
 |--------------------------------------------------------------------------
