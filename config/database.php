@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'default'   => strtolower(H::env('DB_DATABASE_TYPE', 'mysql')),
+    'default'   => strtolower(H::env('DB_CONNECTION', 'mysql')),
 
     /*
     |--------------------------------------------------------------------------
