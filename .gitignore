@@ -1,39 +1,7 @@
-# Compiled source #
-###################
-*.com
-*.class
-*.dll
-*.exe
-*.o
-*.so
-*.pyc
-.*.sw*
-.*.un~
-.env
-.php_cs.cache
-
-# Logs and databases #
-######################
-*.log
-
-# OS generated files #
-######################
-.DS_Store*
-ehthumbs.db
-Icon?
-Thumbs.db
-us.stackdump
-.buildpath
-sync.ffs_db
-
-/.project
-build/
+/phpunit.xml
 /vendor
-tmp/
-.settings/
-
-composer.phar
+/build
 composer.lock
-
-ftpsync.settings
-sftp-config.json
+.DS_Store
+Thumbs.db
+.env

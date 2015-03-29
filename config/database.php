@@ -114,14 +114,16 @@ return [
         ],
 
         'mysql' => [
-            'driver'    => 'mysql',
-            'server'    => H::env('DB_DATABASE_TYPE', 'localhost'),
-            'dbname'    => H::env('DB_DATABASE_NAME', ''),
-            'username'  => H::env('DB_DATABASE_USER', ''),
-            'password'  => H::env('DB_DATABASE_PASSWORD', ''),
-            'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix'    => '',
+            'driver'      => 'mysql',
+            'server'      => H::env('DB_DATABASE_TYPE', 'localhost'),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'dbname'      => H::env('DB_DATABASE_NAME', ''),
+            'username'    => H::env('DB_DATABASE_USER', ''),
+            'password'    => H::env('DB_DATABASE_PASSWORD', ''),
+            'charset'     => 'utf8',
+            'collation'   => 'utf8_unicode_ci',
+            'prefix'      => '',
+            'strict'      => false,
         ],
 
         'mariadb' => [
