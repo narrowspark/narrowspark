@@ -1,22 +1,21 @@
 <?php
+
 /**
- * Narrowspark - a PHP 5 framework
+ * Narrowspark - a PHP 5 framework.
  *
  * @author      Daniel Bannert <info@anolilab.de>
  * @copyright   2014 Daniel Bannert
+ *
  * @link        http://www.narrowspark.de
+ *
  * @license     http://www.narrowspark.com/license
+ *
  * @version     0.8.0-dev
- * @package     Narrowspark/framework
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- *
- * Narrowspark is an open source PHP 5 framework.
- *
  */
 
-/**
+use Brainwave\Support\Helper as H;
+
+/*
  * Mail config
  *
  * @package Narrowspark/narrowspark
@@ -38,7 +37,7 @@ return [
     |
     */
 
-    'driver' => 'smtp',
+    'driver' => H::env('MAIL_DRIVER', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +50,7 @@ return [
     |
     */
 
-    'host' => 'smtp.mailgun.org',
+    'host' => H::env('MAIL_HOST', 'smtp.mailgun.org'),
 
     /*
     |--------------------------------------------------------------------------
@@ -64,7 +63,7 @@ return [
     |
     */
 
-    'port' => 587,
+    'port' => H::env('MAIL_PORT', 587),
 
     /*
     |--------------------------------------------------------------------------
@@ -103,7 +102,7 @@ return [
     |
     */
 
-    'username' => null,
+    'username' => H::env('MAIL_USERNAME'),
 
     /*
     |--------------------------------------------------------------------------
@@ -116,7 +115,7 @@ return [
     |
     */
 
-    'password' => null,
+    'password' => H::env('MAIL_PASSWORD'),
 
     /*
     |--------------------------------------------------------------------------

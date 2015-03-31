@@ -12,7 +12,6 @@
 */
 
 if (file_exists(__DIR__.'/../.env')) {
-
     try {
         \Dotenv::makeMutable();
         \Dotenv::load(__DIR__.'/../');
