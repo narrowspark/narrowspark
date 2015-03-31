@@ -116,7 +116,7 @@ return [
         'mysql' => [
             'driver'      => 'mysql',
             'server'      => H::env('DB_DATABASE_TYPE', 'localhost'),
-            'unix_socket' => env('DB_SOCKET', ''),
+            'unix_socket' => H::env('DB_SOCKET', ''),
             'dbname'      => H::env('DB_DATABASE_NAME', ''),
             'username'    => H::env('DB_DATABASE_USER', ''),
             'password'    => H::env('DB_DATABASE_PASSWORD', ''),
