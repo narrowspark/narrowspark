@@ -10,6 +10,6 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::get('/', function ($request, $response) {
+$this->app->get('route')->get('/', function ($request, $response) {
     return $response->setContent(View::make('wellcome'));
 });
