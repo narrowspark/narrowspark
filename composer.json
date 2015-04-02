@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "narrowspark/framework"         : "dev-develop"
+        "narrowspark/framework"         : "dev-new-container"
     },
     "autoload": {
         "classmap": [
