@@ -41,7 +41,6 @@ return [
         //'Brainwave\Database\Providers\DatabaseServiceProvider'               => [],
         'Brainwave\Encrypter\Providers\EncrypterServiceProvider'             => [],
         'Brainwave\Events\Providers\EventsServiceProvider'                   => [],
-        'Brainwave\Exception\Providers\ExceptionServiceProvider'             => [],
         'Brainwave\Hashing\Providers\HashingServiceProvider'                 => [],
         'Brainwave\Log\Providers\LoggerServiceProvider'                      => [],
         'Brainwave\Routing\Providers\RoutingServiceProvider'                 => [],

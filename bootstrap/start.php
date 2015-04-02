@@ -6,6 +6,19 @@ use \Brainwave\Support\AutoLoader;
 
 /*
 |--------------------------------------------------------------------------
+| Set PHP Error Reporting Options
+|--------------------------------------------------------------------------
+|
+| Here we will set the strictest error reporting options, and also turn
+| off PHP's error reporting, since all errors will be handled by the
+| framework and we don't want any output leaking back to the user.
+|
+*/
+
+require __DIR__.'/environment.php';
+
+/*
+|--------------------------------------------------------------------------
 | Turn On The Lights
 |--------------------------------------------------------------------------
 |
@@ -20,16 +33,18 @@ $app = new Application(require __DIR__.'/paths.php');
 
 /*
 |--------------------------------------------------------------------------
-| Set PHP Error Reporting Options
+| Detect The Application Environment
 |--------------------------------------------------------------------------
 |
-| Here we will set the strictest error reporting options, and also turn
-| off PHP's error reporting, since all errors will be handled by the
-| framework and we don't want any output leaking back to the user.
+| Narrowspark takes a dead simple approach to your application environments
+| so you can just specify a machine name for the host that matches a
+| given environment, then we will automatically detect it for you.
 |
 */
+$app->detectEnvironment(function () {
+    return \Dotenv::findEnvironmentVariable('APP_ENV') ?: 'production';
+});
 
-require __DIR__.'/environment.php';
 
 /*
 |--------------------------------------------------------------------------
