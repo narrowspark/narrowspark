@@ -43,10 +43,12 @@ $app = require_once __DIR__.'/bootstrap/start.php';
 |
 */
 
-$app->setRequestForConsoleEnvironment();
+$app->runningInConsole();
 
-$cerebro = new Application('cerebro', $app->getVersion());
+$cerebro = new Application($app, $app->get('events'));
+$cerebro->setName('cerebro');
+$cerebro->setVersion($app->getVersion());
 
-$app->run();
+$cerebro->run();
 
 exit($cerebro);
