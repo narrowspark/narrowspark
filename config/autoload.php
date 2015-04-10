@@ -10,7 +10,7 @@
  *
  * @license     http://www.narrowspark.com/license
  *
- * @version     1.0.0-dev
+ * @version     1.0.2-dev
  */
 
 /**
