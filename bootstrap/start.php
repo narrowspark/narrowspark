@@ -1,8 +1,21 @@
 <?php
 
-use \Brainwave\Application\Application;
 use \Brainwave\Application\AliasLoader;
+use \Brainwave\Application\Application;
 use \Brainwave\Support\AutoLoader;
+
+/*
+|--------------------------------------------------------------------------
+| Set PHP Error Reporting Options
+|--------------------------------------------------------------------------
+|
+| Here we will set the strictest error reporting options, and also turn
+| off PHP's error reporting, since all errors will be handled by the
+| framework and we don't want any output leaking back to the user.
+|
+*/
+
+require __DIR__.'/environment.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -20,28 +33,17 @@ $app = new Application(require __DIR__.'/paths.php');
 
 /*
 |--------------------------------------------------------------------------
-| Set PHP Error Reporting Options
+| Detect The Application Environment
 |--------------------------------------------------------------------------
 |
-| Here we will set the strictest error reporting options, and also turn
-| off PHP's error reporting, since all errors will be handled by the
-| framework and we don't want any output leaking back to the user.
+| Narrowspark takes a dead simple approach to your application environments
+| so you can just specify a machine name for the host that matches a
+| given environment, then we will automatically detect it for you.
 |
 */
-
-require __DIR__.'/environment.php';
-
-/*
-|--------------------------------------------------------------------------
-| Google App Engine
-|--------------------------------------------------------------------------
-|
-| TODO
-|
-*/
-if (function_exists('get_application_id')) {
-    //$app['environment']['PATH_INFO'] = $_SERVER['REQUEST_URI'];
-}
+$app->detectEnvironment(function () {
+    return \Dotenv::findEnvironmentVariable('APP_ENV') ?: 'production';
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -67,7 +69,7 @@ $app['exception']->register(getenv('APP_ENV'));
 |
 */
 
-AliasLoader::getInstance($app['settings']->get('services::aliases', []))->register();
+AliasLoader::getInstance($app->get('config')->get('services::aliases', []))->register();
 
 /*
 |---------------------------------------------------------------
@@ -97,7 +99,9 @@ set_include_path(dirname(__FILE__));
 |
 */
 
-date_default_timezone_set($app['settings']->get('app::timezone', 'UTC'));
+date_default_timezone_set($app->get('config')->get('app::timezone', 'UTC'));
+
+mb_internal_encoding('UTF-8');
 
 /*
 |--------------------------------------------------------------------------
@@ -111,12 +115,12 @@ date_default_timezone_set($app['settings']->get('app::timezone', 'UTC'));
 */
 
 AutoLoader::addDirectories(
-    $app['settings']->get('autoload::autoloaded.paths', [
+    $app->get('config')->get('autoload::autoloaded.paths', [
         $app->path().'/Commands',
-        $app->path().'/Http/controllers',
-        $app->path().'/Http/middleware',
+        $app->path().'/Http/Controllers',
+        $app->path().'/Http/Middleware',
         $app->path().'/Providers',
-        $app->databasePath().'/models',
+        $app->databasePath().'/Models',
     ])
 );
 

@@ -1,19 +1,16 @@
 <?php
+
 /**
- * Narrowspark - a PHP 5 framework
+ * Narrowspark - a PHP 5 framework.
  *
  * @author      Daniel Bannert <info@anolilab.de>
  * @copyright   2014 Daniel Bannert
+ *
  * @link        http://www.narrowspark.de
+ *
  * @license     http://www.narrowspark.com/license
- * @version     0.9.4-dev
- * @package     Narrowspark/framework
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- *
- * Narrowspark is an open source PHP 5 framework.
- *
+ * @version     1.0.0-dev
  */
 
 use Brainwave\Support\Helper as H;
@@ -21,10 +18,9 @@ use Brainwave\Support\Helper as H;
 /**
  * Services config
  *
- * @package Narrowspark/narrowspark
  * @author  Daniel Bannert
- * @since   0.8.0-dev
  *
+ * @since   0.8.0-dev
  */
 return [
     /*
@@ -45,7 +41,6 @@ return [
         //'Brainwave\Database\Providers\DatabaseServiceProvider'               => [],
         'Brainwave\Encrypter\Providers\EncrypterServiceProvider'             => [],
         'Brainwave\Events\Providers\EventsServiceProvider'                   => [],
-        'Brainwave\Exception\Providers\ExceptionServiceProvider'             => [],
         'Brainwave\Hashing\Providers\HashingServiceProvider'                 => [],
         'Brainwave\Log\Providers\LoggerServiceProvider'                      => [],
         'Brainwave\Routing\Providers\RoutingServiceProvider'                 => [],

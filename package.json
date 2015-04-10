@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "devDependencies": {
+    "grunt-load-gruntfile": "~0.0.2",
+    "narrowspark-rising": "*"
+  }
+}
