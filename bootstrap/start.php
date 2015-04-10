@@ -45,7 +45,6 @@ $app->detectEnvironment(function () {
     return \Dotenv::findEnvironmentVariable('APP_ENV') ?: 'production';
 });
 
-
 /*
 |--------------------------------------------------------------------------
 | Register Application Exception Handling
