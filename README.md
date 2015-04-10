@@ -11,6 +11,8 @@ please send a patch via pull request.
 [PSR-3]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md
 [PSR-4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md
 
+### Documentation
+
 ### Requirements
 
 The following versions of PHP are supported by this version.
@@ -18,6 +20,7 @@ The following versions of PHP are supported by this version.
 * PHP 5.4
 * PHP 5.5
 * PHP 5.6
+* PHP 7.0-dev
 * HHVM
 
 ### Todo
@@ -33,6 +36,8 @@ $ phpunit
 ### Contributing To Narrowspark
 
 **All issues and pull requests should be filed on the [narrowspark/framework](http://github.com/narrowspark/framework) repository.**
+
+Please see [CONTRIBUTING](https://github.com/narrowspark/framework/blob/master/CONTRIBUTING.md) for details.
 
 ### License
 

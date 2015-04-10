@@ -15,15 +15,15 @@
 
 use Brainwave\Support\Helper as H;
 
-/*
- * Mail config
+/**
+ * Mail config.
  *
- * @package Narrowspark/narrowspark
  * @author  Daniel Bannert
- * @since   0.8.0-dev
  *
+ * @since   0.8.0-dev
  */
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Mail Driver
@@ -76,7 +76,10 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => [
+        'address' => null,
+        'name' => null,
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -89,7 +92,7 @@ return [
     |
     */
 
-    'encryption' => 'tls',
+    'encryption' => H::env('MAIL_ENCRYPTION', 'tls'),
 
     /*
     |--------------------------------------------------------------------------

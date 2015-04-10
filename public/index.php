@@ -44,4 +44,6 @@ $app->run();
 |
 */
 
+\Dotenv::makeImmutable();
+
 $app->shutdown();

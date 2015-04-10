@@ -1,3 +1,7 @@
+/phpunit.xml
 /vendor
-/node_modules
+/build
+composer.lock
+.DS_Store
+Thumbs.db
 .env

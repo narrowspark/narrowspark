@@ -10,18 +10,17 @@
  *
  * @license     http://www.narrowspark.com/license
  *
- * @version     0.9.4-dev
+ * @version     1.0.0-dev
  */
 
 use Brainwave\Support\Helper as H;
 
-/*
- * Template config
+/**
+ * Template config.
  *
- * @package Narrowspark/narrowspark
  * @author  Daniel Bannert
- * @since   0.8.0-dev
  *
+ * @since   0.8.0-dev
  */
 return [
 

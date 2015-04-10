@@ -1,5 +1,14 @@
 <?php
 
+/*
+|--------------------------------------------------------------------------
+| Compiled Class
+|--------------------------------------------------------------------------
+|
+| To dramatically increase your application's performance.
+|
+*/
+
 require realpath(__DIR__.'/..').'/vendor/classpreloader/classpreloader/src/ClassPreloader/ClassLoader.php';
 
 use \ClassPreloader\ClassLoader;

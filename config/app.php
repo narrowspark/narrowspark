@@ -10,18 +10,17 @@
  *
  * @license     http://www.narrowspark.com/license
  *
- * @version     0.9.4-dev
+ * @version     1.0.0-dev
  */
 
 use Brainwave\Support\Helper as H;
 
-/*
- * App config
+/**
+ * App config.
  *
- * @package Narrowspark/narrowspark
  * @author  Daniel Bannert
- * @since   0.8.0-dev
  *
+ * @since   0.8.0-dev
  */
 return [
 
@@ -36,7 +35,7 @@ return [
     |
     */
 
-    'debug' => H::env('APP_DEBUG', true),
+    'debug' => H::env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -100,7 +99,7 @@ return [
     |
     */
 
-    'log' => 'daily',
+    'log' => 'single',
 
     /*
     |--------------------------------------------------------------------------

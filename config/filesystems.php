@@ -10,18 +10,17 @@
  *
  * @license     http://www.narrowspark.com/license
  *
- * @version     0.9.4-dev
+ * @version     1.0.0-dev
  */
 
 use Brainwave\Support\Helper as H;
 
-/*
- * Filesystems config
+/**
+ * Filesystems config.
  *
- * @package Narrowspark/narrowspark
  * @author  Daniel Bannert
- * @since   0.9.3-dev
  *
+ * @since   0.9.3-dev
  */
 return [
 
@@ -76,6 +75,7 @@ return [
             'key'    => 'your-key',
             'secret' => 'your-secret',
             'bucket' => 'your-bucket',
+            'base_url' => 'https://s3.amazonaws.com',
         ],
 
         'rackspace' => [

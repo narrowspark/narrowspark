@@ -10,22 +10,21 @@
  *
  * @license     http://www.narrowspark.com/license
  *
- * @version     0.9.4-dev
+ * @version     1.0.0-dev
  */
 
 use Brainwave\Support\Helper as H;
 
-/*
+/**
  * All database work in Narrowspark is done through the PHP PDO facilities
  * so make sure you have the driver for your particular database of
  * choice installed on your machine before you begin development.
  *
- * Database config
+ * Database config.
  *
- * @package Narrowspark/narrowspark
  * @author  Daniel Bannert
- * @since   0.8.0-dev
  *
+ * @since   0.8.0-dev
  */
 return [
 
@@ -74,7 +73,7 @@ return [
     |
     */
 
-    'default'   => strtolower(H::env('DB_DATABASE_TYPE', 'mysql')),
+    'default'   => strtolower(H::env('DB_CONNECTION', 'mysql')),
 
     /*
     |--------------------------------------------------------------------------
@@ -111,14 +110,16 @@ return [
         ],
 
         'mysql' => [
-            'driver'    => 'mysql',
-            'server'    => H::env('DB_DATABASE_TYPE', 'localhost'),
-            'dbname'    => H::env('DB_DATABASE_NAME', ''),
-            'username'  => H::env('DB_DATABASE_USER', ''),
-            'password'  => H::env('DB_DATABASE_PASSWORD', ''),
-            'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix'    => '',
+            'driver'      => 'mysql',
+            'server'      => H::env('DB_DATABASE_TYPE', 'localhost'),
+            'unix_socket' => H::env('DB_SOCKET', ''),
+            'dbname'      => H::env('DB_DATABASE_NAME', ''),
+            'username'    => H::env('DB_DATABASE_USER', ''),
+            'password'    => H::env('DB_DATABASE_PASSWORD', ''),
+            'charset'     => 'utf8',
+            'collation'   => 'utf8_unicode_ci',
+            'prefix'      => '',
+            'strict'      => false,
         ],
 
         'mariadb' => [

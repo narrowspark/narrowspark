@@ -10,18 +10,17 @@
  *
  * @license     http://www.narrowspark.com/license
  *
- * @version     0.9.4-dev
+ * @version     1.0.0-dev
  */
 
 use Brainwave\Support\Helper as H;
 
-/*
- * Cache config
+/**
+ * Cache config.
  *
- * @package Narrowspark/narrowspark
  * @author  Daniel Bannert
- * @since   0.8.0-dev
  *
+ * @since   0.8.0-dev
  */
 return [
 
@@ -116,6 +115,9 @@ return [
     | When utilizing a RAM based store such as APC or Memcached, there might
     | be other applications utilizing the same  So, we'll specify a
     | value to get prefixed to all our keys so we can avoid collisions.
+    |
+    | Note that when flushing the cache, this cache key prefix will be ignored
+    | and the entire cache flushed.
     |
     */
 
