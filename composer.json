@@ -1,11 +1,11 @@
 {
-    "name": "narrowspark/narrowspark",
-    "type": "library",
+    "name"       : "narrowspark/narrowspark",
+    "type"       : "library",
     "description": "Narrowspark Framework for Creative People.",
-    "keywords": ["framework", "narrowspark", "symfony", "router", "brainwave"],
-    "license": "MIT",
-    "homepage": "http://github.com/narrowspark/narrowspark",
-    "authors": [
+    "keywords"   : ["framework", "narrowspark", "symfony", "router", "brainwave"],
+    "license"    : "MIT",
+    "homepage"   : "http://github.com/narrowspark/narrowspark",
+    "authors"    : [
         {
           "name"    : "Daniel Bannert",
           "email"   : "d.bannert@anolilab.de",
