@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/narrowspark/narrowspark.png?label=ready&title=Ready)](https://waffle.io/narrowspark/narrowspark)
 ## Narrowspark PHP Framework
 
 A PHP Framework
