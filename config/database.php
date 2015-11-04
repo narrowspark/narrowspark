@@ -113,6 +113,7 @@ return [
             'driver'      => 'mysql',
             'server'      => H::env('DB_DATABASE_TYPE', 'localhost'),
             'unix_socket' => H::env('DB_SOCKET', ''),
+            'port'        => H::env('DB_PORT', null),
             'dbname'      => H::env('DB_DATABASE_NAME', ''),
             'username'    => H::env('DB_DATABASE_USER', ''),
             'password'    => H::env('DB_DATABASE_PASSWORD', ''),
@@ -136,6 +137,7 @@ return [
         'pgsql' => [
             'driver'   => 'pgsql',
             'server'   => H::env('DB_DATABASE_TYPE', 'localhost'),
+            'port'     => H::env('DB_PORT', null),
             'dbname'   => H::env('DB_DATABASE_NAME', ''),
             'username' => H::env('DB_DATABASE_USER', ''),
             'password' => H::env('DB_DATABASE_PASSWORD', ''),
@@ -147,6 +149,7 @@ return [
         'sqlsrv' => [
             'driver'   => 'sqlsrv',
             'server'   => H::env('DB_DATABASE_TYPE', 'localhost'),
+            'port'     => H::env('DB_PORT', null),
             'dbname'   => H::env('DB_DATABASE_NAME', ''),
             'username' => H::env('DB_DATABASE_USER', 'root'),
             'password' => H::env('DB_DATABASE_PASSWORD', ''),
