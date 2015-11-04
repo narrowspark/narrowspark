@@ -58,7 +58,6 @@ return [
         */
 
         'key' => 'cartalyst_sentry',
-
     ],
 
     /*

@@ -41,6 +41,7 @@ $app = new Application(require __DIR__.'/paths.php');
 | given environment, then we will automatically detect it for you.
 |
 */
+
 $app->detectEnvironment(function () {
     return \Dotenv::findEnvironmentVariable('APP_ENV') ?: 'production';
 });

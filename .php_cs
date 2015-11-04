@@ -22,7 +22,6 @@ return Symfony\CS\Config\Config::create()
     // use default SYMFONY_LEVEL and extra fixers:
     ->fixers(
         [
-            '-yoda_conditions',
             'ordered_use',
             'short_array_syntax',
             'strict',
