@@ -12,10 +12,9 @@
  *
  * @version     1.0.2-dev
  */
-
 use Brainwave\Support\Helper as H;
 
-/**
+/*
  * Services config
  *
  * @author  Daniel Bannert

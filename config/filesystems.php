@@ -12,10 +12,9 @@
  *
  * @version     1.0.2-dev
  */
-
 use Brainwave\Support\Helper as H;
 
-/**
+/*
  * Filesystems config.
  *
  * @author  Daniel Bannert
@@ -71,10 +70,10 @@ return [
         ],
 
         's3' => [
-            'driver' => 's3',
-            'key'    => 'your-key',
-            'secret' => 'your-secret',
-            'bucket' => 'your-bucket',
+            'driver'   => 's3',
+            'key'      => 'your-key',
+            'secret'   => 'your-secret',
+            'bucket'   => 'your-bucket',
             'base_url' => 'https://s3.amazonaws.com',
         ],
 

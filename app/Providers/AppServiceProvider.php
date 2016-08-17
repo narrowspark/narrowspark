@@ -12,7 +12,6 @@
  *
  * @version     1.0.2-dev
  */
-
 use Brainwave\Application\ServiceProvider;
 
 /**

@@ -3,10 +3,8 @@
 /**
  * Narrowspark - Framework for Creative People.
  *
- * @package  Narrowspark
  * @author   Daniel Bannert <d.bannert@anolilab.de>
  */
-
 $uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
 $paths = require __DIR__.'/bootstrap/paths.php';
