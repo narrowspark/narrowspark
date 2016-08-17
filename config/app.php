@@ -12,10 +12,9 @@
  *
  * @version     1.0.2-dev
  */
-
 use Brainwave\Support\Helper as H;
 
-/**
+/*
  * App config.
  *
  * @author  Daniel Bannert
@@ -50,7 +49,7 @@ return [
     |
     */
 
-    'mode' =>  H::env('APP_MODE', 'development'),
+    'mode' => H::env('APP_MODE', 'development'),
 
     /*
     |--------------------------------------------------------------------------

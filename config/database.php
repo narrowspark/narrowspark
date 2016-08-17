@@ -12,10 +12,9 @@
  *
  * @version     1.0.2-dev
  */
-
 use Brainwave\Support\Helper as H;
 
-/**
+/*
  * All database work in Narrowspark is done through the PHP PDO facilities
  * so make sure you have the driver for your particular database of
  * choice installed on your machine before you begin development.
@@ -157,7 +156,7 @@ return [
         ],
 
         'mssql' => [
-            'driver' => 'mssql',
+            'driver'   => 'mssql',
             'server'   => H::env('DB_DATABASE_TYPE', 'localhost'),
             'dbname'   => H::env('DB_DATABASE_NAME', ''),
             'username' => H::env('DB_DATABASE_USER', 'root'),
@@ -174,7 +173,7 @@ return [
         ],
 
         'cloudsql' => [
-            'driver' => 'cloudsql',
+            'driver'   => 'cloudsql',
             'server'   => H::env('DB_DATABASE_TYPE', 'localhost'),
             'dbname'   => H::env('DB_DATABASE_NAME', ''),
             'username' => H::env('DB_DATABASE_USER', 'root'),

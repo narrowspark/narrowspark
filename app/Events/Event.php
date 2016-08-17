@@ -20,6 +20,7 @@
  *
  * @since   1.0.2
  */
-abstract class Event {
+abstract class Event
+{
     //
 }

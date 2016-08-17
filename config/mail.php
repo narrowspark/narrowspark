@@ -12,10 +12,9 @@
  *
  * @version     0.8.0-dev
  */
-
 use Brainwave\Support\Helper as H;
 
-/**
+/*
  * Mail config.
  *
  * @author  Daniel Bannert
@@ -78,7 +77,7 @@ return [
 
     'from' => [
         'address' => null,
-        'name' => null,
+        'name'    => null,
     ],
 
     /*

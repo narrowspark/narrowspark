@@ -20,6 +20,6 @@
  *
  * @since   1.0.2
  */
-abstract class Controller {
-
+abstract class Controller
+{
 }
