@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Kernel;
-use Viserio\Foundation\Application;
 use Viserio\Contracts\Foundation\Kernel as KernelContract;
+use Viserio\Foundation\Application;
 
 /*
 |--------------------------------------------------------------------------
