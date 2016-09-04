@@ -1,6 +1,6 @@
 <?php
 
-define('BRAINWAVE_START', microtime(true));
+define('NARROWSPARK_START', microtime(true));
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +14,7 @@ define('BRAINWAVE_START', microtime(true));
 |
 */
 
-if (function_exists('opcache_is_script_cached') && class_exists('\Intahwebz\Autoload\LowMemoryClassloader')) {
-    require_once realpath(__DIR__.'/..').'/vendor/intahwebz/lowmemoryclassloader/LowMemoryClassloader.php';
-} else {
-    require_once realpath(__DIR__.'/..').'/vendor/autoload.php';
-}
+require_once realpath(__DIR__.'/..').'/vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -34,16 +30,3 @@ if (function_exists('opcache_is_script_cached') && class_exists('\Intahwebz\Auto
 if (file_exists($compiled = __DIR__.'/storage/autoload/compiled.php')) {
     require $compiled;
 }
-
-/*
-|--------------------------------------------------------------------------
-| Register The Brainwave Loader
-|--------------------------------------------------------------------------
-|
-| We register an auto-loader "behind" the Composer loader that can load
-| model classes on the fly, even if the autoload files have not been
-| regenerated for the application. We'll add it to the stack here.
-|
-*/
-
-\Brainwave\Support\Autoloader::register();

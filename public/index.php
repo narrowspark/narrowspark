@@ -1,5 +1,10 @@
 <?php
 
+use Viserio\Foundation\Http\Kernel;
+use Viserio\HttpFactory\ServerRequestFactory;
+use Viserio\Routing\Router as RouterContract;
+use Viserio\Contracts\Foundation\Emitter as EmitterContract;
+
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
@@ -26,24 +31,12 @@ require __DIR__.'/../bootstrap/autoload.php';
 |
 */
 
-$app = require_once __DIR__.'/../bootstrap/start.php';
+$app = require_once __DIR__.'/../bootstrap/app.php';
 
-$app->run();
+$kernel = new Kernel($app, $app->get(RouterContract::class));
 
-/*
-|--------------------------------------------------------------------------
-| Shutdown The Application
-|--------------------------------------------------------------------------
-|
-| Once the app has finished running, we will fire off the shutdown events
-| so that any final work may be done by the application before we shut
-| down the process. This is the last thing to happen to the request.
-|
-| Force connection close.
-| Flush the output buffer.
-|
-*/
+$response = $kernel->handle(
+   $request = (new ServerRequestFactory())->createServerRequestFromGlobals()
+);
 
-\Dotenv::makeImmutable();
-
-$app->shutdown();
+$app->get(EmitterContract::class)->emit($response);

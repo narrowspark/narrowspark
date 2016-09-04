@@ -30,6 +30,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Routes Path
+    |--------------------------------------------------------------------------
+    |
+    | This path is used by the routes loader to load the application
+    | routes files. In general, you should'nt need to change this
+    | value; however, you can theoretically change the path from here.
+    |
+    */
+
+    'route' => __DIR__.'/../routes',
+
+    /*
+    |--------------------------------------------------------------------------
     | Database Path
     |--------------------------------------------------------------------------
     |
