@@ -2,7 +2,30 @@
 
 return [
     'app' => [
+        'env' => 'develop',
+
         'timezone' => 'UTC',
+
+        'log' => 'single',
+        'log_level' => 'debug',
+
+        'serviceprovider' => [
+            Viserio\Bus\Providers\QueueingBusServiceProvider::class,
+            Viserio\Cache\Providers\CacheServiceProvider::class,
+            Viserio\Connect\Providers\ConnectManagerServiceProvider::class,
+            Viserio\Console\Providers\ConsoleServiceProvider::class,
+            Viserio\Cookie\Providers\CookieServiceProvider::class,
+            Viserio\Encryption\Providers\EncrypterServiceProvider::class,
+            Viserio\Filesystem\Providers\FilesServiceProvider::class,
+            Viserio\Hashing\Providers\HashingServiceProvider::class,
+            Viserio\Pipeline\Providers\PipelineServiceProvider::class,
+            Viserio\Routing\Providers\RoutingServiceProvider::class,
+            Viserio\Session\Providers\SessionServiceProvider::class,
+            Viserio\StaticalProxy\Providers\AliasLoaderServiceProvider::class,
+            Viserio\StaticalProxy\Providers\StaticalProxyServiceProvider::class,
+            Viserio\Translation\Providers\TranslatorServiceProvider::class,
+            Viserio\View\Providers\ViewServiceProvider::class,
+        ],
 
         'aliases' => [
             'Bus'           => Viserio\Bus\Proxies\Bus::class,
