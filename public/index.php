@@ -1,9 +1,9 @@
 <?php
 
+use Viserio\Contracts\Events\Dispatcher as DispatcherContract;
 use Viserio\Contracts\Foundation\Emitter as EmitterContract;
 use Viserio\Foundation\Http\Kernel;
 use Viserio\HttpFactory\ServerRequestFactory;
-use Viserio\Contracts\Events\Dispatcher as DispatcherContract;
 use Viserio\Routing\Router as RouterContract;
 
 /*
