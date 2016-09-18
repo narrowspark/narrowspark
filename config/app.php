@@ -6,7 +6,7 @@ return [
 
         'timezone' => 'UTC',
 
-        'log' => 'single',
+        'log'       => 'single',
         'log_level' => 'debug',
 
         'serviceprovider' => [

@@ -1,4 +1,5 @@
 <?php
+
 use Viserio\Exception\Displayers\WhoopsDisplayer;
 
 return [
@@ -8,7 +9,7 @@ return [
         'filters' => [],
 
         'levels' => [
-            Twig_Error_Loader::class => 'error'
-        ]
+            Twig_Error_Loader::class => 'error',
+        ],
     ],
 ];
