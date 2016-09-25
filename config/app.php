@@ -2,7 +2,7 @@
 
 return [
     'app' => [
-        'env' => 'develop',
+        'env' => env('APP_ENV', 'develop'),
 
         'timezone' => 'UTC',
 
@@ -24,6 +24,7 @@ return [
             Viserio\StaticalProxy\Providers\AliasLoaderServiceProvider::class,
             Viserio\StaticalProxy\Providers\StaticalProxyServiceProvider::class,
             Viserio\Translation\Providers\TranslatorServiceProvider::class,
+            Viserio\Validation\Providers\ValidationServiceProvider::class,
             Viserio\View\Providers\ViewServiceProvider::class,
         ],
 
@@ -49,6 +50,7 @@ return [
             'Route'         => Viserio\Routing\Proxies\Route::class,
             'Session'       => Viserio\Session\Proxies\Session::class,
             'Lang'          => Viserio\Translation\Proxies\Lang::class,
+            'Validator'     => Viserio\Validation\Proxies\Validator::class,
             'View'          => Viserio\View\Proxies\View::class,
         ],
     ],

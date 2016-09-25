@@ -17,7 +17,7 @@ return [
                 'asset'      => null,
                 'extensions' => [
                 ],
-                'file_extension' => 'plates.php',
+                'file_extension' => 'phtml',
             ],
             'twig' => [
                 'extensions' => [

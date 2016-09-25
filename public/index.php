@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Kernel;
 use Viserio\Contracts\Events\Dispatcher as DispatcherContract;
 use Viserio\Contracts\Foundation\Emitter as EmitterContract;
-use Viserio\Foundation\Http\Kernel;
 use Viserio\HttpFactory\ServerRequestFactory;
 use Viserio\Routing\Router as RouterContract;
 
@@ -34,11 +34,14 @@ require __DIR__.'/../bootstrap/autoload.php';
 
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
-$kernel = new Kernel($app, $app->get(RouterContract::class));
-$kernel->setEventsDispatcher($app->get(DispatcherContract::class));
+$kernel = new Kernel(
+    $app,
+    $app->get(RouterContract::class),
+    $app->get(DispatcherContract::class)
+);
 
 $response = $kernel->handle(
-   $request = (new ServerRequestFactory())->createServerRequestFromGlobals()
+    $request = (new ServerRequestFactory())->createServerRequestFromGlobals()
 );
 
 $app->get(EmitterContract::class)->emit($response);
