@@ -2,6 +2,6 @@
 
 return [
     'log' => [
-        'env' => '',
+        'env' => env('APP_ENV', 'develop'),
     ],
 ];

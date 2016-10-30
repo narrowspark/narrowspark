@@ -6,15 +6,17 @@ return [
 
         'timezone' => 'UTC',
 
-        'log'       => 'single',
+        'log'       => 'daily',
         'log_level' => 'debug',
 
         'serviceprovider' => [
             Viserio\Bus\Providers\QueueingBusServiceProvider::class,
             Viserio\Cache\Providers\CacheServiceProvider::class,
-            Viserio\Connect\Providers\ConnectManagerServiceProvider::class,
             Viserio\Console\Providers\ConsoleServiceProvider::class,
             Viserio\Cookie\Providers\CookieServiceProvider::class,
+            Viserio\Cron\Providers\CronServiceProvider::class,
+            Viserio\Database\Providers\DatabaseServiceProvider::class,
+            Viserio\Database\Providers\MigrationsServiceProvider::class,
             Viserio\Encryption\Providers\EncrypterServiceProvider::class,
             Viserio\Filesystem\Providers\FilesServiceProvider::class,
             Viserio\Hashing\Providers\HashingServiceProvider::class,
@@ -32,9 +34,10 @@ return [
             'Bus'           => Viserio\Bus\Proxies\Bus::class,
             'Cache'         => Viserio\Cache\Proxies\Cache::class,
             'Config'        => Viserio\Config\Proxies\Config::class,
-            'Connect'       => Viserio\Connect\Proxies\Connect::class,
             'Console'       => Viserio\Console\Proxies\Console::class,
             'Cookie'        => Viserio\Cookie\Proxies\Cookie::class,
+            'Schedule'      => Viserio\Cron\Proxies\Schedule::class,
+            'DB'            => Viserio\Database\Proxies\DB::class,
             'RequestCookie' => Viserio\Cookie\Proxies\RequestCookie::class,
             'Crypt'         => Viserio\Encryption\Proxies\Crypt::class,
             'Events'        => Viserio\Events\Proxies\Events::class,
