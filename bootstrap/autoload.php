@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 define('NARROWSPARK_START', microtime(true));
 
 /*
@@ -14,7 +14,9 @@ define('NARROWSPARK_START', microtime(true));
 |
 */
 
-require_once realpath(__DIR__.'/..').'/vendor/autoload.php';
+require_once realpath(__DIR__ . '/..') . '/vendor/autoload.php';
+
+// var_dump(trait_exists('\Viserio\Contracts\Parsers\Traits\LoaderAware', true));die;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,6 @@ require_once realpath(__DIR__.'/..').'/vendor/autoload.php';
 |
 */
 
-if (file_exists($compiled = __DIR__.'/storage/autoload/compiled.php')) {
+if (file_exists($compiled = __DIR__ . '/storage/autoload/compiled.php')) {
     require $compiled;
 }

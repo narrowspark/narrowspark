@@ -1,7 +1,9 @@
 <?php
-
-use App\Http\Kernel;
-use Viserio\Contracts\Foundation\Kernel as KernelContract;
+declare(strict_types=1);
+use App\Console\Kernel as ConsoleKernel;
+use App\Http\Kernel as HttpKernel;
+use Viserio\Contracts\Console\Kernel as ConsoleKernelContract;
+use Viserio\Contracts\Foundation\Kernel as FoundationKernelContract;
 use Viserio\Foundation\Application;
 
 /*
@@ -16,7 +18,7 @@ use Viserio\Foundation\Application;
 |
 */
 
-$app = new Application(require __DIR__.'/paths.php');
+$app = new Application(require __DIR__ . '/paths.php');
 
 /*
 |---------------------------------------------------------------
@@ -30,10 +32,10 @@ $app = new Application(require __DIR__.'/paths.php');
 */
 
 // Let's hold Windows' hand and set a include_path in case it forgot
-set_include_path(dirname(__FILE__));
+set_include_path(__DIR__);
 
 // Some hosts (was it GoDaddy? complained without this
-@ini_set('cgi.fix_pathinfo', 0);
+@ini_set('cgi.fix_pathinfo', '0');
 
 /*
 |--------------------------------------------------------------------------
@@ -47,8 +49,13 @@ set_include_path(dirname(__FILE__));
 */
 
 $app->singleton(
-    KernelContract::class,
-    Kernel::class
+    FoundationKernelContract::class,
+    HttpKernel::class
+);
+
+$app->singleton(
+    ConsoleKernelContract::class,
+    ConsoleKernel::class
 );
 
 /*

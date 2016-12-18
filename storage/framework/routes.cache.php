@@ -20,6 +20,17 @@ return function ($method, $uri) {
                         break;
                 }
             }
+            if ($s0 === 'ap') {
+                switch ($method) {
+                    case 'GET':
+                    case 'HEAD':
+                        return [1, 'GET|HEAD/ap', []];
+                    default:
+                        $allowedHttpMethods[] = 'GET';
+                        $allowedHttpMethods[] = 'HEAD';
+                        break;
+                }
+            }
             return isset($allowedHttpMethods) ? [2, $allowedHttpMethods] : [0];
             break;
         

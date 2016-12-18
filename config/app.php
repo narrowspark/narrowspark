@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 return [
     'app' => [
@@ -6,10 +7,12 @@ return [
 
         'timezone' => 'UTC',
 
-        'log'       => 'daily',
-        'log_level' => 'debug',
+        'log'           => 'daily',
+        'log_level'     => 'debug',
+        'log_max_files' => 5,
 
-        'serviceprovider' => [
+        'serviceproviders' => [
+            // Narrowspark Framework Service Providers...
             Viserio\Bus\Providers\QueueingBusServiceProvider::class,
             Viserio\Cache\Providers\CacheServiceProvider::class,
             Viserio\Console\Providers\ConsoleServiceProvider::class,
@@ -19,15 +22,29 @@ return [
             Viserio\Database\Providers\MigrationsServiceProvider::class,
             Viserio\Encryption\Providers\EncrypterServiceProvider::class,
             Viserio\Filesystem\Providers\FilesServiceProvider::class,
+            Viserio\Foundation\Providers\FoundationCommandsServiceProvider::class,
             Viserio\Hashing\Providers\HashingServiceProvider::class,
+            Viserio\HttpFactory\Providers\HttpFactoryServiceProvider::class,
+            Viserio\Mail\Providers\MailServiceProvider::class,
             Viserio\Pipeline\Providers\PipelineServiceProvider::class,
             Viserio\Routing\Providers\RoutingServiceProvider::class,
             Viserio\Session\Providers\SessionServiceProvider::class,
             Viserio\StaticalProxy\Providers\AliasLoaderServiceProvider::class,
             Viserio\StaticalProxy\Providers\StaticalProxyServiceProvider::class,
-            Viserio\Translation\Providers\TranslatorServiceProvider::class,
+            Viserio\Translation\Providers\TranslationServiceProvider::class,
             Viserio\Validation\Providers\ValidationServiceProvider::class,
             Viserio\View\Providers\ViewServiceProvider::class,
+            Viserio\WebProfiler\Providers\WebProfilerServiceProvider::class,
+
+            // Narrowspark WebProfiler Collector Service Providers...
+            Viserio\Foundation\Providers\FoundationDataCollectorsServiceProvider::class,
+            Viserio\Translation\Providers\TranslationCollectorServiceProvider::class,
+            Viserio\Cache\Providers\CacheCollectorServiceProvider::class,
+            Viserio\Log\Providers\LogCollectorServiceProvider::class,
+
+            // Package Service Providers...
+
+            // Application Service Providers...
         ],
 
         'aliases' => [

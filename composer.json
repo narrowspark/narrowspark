@@ -18,14 +18,15 @@
         }
     ],
     "require": {
-        "php": "7.0.0 - 7.0.5 || ^7.0.7",
+        "php": "^7.1",
         "roave/security-advisories": "dev-master",
-        "narrowspark/framework": "dev-develop",
+        "narrowspark/framework": "dev-issue-118"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.6",
-        "narrowspark/testing-helper": "^1.5",
+        "narrowspark/php-cs-fixer-config" : "^2.2",
         "narrowspark/installer": "dev-master",
+        "narrowspark/testing-helper": "^1.5",
         "mockery/mockery": "^0.9",
         "phpunit/phpunit": "^5.1",
         "symfony/css-selector": "^3.1",
@@ -47,7 +48,8 @@
     },
     "config": {
         "bin-dir": "vendor/bin",
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "sort-packages": true
     },
     "scripts": {
         "post-create-project-cmd": [

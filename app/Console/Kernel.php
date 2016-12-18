@@ -1,14 +1,13 @@
 <?php
 declare(strict_types=1);
-
 namespace App\Console;
 
 use Viserio\Cron\Schedule;
 use Viserio\Foundation\Bootstrap\DetectEnvironment;
 use Viserio\Foundation\Bootstrap\HandleExceptions;
+use Viserio\Foundation\Bootstrap\LoadCommands;
 use Viserio\Foundation\Bootstrap\LoadConfiguration;
 use Viserio\Foundation\Bootstrap\LoadServiceProvider;
-use Viserio\Foundation\Bootstrap\LoadCommands;
 use Viserio\Foundation\Bootstrap\RegisterStaticalProxys;
 use Viserio\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -25,7 +24,7 @@ class Kernel extends ConsoleKernel
         HandleExceptions::class,
         RegisterStaticalProxys::class,
         LoadServiceProvider::class,
-        LoadCommands::class
+        LoadCommands::class,
     ];
 
     /**
@@ -33,6 +32,5 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        //
     }
 }

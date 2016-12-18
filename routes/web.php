@@ -1,10 +1,4 @@
 <?php
-
-use Viserio\HttpFactory\ResponseFactory;
-
-Route::get('/', function ($request, $args) {
-    $response = (new ResponseFactory())->createResponse();
-    $response->getBody()->write('test');
-
-    return $response;
-});
+declare(strict_types=1);
+Route::get('/', 'WelcomeController@index');
+Route::get('/ap', 'WelcomeController@index');
