@@ -19,18 +19,18 @@
     ],
     "require": {
         "php": "^7.1",
+        "doctrine/dbal" : "^2.5",
+        "doctrine/migrations" : "^1.4",
+        "doctrine/orm" : "^2.5",
+        "narrowspark/framework": "dev-develop",
         "roave/security-advisories": "dev-master",
-        "narrowspark/framework": "dev-issue-118"
+        "twig/twig": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.6",
         "narrowspark/php-cs-fixer-config" : "^2.2",
         "narrowspark/installer": "dev-master",
-        "narrowspark/testing-helper": "^1.5",
-        "mockery/mockery": "^0.9",
-        "phpunit/phpunit": "^5.1",
-        "symfony/css-selector": "^3.1",
-        "symfony/dom-crawler": "^3.1"
+        "phpunit/phpunit": "^5.1"
     },
     "autoload": {
         "psr-4": {

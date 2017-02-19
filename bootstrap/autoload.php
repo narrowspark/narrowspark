@@ -16,8 +16,6 @@ define('NARROWSPARK_START', microtime(true));
 
 require_once realpath(__DIR__ . '/..') . '/vendor/autoload.php';
 
-// var_dump(trait_exists('\Viserio\Contracts\Parsers\Traits\LoaderAware', true));die;
-
 /*
 |--------------------------------------------------------------------------
 | Include The Compiled Class File

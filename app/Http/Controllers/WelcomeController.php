@@ -3,6 +3,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use View;
+use Viserio\Component\Contracts\Container\Container as ContainerContract;
 
 class WelcomeController extends Controller
 {

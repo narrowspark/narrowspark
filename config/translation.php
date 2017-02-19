@@ -2,17 +2,19 @@
 declare(strict_types=1);
 
 return [
-    'translation' => [
-        'locale' => 'en',
+    'viserio' => [
+        'translation' => [
+            'locale' => 'en',
 
-        'fallback_locale' => 'en',
+            'fallback_locale' => 'en',
 
-        'directories' => [
-            __DIR__ . '/../resources/lang/',
-        ],
+            'directories' => [
+                __DIR__ . '/../resources/lang/',
+            ],
 
-        'files' => [
-            'en/framework.php',
+            'files' => [
+                'en/framework.php',
+            ],
         ],
     ],
 ];

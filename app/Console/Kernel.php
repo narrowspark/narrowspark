@@ -2,14 +2,14 @@
 declare(strict_types=1);
 namespace App\Console;
 
-use Viserio\Cron\Schedule;
-use Viserio\Foundation\Bootstrap\DetectEnvironment;
-use Viserio\Foundation\Bootstrap\HandleExceptions;
-use Viserio\Foundation\Bootstrap\LoadCommands;
-use Viserio\Foundation\Bootstrap\LoadConfiguration;
-use Viserio\Foundation\Bootstrap\LoadServiceProvider;
-use Viserio\Foundation\Bootstrap\RegisterStaticalProxys;
-use Viserio\Foundation\Console\Kernel as ConsoleKernel;
+use Viserio\Component\Cron\Schedule;
+use Viserio\Component\Foundation\Bootstrap\DetectEnvironment;
+use Viserio\Component\Foundation\Bootstrap\HandleExceptions;
+use Viserio\Component\Foundation\Bootstrap\LoadCommands;
+use Viserio\Component\Foundation\Bootstrap\LoadConfiguration;
+use Viserio\Component\Foundation\Bootstrap\LoadServiceProvider;
+use Viserio\Component\Foundation\Bootstrap\RegisterStaticalProxys;
+use Viserio\Component\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {

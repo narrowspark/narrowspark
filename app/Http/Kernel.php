@@ -5,14 +5,14 @@ namespace App\Http;
 use App\Http\Bootstrap\LoadRoutes;
 use App\Http\Middleware\EncryptedCookiesMiddleware;
 use App\Http\Middleware\VerifyCsrfTokenMiddleware;
-use Viserio\Cookie\Middleware\AddQueuedCookiesToResponseMiddleware;
-use Viserio\Foundation\Bootstrap\DetectEnvironment;
-use Viserio\Foundation\Bootstrap\HandleExceptions;
-use Viserio\Foundation\Bootstrap\LoadConfiguration;
-use Viserio\Foundation\Bootstrap\LoadServiceProvider;
-use Viserio\Foundation\Bootstrap\RegisterStaticalProxys;
-use Viserio\Foundation\Http\Kernel as HttpKernel;
-use Viserio\Session\Middleware\StartSessionMiddleware;
+use Viserio\Component\Cookie\Middleware\AddQueuedCookiesToResponseMiddleware;
+use Viserio\Component\Foundation\Bootstrap\DetectEnvironment;
+use Viserio\Component\Foundation\Bootstrap\HandleExceptions;
+use Viserio\Component\Foundation\Bootstrap\LoadConfiguration;
+use Viserio\Component\Foundation\Bootstrap\LoadServiceProvider;
+use Viserio\Component\Foundation\Bootstrap\RegisterStaticalProxys;
+use Viserio\Component\Foundation\Http\Kernel as HttpKernel;
+use Viserio\Component\Session\Middleware\StartSessionMiddleware;
 
 class Kernel extends HttpKernel
 {

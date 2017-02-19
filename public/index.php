@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
 use App\Http\Kernel;
-use Viserio\Contracts\Foundation\Emitter as EmitterContract;
-use Viserio\HttpFactory\ServerRequestFactory;
+use Viserio\Component\Contracts\Foundation\Emitter as EmitterContract;
+use Viserio\Component\Http\Util;
+use Viserio\Component\HttpFactory\ServerRequestFactory;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +33,12 @@ $app = require_once __DIR__ . '/../bootstrap/app.php';
 
 $kernel = $app->make(Kernel::class);
 
-$response = $kernel->handle(
-    (new ServerRequestFactory())->createServerRequest($_SERVER)
-);
+$serverRequest = (new ServerRequestFactory())->createServerRequest($_SERVER);
+$serverRequest->withCookieParams($_COOKIE)
+    ->withQueryParams($_GET)
+    ->withParsedBody($_POST)
+    ->withUploadedFiles(Util::normalizeFiles($_FILES));
+
+$response = $kernel->handle($serverRequest);
 
 $app->get(EmitterContract::class)->emit($response);

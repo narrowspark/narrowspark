@@ -1,15 +1,27 @@
 <?php
 declare(strict_types=1);
-use Viserio\Exception\Displayers\WhoopsDisplayer;
+use Viserio\Component\Exception\Displayers\WhoopsDisplayer;
 
 return [
-    'exception' => [
-        'default' => WhoopsDisplayer::class,
+    'viserio' => [
+        'exception' => [
+            'env' => env('APP_ENV', 'develop'),
 
-        'filters' => [],
+            'debug' => false,
 
-        'levels' => [
-            Twig_Error_Loader::class => 'error',
+            'default_displayer' => WhoopsDisplayer::class,
+
+            'displayers' => [],
+
+            // 'filters' => [],
+
+            // 'transformers' => [],
+
+            'dont_report' => [],
+
+            'levels' => [
+                Twig_Error_Loader::class => 'error',
+            ],
         ],
-    ],
+    ]
 ];

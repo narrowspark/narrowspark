@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace App\Http\Middleware;
 
-use Viserio\Cookie\Middleware\EncryptedCookiesMiddleware as BaseCookiEncrypter;
+use Viserio\Component\Cookie\Middleware\EncryptedCookiesMiddleware as BaseCookiEncrypter;
 
 class EncryptedCookiesMiddleware extends BaseCookiEncrypter
 {

@@ -2,11 +2,11 @@
 declare(strict_types=1);
 namespace App\Http\Bootstrap;
 
-use Viserio\Contracts\Config\Repository as RepositoryContract;
-use Viserio\Contracts\Foundation\Application;
-use Viserio\Contracts\Foundation\Bootstrap as BootstrapContract;
-use Viserio\Foundation\Bootstrap\AbstractLoadFiles;
-use Viserio\Routing\Proxies\Route;
+use Viserio\Component\Contracts\Config\Repository as RepositoryContract;
+use Viserio\Component\Contracts\Foundation\Application;
+use Viserio\Component\Contracts\Foundation\Bootstrap as BootstrapContract;
+use Viserio\Component\Foundation\Bootstrap\AbstractLoadFiles;
+use Viserio\Component\Contracts\Routing\Router as RouterContract;
 
 class LoadRoutes extends AbstractLoadFiles implements BootstrapContract
 {
@@ -25,25 +25,32 @@ class LoadRoutes extends AbstractLoadFiles implements BootstrapContract
     public function bootstrap(Application $app)
     {
         $routesPath = realpath($app->get(RepositoryContract::class)->get('path.routes'));
+        $router     = $app->get(RouterContract::class);
 
-        $this->mapApiRoutes($routesPath);
+        $this->mapApiRoutes($router, $routesPath);
 
-        $this->mapWebRoutes($routesPath);
+        $this->mapWebRoutes($router, $routesPath);
 
-        // foreach ($this->getFiles($routesPath) as $key => $path) {
-        //     require_once $path;
-        // }
+        foreach ($this->getFiles($routesPath) as $key => $path) {
+            if ($key === 'api' || $key === 'web') {
+                continue;
+            }
+
+            require_once $path;
+        }
     }
 
     /**
      * Define the "web" routes for the application.
      *
      * These routes all receive session state, CSRF protection, etc.
-     * @param string $routesPath
+
+     * @param \Viserio\Component\Contracts\Routing\Router $router
+     * @param string                                      $routesPath
      */
-    protected function mapWebRoutes(string $routesPath)
+    protected function mapWebRoutes(RouterContract $router, string $routesPath)
     {
-        Route::group(
+        $router->group(
             [
                 'middlewares' => 'web',
                 'namespace'   => $this->namespace,
@@ -56,11 +63,13 @@ class LoadRoutes extends AbstractLoadFiles implements BootstrapContract
      * Define the "api" routes for the application.
      *
      * These routes are typically stateless.
-     * @param string $routesPath
+
+     * @param \Viserio\Component\Contracts\Routing\Router $router
+     * @param string                                      $routesPath
      */
-    protected function mapApiRoutes(string $routesPath)
+    protected function mapApiRoutes(RouterContract $router, string $routesPath)
     {
-        Route::group(
+        $router->group(
             [
             'middlewares' => 'api',
             'namespace'   => $this->namespace,

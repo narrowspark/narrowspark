@@ -1,30 +1,30 @@
 <?php
 declare(strict_types=1);
-use Viserio\Cache\DataCollectors\ViserioCacheDataCollector;
-use Viserio\Foundation\DataCollectors\FilesLoadedCollector;
-use Viserio\Foundation\DataCollectors\NarrowsparkDataCollector;
-use Viserio\Foundation\DataCollectors\ViserioHttpDataCollector;
-use Viserio\Log\DataCollectors\LogsDataCollector;
-use Viserio\Translation\DataCollectors\ViserioTranslationDataCollector;
 
 return [
-    'webprofiler' => [
-        'enable'         => true,
-        'jquery_is_used' => false,
+    'viserio' => [
+        'webprofiler' => [
+            'enable'         => true,
+            'jquery_is_used' => false,
 
-        'collectors' => [
-            NarrowsparkDataCollector::class,
-            ViserioHttpDataCollector::class,
-            ViserioTranslationDataCollector::class,
-            ViserioCacheDataCollector::class,
-            // FilesLoadedCollector::class,
-            // LogsDataCollector::class
-        ],
-        'collector' => [
-            'view' => [
-                'collect_data' => true,
+            // Logs settings
+            'logs_storages'  => [],
+
+            'collectors' => [
             ],
-            'swiftmail' => true,
+
+            'collector' => [
+                'viserio_http' => true,
+                'view' => [
+                    'collect_data' => true,
+                ],
+                'narrowspark' => true,
+                'files' => false,
+                'ajax' => true,
+                'translation' => true,
+                'events' => true,
+                'twig' => true,
+            ],
         ],
-    ],
+    ]
 ];

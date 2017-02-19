@@ -2,33 +2,20 @@
 declare(strict_types=1);
 
 return [
-    'view' => [
-        'file_extensions' => [
-            'php',
-        ],
-        'template' => [
-            'default' => realpath(__DIR__ . '/../resources/views'),
-
+    'viserio' => [
+        'view' => [
             'paths' => [
-                realpath(__DIR__ . '/../resources/views/error'),
+                realpath(__DIR__ . '/../resources/views'),
             ],
-        ],
 
-        'engine' => [
-            'plates' => [
-                'asset'      => null,
-                'extensions' => [
-                ],
-                'file_extension' => 'phtml',
-            ],
-            'twig' => [
-                'extensions' => [
-                ],
-                'options' => [
-                    'debug' => true,
-                    'cache' => realpath(__DIR__ . '/../storage/framework/views'),
+            'engines' => [
+                'twig' => [
+                    'options' => [
+                        'debug' => true,
+                        'cache' => realpath(__DIR__ . '/../storage/framework/views'),
+                    ],
                 ],
             ],
         ],
-    ],
+    ]
 ];

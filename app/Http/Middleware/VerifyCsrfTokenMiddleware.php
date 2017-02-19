@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace App\Http\Middleware;
 
-use Viserio\Session\Middleware\VerifyCsrfTokenMiddleware as BaseVerifier;
+use Viserio\Component\Session\Middleware\VerifyCsrfTokenMiddleware as BaseVerifier;
 
 class VerifyCsrfTokenMiddleware extends BaseVerifier
 {

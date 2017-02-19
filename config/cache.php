@@ -2,6 +2,9 @@
 declare(strict_types=1);
 
 return [
-    'cache' => [
-    ],
+    'viserio' => [
+        'cache' => [
+            'drivers' => [],
+        ],
+    ]
 ];

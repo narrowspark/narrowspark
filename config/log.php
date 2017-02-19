@@ -2,7 +2,9 @@
 declare(strict_types=1);
 
 return [
-    'log' => [
-        'env' => env('APP_ENV', 'develop'),
-    ],
+    'viserio' => [
+        'log' => [
+            'env' => env('APP_ENV', 'develop'),
+        ],
+    ]
 ];

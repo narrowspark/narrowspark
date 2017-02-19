@@ -2,9 +2,9 @@
 declare(strict_types=1);
 use App\Console\Kernel as ConsoleKernel;
 use App\Http\Kernel as HttpKernel;
-use Viserio\Contracts\Console\Kernel as ConsoleKernelContract;
-use Viserio\Contracts\Foundation\Kernel as FoundationKernelContract;
-use Viserio\Foundation\Application;
+use Viserio\Component\Contracts\Console\Kernel as ConsoleKernelContract;
+use Viserio\Component\Contracts\Foundation\Kernel as FoundationKernelContract;
+use Viserio\Component\Foundation\Application;
 
 /*
 |--------------------------------------------------------------------------
