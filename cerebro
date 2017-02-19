@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-use Viserio\Console\Application;
+use App\Console\Kernel;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
@@ -19,6 +19,8 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 
 require __DIR__.'/bootstrap/autoload.php';
 
+$app = require_once __DIR__.'/bootstrap/app.php';
+
 /*
 |--------------------------------------------------------------------------
 | Turn On The Lights
@@ -30,32 +32,13 @@ require __DIR__.'/bootstrap/autoload.php';
 | the responses back to the browser and delight these users.
 |
 */
+$kernel = $app->make(Kernel::class);
 
-$app = require_once __DIR__.'/bootstrap/start.php';
+$status = $kernel->handle(
+    $input = new ArgvInput,
+    new ConsoleOutput
+);
 
-/*
-|--------------------------------------------------------------------------
-| Load The Cerebro Console Application
-|--------------------------------------------------------------------------
-|
-| We'll need to run the script to load and return the Cerebro console
-| application. We keep this in its own script so that we will load
-| the console application independent of running commands which
-| will allow us to fire commands from Routes when we want to.
-|
-*/
+$kernel->terminate($input, $status);
 
-$app->runningInConsole();
-
-$cerebro = new Application($app, $app->get('events'));
-$cerebro->setName('cerebro');
-$cerebro->setVersion($app->getVersion());
-
-try {
-    return $cerebro->run(new ArgvInput, new ConsoleOutput);
-} catch (\Exception $exception) {
-    $app->get('exception')->handleConsole($exception);
-    return 1;
-}
-
-exit($cerebro);
+exit($status);

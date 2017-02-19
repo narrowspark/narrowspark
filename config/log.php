@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 return [
     'viserio' => [
-        'session' => [
-            'drivers' => [],
+        'log' => [
+            'env' => env('APP_ENV', 'develop'),
         ],
     ]
 ];

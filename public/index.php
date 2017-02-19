@@ -1,4 +1,9 @@
 <?php
+declare(strict_types=1);
+use App\Http\Kernel;
+use Viserio\Component\Contracts\Foundation\Emitter as EmitterContract;
+use Viserio\Component\Http\Util;
+use Viserio\Component\HttpFactory\ServerRequestFactory;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,38 +17,28 @@
 |
 */
 
-require __DIR__.'/../bootstrap/autoload.php';
+require __DIR__ . '/../bootstrap/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
 | Turn On The Lights
 |--------------------------------------------------------------------------
 |
-| We need to illuminate PHP development, so let's turn on the lights.
-| This bootstraps the framework and gets it ready for use, then it
-| will load up this application so that we can run it and send
-| the responses back to the browser and delight these users.
+| So let's turn on the lights.
+| This bootstraps the framework and gets it ready for use.
 |
 */
 
-$app = require_once __DIR__.'/../bootstrap/start.php';
+$app = require_once __DIR__ . '/../bootstrap/app.php';
 
-$app->run();
+$kernel = $app->make(Kernel::class);
 
-/*
-|--------------------------------------------------------------------------
-| Shutdown The Application
-|--------------------------------------------------------------------------
-|
-| Once the app has finished running, we will fire off the shutdown events
-| so that any final work may be done by the application before we shut
-| down the process. This is the last thing to happen to the request.
-|
-| Force connection close.
-| Flush the output buffer.
-|
-*/
+$serverRequest = (new ServerRequestFactory())->createServerRequest($_SERVER);
+$serverRequest->withCookieParams($_COOKIE)
+    ->withQueryParams($_GET)
+    ->withParsedBody($_POST)
+    ->withUploadedFiles(Util::normalizeFiles($_FILES));
 
-\Dotenv::makeImmutable();
+$response = $kernel->handle($serverRequest);
 
-$app->shutdown();
+$app->get(EmitterContract::class)->emit($response);

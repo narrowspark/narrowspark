@@ -1,192 +1,86 @@
 <?php
+declare(strict_types=1);
 
-/**
- * Narrowspark - a PHP 5 framework.
- *
- * @author      Daniel Bannert <info@anolilab.de>
- * @copyright   2014 Daniel Bannert
- *
- * @link        http://www.narrowspark.de
- *
- * @license     http://www.narrowspark.com/license
- *
- * @version     1.0.2-dev
- */
-use Brainwave\Support\Helper as H;
-
-/*
- * App config.
- *
- * @author  Daniel Bannert
- *
- * @since   0.8.0-dev
- */
 return [
+    'app' => [
+        'env' => env('APP_ENV', 'develop'),
 
-    /*
-    |--------------------------------------------------------------------------
-    | Application Debug Mode
-    |--------------------------------------------------------------------------
-    |
-    | When your application is in debug mode, detailed error messages with
-    | stack traces will be shown on every error that occurs within your
-    | application. If disabled, a simple generic error page is shown.
-    |
-    */
+        'timezone' => 'UTC',
 
-    'debug' => H::env('APP_DEBUG', false),
+        'log'           => 'daily',
+        'log_level'     => 'debug',
+        'log_max_files' => 5,
 
-    /*
-    |--------------------------------------------------------------------------
-    | Application Debug Mode
-    |--------------------------------------------------------------------------
-    |
-    | When your application is in debug mode, detailed error messages with
-    | stack traces will be shown on every error that occurs within your
-    | application. If disabled, a simple generic error page is shown.
-    |
-    | Supported: "development", "testing", "production"
-    |
-    */
+        'serviceproviders' => [
+            // Narrowspark Framework Service Providers...
+            Viserio\Component\Bus\Providers\QueueingBusServiceProvider::class,
+            Viserio\Component\Cache\Providers\CacheServiceProvider::class,
+            Viserio\Component\Console\Providers\ConsoleServiceProvider::class,
+            Viserio\Component\Cookie\Providers\CookieServiceProvider::class,
+            Viserio\Component\Cron\Providers\CronServiceProvider::class,
+            Viserio\Component\Encryption\Providers\EncrypterServiceProvider::class,
+            Viserio\Component\Filesystem\Providers\FilesServiceProvider::class,
+            Viserio\Component\Foundation\Providers\FoundationCommandsServiceProvider::class,
+            Viserio\Component\Hashing\Providers\HashingServiceProvider::class,
+            Viserio\Component\HttpFactory\Providers\HttpFactoryServiceProvider::class,
+            Viserio\Component\Mail\Providers\MailServiceProvider::class,
+            Viserio\Component\OptionsResolver\Providers\OptionsResolverServiceProvider::class,
+            Viserio\Component\Pipeline\Providers\PipelineServiceProvider::class,
+            Viserio\Component\Routing\Providers\RoutingServiceProvider::class,
+            Viserio\Component\Session\Providers\SessionServiceProvider::class,
+            Viserio\Component\StaticalProxy\Providers\AliasLoaderServiceProvider::class,
+            Viserio\Component\StaticalProxy\Providers\StaticalProxyServiceProvider::class,
+            Viserio\Component\Translation\Providers\TranslationServiceProvider::class,
+            Viserio\Component\Validation\Providers\ValidationServiceProvider::class,
+            Viserio\Component\View\Providers\ViewServiceProvider::class,
+            Viserio\Component\WebProfiler\Providers\WebProfilerServiceProvider::class,
 
-    'mode' => H::env('APP_MODE', 'development'),
+            // Bridge Service Providers...
+            Viserio\Bridge\Doctrine\Providers\DatabaseServiceProvider::class,
+            Viserio\Bridge\Doctrine\Providers\MigrationsServiceProvider::class,
+            Viserio\Bridge\Twig\Providers\TwigBridgeCommandsServiceProvider::class,
+            Viserio\Bridge\Twig\Providers\TwigBridgeServiceProvider::class,
 
-    /*
-    |--------------------------------------------------------------------------
-    | Application Maintenance
-    |--------------------------------------------------------------------------
-    |
-    |
-    */
+            // Narrowspark WebProfiler Collector Service Providers...
+            Viserio\Bridge\Twig\Providers\TwigBridgeDataCollectorsServiceProvider::class,
+            Viserio\Component\Foundation\Providers\FoundationDataCollectorsServiceProvider::class,
+            Viserio\Component\Translation\Providers\TranslationDataCollectorServiceProvider::class,
+            Viserio\Component\Log\Providers\LogsDataCollectorServiceProvider::class,
+            // Viserio\Component\WebProfiler\Providers\WebProfilerPDOBridgeServiceProvider::class,
+            Viserio\Component\WebProfiler\Providers\WebProfilerPsr6CacheBridgeServiceProvider::class,
+            // Viserio\Component\Events\Providers\EventDataCollectorServiceProvider::class,
+            // Viserio\Component\WebProfiler\Providers\WebProfilerSwiftMailerBridgeServiceProvider::class,
 
-    'maintenance ' => false,
+            // Package Service Providers...
 
-    /*
-    |--------------------------------------------------------------------------
-    | Application URL
-    |--------------------------------------------------------------------------
-    |
-    | This URL is used by the console to properly generate URLs when using
-    | the Cerebro command line tool. You should set this to the root of
-    | your application so that it is used when running Cerebro tasks.
-    |
-    */
+            // Application Service Providers...
+        ],
 
-    'url' => 'http://localhost',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Application Exception handler
-    |--------------------------------------------------------------------------
-    |
-    | Supported: "whoops", "plain"
-    |
-    */
-
-    'exception.handler' => 'whoops',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Logging Configuration
-    |--------------------------------------------------------------------------
-    |
-    | Here you may configure the log settings for your application. Out of
-    | the box, Narrowspark uses the Monolog PHP logging library. This gives
-    | you a variety of powerful log handlers / formatters to utilize.
-    |
-    | Available Settings: "single", "daily", "syslog", "errorlog"
-    |
-    */
-
-    'log' => 'single',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Application Locale Configuration
-    |--------------------------------------------------------------------------
-    |
-    | The application locale determines the default locale that will be used
-    | by the translation service provider. You are free to set this value
-    | to any of the locales which will be supported by the application.
-    |
-    */
-
-    'locale' => 'en',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Application Charset
-    |--------------------------------------------------------------------------
-    |
-    |
-    |
-    |
-    */
-
-    'charset' => 'UTF-8',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Application Fallback Locale
-    |--------------------------------------------------------------------------
-    |
-    | The fallback locale determines the locale to use when the current one
-    | is not available. You may change the value to correspond to any of
-    | the language folders that are provided through your application.
-    |
-    */
-
-    'fallback.locale' => 'en',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Application Language
-    |--------------------------------------------------------------------------
-    |
-    |
-    |
-    |
-    */
-
-    'language.files' => [],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Encryption Key
-    |--------------------------------------------------------------------------
-    |
-    | This key is used by the Brainwave encrypter service and should be set
-    | to a random, 32 character string, otherwise these encrypted strings
-    | will not be safe. Please do this before deploying an application!
-    |
-    | Note: You can find a random 32-character key her:
-    | www.narrowspark.de/encryption-key-generator
-    |
-    */
-
-    'crypt.key' => H::env('APP_KEY', 'SomeRandomString'),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Encryption Cipher
-    |--------------------------------------------------------------------------
-    |
-    |
-    |
-    |
-    */
-
-    'crypt.cipher' => MCRYPT_RIJNDAEL_256,
-
-    /*
-    |--------------------------------------------------------------------------
-    | Encryption Mode
-    |--------------------------------------------------------------------------
-    |
-    |
-    |
-    |
-    */
-
-    'crypt.mode' => 'ctr',
+        'aliases' => [
+            'Bus'           => Viserio\Component\Bus\Proxies\Bus::class,
+            'Cache'         => Viserio\Component\Cache\Proxies\Cache::class,
+            'Config'        => Viserio\Component\Config\Proxies\Config::class,
+            'Console'       => Viserio\Component\Console\Proxies\Console::class,
+            'Cookie'        => Viserio\Component\Cookie\Proxies\Cookie::class,
+            'Schedule'      => Viserio\Component\Cron\Proxies\Schedule::class,
+            'DB'            => Viserio\Component\Database\Proxies\DB::class,
+            'RequestCookie' => Viserio\Component\Cookie\Proxies\RequestCookie::class,
+            'Crypt'         => Viserio\Component\Encryption\Proxies\Crypt::class,
+            'Events'        => Viserio\Component\Events\Proxies\Events::class,
+            'Files'         => Viserio\Component\Filesystem\Proxies\Files::class,
+            'Storage'       => Viserio\Component\Filesystem\Proxies\Storage::class,
+            'App'           => Viserio\Component\Foundation\Proxies\App::class,
+            'Password'      => Viserio\Component\Hashing\Proxies\Password::class,
+            'Log'           => Viserio\Component\Log\Proxies\Log::class,
+            'Mail'          => Viserio\Component\Mail\Proxies\Mail::class,
+            'Parser'        => Viserio\Component\Parsers\Proxies\Parser::class,
+            'Pipeline'      => Viserio\Component\Pipeline\Proxies\Pipeline::class,
+            'Queue'         => Viserio\Component\Queue\Proxies\Queue::class,
+            'Route'         => Viserio\Component\Routing\Proxies\Route::class,
+            'Session'       => Viserio\Component\Session\Proxies\Session::class,
+            'Lang'          => Viserio\Component\Translation\Proxies\Lang::class,
+            'Validator'     => Viserio\Component\Validation\Proxies\Validator::class,
+            'View'          => Viserio\Component\View\Proxies\View::class,
+        ],
+    ],
 ];
