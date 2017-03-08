@@ -20,7 +20,7 @@ return [
             Viserio\Component\Cron\Providers\CronServiceProvider::class,
             Viserio\Component\Encryption\Providers\EncrypterServiceProvider::class,
             Viserio\Component\Filesystem\Providers\FilesServiceProvider::class,
-            Viserio\Component\Foundation\Providers\FoundationCommandsServiceProvider::class,
+            Viserio\Component\Foundation\Providers\ConsoleCommandsServiceProvider::class,
             Viserio\Component\Hashing\Providers\HashingServiceProvider::class,
             Viserio\Component\HttpFactory\Providers\HttpFactoryServiceProvider::class,
             Viserio\Component\Mail\Providers\MailServiceProvider::class,
@@ -38,17 +38,18 @@ return [
             // Bridge Service Providers...
             Viserio\Bridge\Doctrine\Providers\DatabaseServiceProvider::class,
             Viserio\Bridge\Doctrine\Providers\MigrationsServiceProvider::class,
-            Viserio\Bridge\Twig\Providers\TwigBridgeCommandsServiceProvider::class,
+            Viserio\Bridge\Twig\Providers\ConsoleCommandsServiceProvider::class,
             Viserio\Bridge\Twig\Providers\TwigBridgeServiceProvider::class,
 
             // Narrowspark WebProfiler Collector Service Providers...
             Viserio\Bridge\Twig\Providers\TwigBridgeDataCollectorsServiceProvider::class,
-            Viserio\Component\Foundation\Providers\FoundationDataCollectorsServiceProvider::class,
-            Viserio\Component\Translation\Providers\TranslationDataCollectorServiceProvider::class,
+            // Viserio\Component\Events\Providers\EventDataCollectorServiceProvider::class,
+            Viserio\Component\Foundation\Providers\FoundationDataCollectorServiceProvider::class,
             Viserio\Component\Log\Providers\LogsDataCollectorServiceProvider::class,
+            Viserio\Component\Routing\Providers\RoutingDataCollectorServiceProvider::class,
+            Viserio\Component\Translation\Providers\TranslationDataCollectorServiceProvider::class,
             // Viserio\Component\WebProfiler\Providers\WebProfilerPDOBridgeServiceProvider::class,
             Viserio\Component\WebProfiler\Providers\WebProfilerPsr6CacheBridgeServiceProvider::class,
-            // Viserio\Component\Events\Providers\EventDataCollectorServiceProvider::class,
             // Viserio\Component\WebProfiler\Providers\WebProfilerSwiftMailerBridgeServiceProvider::class,
 
             // Package Service Providers...

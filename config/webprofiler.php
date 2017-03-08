@@ -24,6 +24,7 @@ return [
                 'translation' => true,
                 'events' => true,
                 'twig' => true,
+                'routes' => true,
             ],
         ],
     ]
