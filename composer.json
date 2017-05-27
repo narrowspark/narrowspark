@@ -30,7 +30,6 @@
         "filp/whoops": "~2.1",
         "fzaninotto/faker": "^1.6",
         "narrowspark/php-cs-fixer-config" : "^2.2",
-        "narrowspark/installer": "dev-master",
         "phpunit/phpunit": "^6.0",
         "symfony/var-dumper": "^3.2"
     },
@@ -58,8 +57,7 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "@php cerebro key:generate",
-            "Narrowspark\\Installer\\OptionalPackages::install"
+            "@php cerebro key:generate"
         ]
     },
     "minimum-stability": "dev",
