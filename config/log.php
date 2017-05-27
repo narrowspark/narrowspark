@@ -15,24 +15,6 @@ return [
             |
             */
             'env' => env('APP_ENV', 'develop'),
-
-            /*
-            |--------------------------------------------------------------------------
-            | Logging Configuration
-            |--------------------------------------------------------------------------
-            |
-            | Here you may configure the log settings for your application. Out of
-            | the box, Viserio Log uses the Monolog PHP logging library. This gives
-            | you a variety of powerful log handlers / formatters to utilize.
-            |
-            | Available Settings: "single", "daily", "syslog", "errorlog"
-            |
-            */
-            'handler'   => 'daily',
-
-            'level'     => 'debug',
-
-            'max_files' => 5,
         ],
     ],
 ];
