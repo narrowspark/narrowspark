@@ -7,6 +7,11 @@
 /vendor
 /node_modules
 
+/public/storage
+
+/storage/*.key
 /storage/logs
+
+npm-debug.log
 
 .env
