@@ -1,9 +1,12 @@
 <?php
 declare(strict_types=1);
+
 use App\Http\Kernel;
-use Viserio\Component\Contracts\Foundation\Emitter as EmitterContract;
+use Narrowspark\HttpEmitter\EmitterInterface;
 use Viserio\Component\Http\Util;
 use Viserio\Component\HttpFactory\ServerRequestFactory;
+
+define('NARROWSPARK_START', microtime(true));
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +20,24 @@ use Viserio\Component\HttpFactory\ServerRequestFactory;
 |
 */
 
-require __DIR__ . '/../bootstrap/autoload.php';
+require_once realpath(__DIR__ . '/..') . '/vendor/autoload.php';
+
+/*
+|---------------------------------------------------------------
+| DEFAULT INI SETTINGS
+|---------------------------------------------------------------
+|
+| Hosts have a habit of setting stupid settings for various
+| things. These settings should help provide maximum compatibility
+| for Narrowspark
+|
+*/
+
+// Let's hold Windows' hand and set a include_path in case it forgot
+set_include_path(__DIR__);
+
+// Some hosts (was it GoDaddy? complained without this
+@ini_set('cgi.fix_pathinfo', '0');
 
 /*
 |--------------------------------------------------------------------------
@@ -29,11 +49,9 @@ require __DIR__ . '/../bootstrap/autoload.php';
 |
 */
 
-$app = require_once __DIR__ . '/../bootstrap/app.php';
+$kernel = new Kernel();
 
-$kernel = $app->make(Kernel::class);
-
-$serverRequest = (new ServerRequestFactory())->createServerRequest($_SERVER);
+$serverRequest = (new ServerRequestFactory())->createServerRequestFromArray($_SERVER);
 $serverRequest->withCookieParams($_COOKIE)
     ->withQueryParams($_GET)
     ->withParsedBody($_POST)
@@ -41,4 +59,6 @@ $serverRequest->withCookieParams($_COOKIE)
 
 $response = $kernel->handle($serverRequest);
 
-$app->get(EmitterContract::class)->emit($response);
+$kernel->getContainer()->get(EmitterInterface::class)->emit($response);
+
+$kernel->terminate($serverRequest, $response);

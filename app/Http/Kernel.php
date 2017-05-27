@@ -2,17 +2,20 @@
 declare(strict_types=1);
 namespace App\Http;
 
-use App\Http\Bootstrap\LoadRoutes;
-use App\Http\Middleware\EncryptedCookiesMiddleware;
-use App\Http\Middleware\VerifyCsrfTokenMiddleware;
 use Viserio\Component\Cookie\Middleware\AddQueuedCookiesToResponseMiddleware;
-use Viserio\Component\Foundation\Bootstrap\DetectEnvironment;
+use Viserio\Component\Cookie\Middleware\EncryptedCookiesMiddleware;
+use Viserio\Component\Foundation\Bootstrap\ConfigureKernel;
 use Viserio\Component\Foundation\Bootstrap\HandleExceptions;
+use Viserio\Component\Foundation\Bootstrap\HandleLogger;
 use Viserio\Component\Foundation\Bootstrap\LoadConfiguration;
+use Viserio\Component\Foundation\Bootstrap\LoadEnvironmentVariables;
 use Viserio\Component\Foundation\Bootstrap\LoadServiceProvider;
 use Viserio\Component\Foundation\Bootstrap\RegisterStaticalProxys;
 use Viserio\Component\Foundation\Http\Kernel as HttpKernel;
+use Viserio\Component\Foundation\Http\Middlewares\CheckForMaintenanceModeMiddleware;
+use Viserio\Component\Profiler\Middleware\ProfilerMiddleware;
 use Viserio\Component\Session\Middleware\StartSessionMiddleware;
+use Viserio\Component\Session\Middleware\VerifyCsrfTokenMiddleware;
 
 class Kernel extends HttpKernel
 {
@@ -22,12 +25,13 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $bootstrappers = [
+        LoadEnvironmentVariables::class,
         LoadConfiguration::class,
-        DetectEnvironment::class,
+        ConfigureKernel::class,
+        LoadServiceProvider::class,
+        HandleLogger::class,
         HandleExceptions::class,
         RegisterStaticalProxys::class,
-        LoadServiceProvider::class,
-        LoadRoutes::class,
     ];
 
     /**
@@ -37,10 +41,11 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            // EncryptedCookiesMiddleware::class,
-            // AddQueuedCookiesToResponseMiddleware::class,
-            // StartSessionMiddleware::class,
-            // VerifyCsrfTokenMiddleware::class,
+            ProfilerMiddleware::class,
+            EncryptedCookiesMiddleware::class,
+            AddQueuedCookiesToResponseMiddleware::class,
+            StartSessionMiddleware::class,
+            VerifyCsrfTokenMiddleware::class,
         ],
     ];
 
@@ -50,5 +55,6 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middlewares = [
+        CheckForMaintenanceModeMiddleware::class,
     ];
 }

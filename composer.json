@@ -19,18 +19,20 @@
     ],
     "require": {
         "php": "^7.1",
+        "cache/namespaced-cache": "^0.1",
         "doctrine/dbal" : "^2.5",
         "doctrine/migrations" : "^1.4",
-        "doctrine/orm" : "^2.5",
-        "narrowspark/framework": "dev-develop",
+        "narrowspark/framework": "dev-master",
         "roave/security-advisories": "dev-master",
         "twig/twig": "^2.0"
     },
     "require-dev": {
+        "filp/whoops": "~2.1",
         "fzaninotto/faker": "^1.6",
         "narrowspark/php-cs-fixer-config" : "^2.2",
         "narrowspark/installer": "dev-master",
-        "phpunit/phpunit": "^5.1"
+        "phpunit/phpunit": "^6.0",
+        "symfony/var-dumper": "^3.2"
     },
     "autoload": {
         "psr-4": {
@@ -52,12 +54,12 @@
         "sort-packages": true
     },
     "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
         "post-create-project-cmd": [
+            "@php cerebro key:generate",
             "Narrowspark\\Installer\\OptionalPackages::install"
-        ],
-        "post-install-cmd": [
-        ],
-        "post-update-cmd": [
         ]
     },
     "minimum-stability": "dev",

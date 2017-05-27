@@ -17,27 +17,36 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 |
 */
 
-require __DIR__.'/bootstrap/autoload.php';
-
-$app = require_once __DIR__.'/bootstrap/app.php';
+require_once realpath(__DIR__ ) . '/vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
-| Turn On The Lights
+| Run The Cerebro Application
 |--------------------------------------------------------------------------
 |
-| We need to illuminate PHP development, so let's turn on the lights.
-| This bootstraps the framework and gets it ready for and then it
-| will load up this application so that we can run it and send
-| the responses back to the browser and delight these users.
+| When we run the console application, the current CLI command will be
+| executed in this console and the response sent back to a terminal
+| or another output device for the developers. Here goes nothing!
 |
 */
-$kernel = $app->make(Kernel::class);
+
+$kernel = new Kernel();
 
 $status = $kernel->handle(
-    $input = new ArgvInput,
-    new ConsoleOutput
+    $input = new ArgvInput(),
+    new ConsoleOutput()
 );
+
+/*
+|--------------------------------------------------------------------------
+| Shutdown The Application
+|--------------------------------------------------------------------------
+|
+| Once Cerebro has finished running. We will fire off the shutdown events
+| so that any final work may be done by the application before we shut
+| down the process. This is the last thing to happen to the request.
+|
+*/
 
 $kernel->terminate($input, $status);
 
