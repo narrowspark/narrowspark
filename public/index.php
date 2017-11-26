@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 use App\Http\Kernel;
 use Narrowspark\HttpEmitter\EmitterInterface;
+use Narrowspark\HttpEmitter\Util as EmitterUtil;
 use Viserio\Component\Http\Util;
 use Viserio\Component\HttpFactory\ServerRequestFactory;
 
@@ -20,7 +21,7 @@ define('NARROWSPARK_START', microtime(true));
 |
 */
 
-require_once realpath(__DIR__ . '/..') . '/vendor/autoload.php';
+require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 /*
 |---------------------------------------------------------------
@@ -60,5 +61,11 @@ $serverRequest->withCookieParams($_COOKIE)
 $response = $kernel->handle($serverRequest);
 
 $kernel->getContainer()->get(EmitterInterface::class)->emit($response);
+
+if (function_exists('fastcgi_finish_request')) {
+    fastcgi_finish_request();
+} elseif ('cli' !== PHP_SAPI) {
+    EmitterUtil::closeOutputBuffers(0, true);
+}
 
 $kernel->terminate($serverRequest, $response);

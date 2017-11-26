@@ -58,6 +58,18 @@ return [
 
             /*
             |--------------------------------------------------------------------------
+            | Encryption Key
+            |--------------------------------------------------------------------------
+            |
+            | This key is used by the Viserio encryption service and should be set
+            | using encryption key:generate command. Please do this before deploying
+            | an application!
+            |
+            */
+            'key_path'          => env('ENCRYPTION_SESSION_KEY_PATH'),
+
+            /*
+            |--------------------------------------------------------------------------
             | Session Sweeping Lottery
             |--------------------------------------------------------------------------
             |
@@ -142,8 +154,9 @@ return [
             */
             'drivers' => [
                 'file' => [
-                    'path' => __DIR__ . '/../storage/framework/sessions',
+                    'path' => dirname(__DIR__) . '/storage/framework/sessions',
                 ],
+                'cookie' => [],
             ],
         ],
     ],

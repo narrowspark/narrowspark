@@ -18,7 +18,7 @@ return [
             'jquery_is_used' => false,
 
             'logs_storages'  => [
-                __DIR__ . '/../storage/logs/',
+                dirname(__DIR__) . '/storage/logs',
             ],
 
             'collectors' => [
@@ -36,6 +36,7 @@ return [
                 'twig'        => true,
                 'routes'      => true,
                 'logs'        => true,
+                'events'      => true,
             ],
         ],
     ],

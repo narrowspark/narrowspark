@@ -20,6 +20,21 @@ use Viserio\Component\Session\Middleware\VerifyCsrfTokenMiddleware;
 class Kernel extends HttpKernel
 {
     /**
+     * The application's route middleware groups.
+     *
+     * @var array
+     */
+    protected $middlewareGroups = [
+        'web' => [
+            AddQueuedCookiesToResponseMiddleware::class,
+            EncryptedCookiesMiddleware::class,
+            StartSessionMiddleware::class,
+            VerifyCsrfTokenMiddleware::class,
+            99999 => ProfilerMiddleware::class,
+        ],
+    ];
+
+    /**
      * The bootstrap classes for the application.
      *
      * @var array
@@ -28,25 +43,10 @@ class Kernel extends HttpKernel
         LoadEnvironmentVariables::class,
         LoadConfiguration::class,
         ConfigureKernel::class,
-        LoadServiceProvider::class,
         HandleLogger::class,
+        LoadServiceProvider::class,
         HandleExceptions::class,
         RegisterStaticalProxys::class,
-    ];
-
-    /**
-     * The application's route middleware groups.
-     *
-     * @var array
-     */
-    protected $middlewareGroups = [
-        'web' => [
-            ProfilerMiddleware::class,
-            EncryptedCookiesMiddleware::class,
-            AddQueuedCookiesToResponseMiddleware::class,
-            StartSessionMiddleware::class,
-            VerifyCsrfTokenMiddleware::class,
-        ],
     ];
 
     /**

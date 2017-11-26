@@ -15,7 +15,7 @@ return [
             |
             */
             'paths' => [
-                realpath(__DIR__ . '/../resources/views'),
+                dirname(__DIR__) . '/resources/views',
             ],
 
             /*
@@ -32,7 +32,7 @@ return [
                 'twig' => [
                     'options' => [
                         'debug' => true,
-                        'cache' => realpath(__DIR__ . '/../storage/framework/views'),
+                        'cache' => dirname(__DIR__) . '/storage/framework/views',
                     ],
                 ],
             ],

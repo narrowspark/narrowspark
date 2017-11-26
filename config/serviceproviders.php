@@ -13,41 +13,39 @@ declare(strict_types=1);
 */
 $providers = [
     // Narrowspark Framework Service Providers...
-    Viserio\Component\Bus\Providers\QueueingBusServiceProvider::class,
-    Viserio\Component\Cache\Providers\CacheServiceProvider::class,
-    Viserio\Component\Cookie\Providers\CookieServiceProvider::class,
-    Viserio\Component\Cron\Providers\CronServiceProvider::class,
-    Viserio\Component\Encryption\Providers\EncrypterServiceProvider::class,
-    Viserio\Component\Filesystem\Providers\FilesServiceProvider::class,
-    Viserio\Component\Foundation\Providers\ConsoleCommandsServiceProvider::class,
-    Viserio\Component\Foundation\Providers\ConfigureLoggingServiceProvider::class,
-    Viserio\Component\Hashing\Providers\HashingServiceProvider::class,
-    Viserio\Component\HttpFactory\Providers\HttpFactoryServiceProvider::class,
-    Viserio\Component\Log\Providers\LoggerServiceProvider::class,
-    Viserio\Component\Mail\Providers\MailServiceProvider::class,
-    Viserio\Component\OptionsResolver\Providers\OptionsResolverServiceProvider::class,
-    Viserio\Component\Parsers\Providers\ParsersServiceProvider::class,
-    Viserio\Component\Pipeline\Providers\PipelineServiceProvider::class,
-    Viserio\Component\Routing\Providers\RoutingServiceProvider::class,
-    Viserio\Component\Routing\Providers\ConsoleCommandsServiceProvider::class,
-    Viserio\Component\Session\Providers\SessionServiceProvider::class,
-    Viserio\Component\StaticalProxy\Providers\AliasLoaderServiceProvider::class,
-    Viserio\Component\StaticalProxy\Providers\StaticalProxyServiceProvider::class,
-    Viserio\Component\Translation\Providers\TranslationServiceProvider::class,
-    Viserio\Component\Validation\Providers\ValidationServiceProvider::class,
-    Viserio\Component\View\Providers\ViewServiceProvider::class,
+    Viserio\Component\Bus\Provider\QueueingBusServiceProvider::class,
+    Viserio\Component\Cache\Provider\CacheServiceProvider::class,
+    Viserio\Component\Console\Provider\LazilyCommandsServiceProvider::class,
+    Viserio\Component\Cookie\Provider\CookieServiceProvider::class,
+    Viserio\Component\Cron\Provider\CronServiceProvider::class,
+    Viserio\Component\Encryption\Provider\EncrypterServiceProvider::class,
+    Viserio\Component\Filesystem\Provider\FilesServiceProvider::class,
+    Viserio\Component\Foundation\Provider\ConsoleCommandsServiceProvider::class,
+    Viserio\Component\Foundation\Provider\ConfigureLoggingServiceProvider::class,
+    Viserio\Component\HttpFactory\Provider\HttpFactoryServiceProvider::class,
+    Viserio\Component\Log\Provider\LoggerServiceProvider::class,
+    Viserio\Component\Mail\Provider\MailServiceProvider::class,
+    Viserio\Component\Parser\Provider\ParserServiceProvider::class,
+    Viserio\Component\Routing\Provider\RoutingServiceProvider::class,
+    Viserio\Component\Routing\Provider\ConsoleCommandsServiceProvider::class,
+    Viserio\Component\Session\Provider\SessionServiceProvider::class,
+    Viserio\Component\StaticalProxy\Provider\AliasLoaderServiceProvider::class,
+    Viserio\Component\Translation\Provider\TranslationServiceProvider::class,
+    Viserio\Component\Validation\Provider\ValidationServiceProvider::class,
+    Viserio\Component\View\Provider\ViewServiceProvider::class,
+
+    // Provider Service Providers...
+    Viserio\Provider\Twig\Provider\ConsoleCommandsServiceProvider::class,
+    Viserio\Provider\Twig\Provider\TwigServiceProvider::class,
 
     // Bridge Service Providers...
-    Viserio\Bridge\Doctrine\Providers\DatabaseServiceProvider::class,
-    Viserio\Bridge\Doctrine\Providers\MigrationsServiceProvider::class,
-    Viserio\Bridge\Twig\Providers\ConsoleCommandsServiceProvider::class,
-    Viserio\Bridge\Twig\Providers\TwigBridgeServiceProvider::class,
+    Viserio\Bridge\Twig\Provider\TwigBridgeServiceProvider::class,
 
     // Package Service Providers...
     Narrowspark\HttpEmitter\Providers\SapiEmitterServiceProvider::class,
 
     // Application Service Providers...´
-     App\Providers\RouteServiceProvider::class,
+    App\Provider\RouteServiceProvider::class,
 ];
 
 /*
@@ -63,16 +61,17 @@ $providers = [
  */
 if ($kernel->isLocal() || $kernel->isRunningUnitTests()) {
     // Narrowspark Profiler Service Providers...
-    $providers[] = Viserio\Component\Profiler\Providers\ProfilerServiceProvider::class;
-    $providers[] = Viserio\Bridge\Twig\Providers\TwigBridgeDataCollectorsServiceProvider::class;
-    // $providers[] = Viserio\Component\Events\Providers\EventDataCollectorServiceProvider::class;
-    $providers[] = Viserio\Component\Foundation\Providers\FoundationDataCollectorServiceProvider::class;
-    $providers[] = Viserio\Component\Profiler\Providers\ProfilerMonologDataCollectorServiceProvider::class;
-    $providers[] = Viserio\Component\Routing\Providers\RoutingDataCollectorServiceProvider::class;
-    $providers[] = Viserio\Component\Translation\Providers\TranslationDataCollectorServiceProvider::class;
-    // $providers[] = Viserio\Component\Profiler\Providers\ProfilerPDOBridgeServiceProvider::class;
-    $providers[] = Viserio\Component\Profiler\Providers\ProfilerPsr6Psr16CacheBridgeServiceProvider::class;
-    // $providers[] = Viserio\Component\Profiler\Providers\ProfilerSwiftMailerBridgeServiceProvider::class;
+    $providers[] = Viserio\Component\Profiler\Provider\ProfilerServiceProvider::class;
+    $providers[] = Viserio\Bridge\Twig\Provider\TwigBridgeDataCollectorsServiceProvider::class;
+    $providers[] = Viserio\Component\Events\Provider\EventsDataCollectorServiceProvider::class;
+    $providers[] = Viserio\Component\Foundation\Provider\FoundationDataCollectorServiceProvider::class;
+    $providers[] = Viserio\Component\Profiler\Provider\ProfilerMonologDataCollectorServiceProvider::class;
+    $providers[] = Viserio\Component\Routing\Provider\RoutingDataCollectorServiceProvider::class;
+    $providers[] = Viserio\Component\Translation\Provider\TranslationDataCollectorServiceProvider::class;
+    // $providers[] = Viserio\Component\Profiler\Provider\ProfilerPDOBridgeServiceProvider::class;
+    $providers[] = Viserio\Component\Profiler\Provider\ProfilerPsr6Psr16CacheBridgeServiceProvider::class;
+//    $providers[] = Viserio\Component\Profiler\Provider\ProfilerSwiftMailerBridgeServiceProvider::class;
+    $providers[] = Viserio\Component\OptionsResolver\Provider\ConsoleCommandsServiceProvider::class;
 }
 
 return $providers;

@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
-namespace App\Providers;
+namespace App\Provider;
 
-use Interop\Container\ContainerInterface;
-use Interop\Container\ServiceProvider;
+use Psr\Container\ContainerInterface;
+use Interop\Container\ServiceProviderInterface;
 use Symfony\Component\Finder\Finder;
-use Viserio\Component\Contracts\Foundation\Kernel as KernelContract;
-use Viserio\Component\Contracts\Routing\Router as RouterContract;
+use Viserio\Component\Contract\Foundation\Kernel as KernelContract;
+use Viserio\Component\Contract\Routing\Router as RouterContract;
 
-class RouteServiceProvider implements ServiceProvider
+class RouteServiceProvider implements ServiceProviderInterface
 {
     /**
      * This namespace is applied to your controller routes.
@@ -22,30 +22,35 @@ class RouteServiceProvider implements ServiceProvider
     /**
      * {@inheritdoc}
      */
-    public function getServices()
+    public function getFactories()
+    {
+        return [];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getExtensions(): array
     {
         return [
-            RouterContract::class => [self::class, 'createConsoleCommands'],
+            RouterContract::class => [self::class, 'extendRouter'],
         ];
     }
 
     /**
      * Extend viserio router to load routes automatically.
      *
-     * @param \Interop\Container\ContainerInterface $container
-     * @param null|callable                         $getPrevious
+     * @param \Psr\Container\ContainerInterface               $container
+     * @param null|\Viserio\Component\Contract\Routing\Router $router
      *
-     * @return null|\Viserio\Component\Contracts\Routing\Router
+     * @return null|\Viserio\Component\Contract\Routing\Router
      */
-    public static function createConsoleCommands(ContainerInterface $container, ?callable $getPrevious = null): ?RouterContract
+    public static function extendRouter(ContainerInterface $container, ?RouterContract $router = null): ?RouterContract
     {
-        $router = is_callable($getPrevious) ? $getPrevious() : $getPrevious;
-
         if ($router !== null) {
             $routesPath = $container->get(KernelContract::class)->getRoutesPath();
 
             self::mapApiRoutes($router, $routesPath);
-
             self::mapWebRoutes($router, $routesPath);
 
             foreach (self::getFiles($routesPath) as $key => $path) {
@@ -66,8 +71,8 @@ class RouteServiceProvider implements ServiceProvider
      * Define the "web" routes for the application.
      *
      * These routes all receive session state, CSRF protection, etc.
-     
-     * @param \Viserio\Component\Contracts\Routing\Router $router
+
+     * @param \Viserio\Component\Contract\Routing\Router $router
      * @param string                                      $routesPath
      *
      * @return void
@@ -87,8 +92,8 @@ class RouteServiceProvider implements ServiceProvider
      * Define the "api" routes for the application.
      *
      * These routes are typically stateless.
-     
-     * @param \Viserio\Component\Contracts\Routing\Router $router
+
+     * @param \Viserio\Component\Contract\Routing\Router $router
      * @param string                                      $routesPath
      *
      * @return void
@@ -114,9 +119,10 @@ class RouteServiceProvider implements ServiceProvider
      */
     protected static function getFiles(string $path): array
     {
-        $files = [];
+        $files      = [];
+        $foundFiles = Finder::create()->files()->name('*.php')->in($path);
 
-        foreach (Finder::create()->files()->name('*.php')->in($path) as $file) {
+        foreach ($foundFiles as $file) {
             $files[basename($file->getRealPath(), '.php')] = $file->getRealPath();
         }
 

@@ -29,7 +29,7 @@ return [
             'fallback_locale' => 'en',
 
             'directories' => [
-                __DIR__ . '/../resources/lang/',
+                dirname(__DIR__) . '/resources/lang/',
             ],
 
             'files' => [

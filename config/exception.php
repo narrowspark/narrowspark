@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-use Viserio\Component\Exception\Displayers\WhoopsDisplayer;
+use Viserio\Component\Exception\Displayer\HtmlDisplayer;
 
 return [
     'viserio' => [
@@ -30,13 +30,13 @@ return [
             */
             'debug' => env('APP_DEBUG', false),
 
-            'default_displayer' => WhoopsDisplayer::class,
+            'default_displayer' => HtmlDisplayer::class,
 
             'displayers' => [],
 
-            // 'filters' => [],
+            'filters' => [],
 
-            // 'transformers' => [],
+            'transformers' => [],
 
             'dont_report' => [],
 
