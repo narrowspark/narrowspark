@@ -47,6 +47,9 @@
         "optimize-autoloader": true
     },
     "scripts": {
+        "post-create-project-cmd" : [
+            "Viserio\\Component\\Foundation\\ComposerScripts::onPostCreateProject"
+        ],
         "auto-scripts": [
         ],
         "post-install-cmd": [
