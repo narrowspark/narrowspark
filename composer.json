@@ -2,14 +2,10 @@
     "name": "narrowspark/narrowspark",
     "type": "project",
     "description": "Narrowspark framework for creative people.",
-    "keywords": [
-        "framework",
-        "narrowspark",
-        "viserio"
-    ],
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "ext-mbstring": "*",
         "roave/security-advisories": "dev-master",
         "narrowspark/discovery": "dev-master",
         "viserio/foundation": "dev-master"
@@ -33,6 +29,7 @@
         }
     },
     "replace": {
+        "symfony/polyfill-mbstring": "*",
         "symfony/polyfill-php72": "*",
         "symfony/polyfill-php71": "*",
         "symfony/polyfill-php70": "*",
