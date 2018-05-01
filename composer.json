@@ -6,12 +6,28 @@
     "require": {
         "php": "^7.2",
         "ext-mbstring": "*",
+        "narrowspark/configurators": "^0.1",
+        "narrowspark/discovery": "dev-master",
         "roave/security-advisories": "dev-master",
-        "narrowspark/discovery": "dev-issue-8",
         "viserio/foundation": "dev-master"
+    },
+    "replace": {
+        "symfony/polyfill-mbstring": "*",
+        "symfony/polyfill-php56": "*",
+        "symfony/polyfill-php70": "*",
+        "symfony/polyfill-php71": "*",
+        "symfony/polyfill-php72": "*"
+    },
+    "conflict": {
+        "narrowspark/framework": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.0"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
     },
     "autoload": {
         "psr-4": {
@@ -26,31 +42,15 @@
             "App\\Tests\\": "tests/"
         }
     },
-    "replace": {
-        "symfony/polyfill-mbstring": "*",
-        "symfony/polyfill-php72": "*",
-        "symfony/polyfill-php71": "*",
-        "symfony/polyfill-php70": "*",
-        "symfony/polyfill-php56": "*"
-    },
-    "conflict": {
-        "narrowspark/framework": "*"
-    },
-    "config": {
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "optimize-autoloader": true
-    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "scripts": {
-        "auto-scripts": [
-        ],
         "post-install-cmd": [
             "@auto-scripts"
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+        ],
+        "auto-scripts": []
+    }
 }
