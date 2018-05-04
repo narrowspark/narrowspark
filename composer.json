@@ -7,7 +7,7 @@
         "php": "^7.2",
         "ext-mbstring": "*",
         "narrowspark/configurators": "^0.1",
-        "narrowspark/discovery": "dev-issue-11",
+        "narrowspark/discovery": "dev-master",
         "roave/security-advisories": "dev-master",
         "viserio/foundation": "dev-master"
     },
