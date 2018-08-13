@@ -6,7 +6,7 @@
     "require": {
         "php": "^7.2",
         "ext-mbstring": "*",
-        "narrowspark/automatic": "^0.3.0",
+        "narrowspark/automatic": "^0.3.5",
         "narrowspark/configurators": "^0.3.0",
         "narrowspark/skeleton-generators": "^0.1.0",
         "viserio/foundation": "dev-master"
