@@ -8,14 +8,9 @@
         "ext-mbstring": "*",
         "narrowspark/automatic": "^0.3.5",
         "narrowspark/configurators": "^0.3.0",
-        "narrowspark/skeleton-generators": "^0.1.0",
-        "viserio/foundation": "dev-master"
-    },
-    "conflict": {
-        "narrowspark/framework": "*"
+        "narrowspark/skeleton-generators": "^0.1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.2.0",
         "roave/security-advisories": "dev-master"
     },
     "config": {
