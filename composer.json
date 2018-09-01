@@ -21,9 +21,6 @@
         "symfony/polyfill-php71": "*",
         "symfony/polyfill-php72": "*"
     },
-    "require-dev": {
-        "roave/security-advisories": "dev-master"
-    },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": {
