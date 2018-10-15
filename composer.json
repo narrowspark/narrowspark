@@ -8,9 +8,9 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-mbstring": "*",
-        "narrowspark/automatic": "^0.8.3",
-        "narrowspark/configurators": "^0.5.0",
-        "narrowspark/skeleton-generators": "^0.1.1"
+        "narrowspark/automatic": "^0.8.6",
+        "narrowspark/configurators": "^0.6.0",
+        "narrowspark/skeleton-generators": "^0.1.2"
     },
     "replace": {
         "paragonie/random_compat": "2.*",
