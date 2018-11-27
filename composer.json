@@ -10,7 +10,7 @@
         "ext-mbstring": "*",
         "narrowspark/automatic": "^0.9.0",
         "narrowspark/configurators": "^0.7.0",
-        "narrowspark/skeleton-generators": "^0.3.2"
+        "narrowspark/skeleton-generators": "^0.4.0"
     },
     "replace": {
         "symfony/polyfill-ctype": "*",
