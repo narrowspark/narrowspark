@@ -32,7 +32,7 @@
         "app-dir": "app",
         "automatic": {
             "require": {
-                "symfony/symfony": "4.1.*"
+                "symfony/symfony": "4.2.*"
             }
         },
         "config-dir": "config",
