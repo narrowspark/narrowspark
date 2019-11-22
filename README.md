@@ -4,7 +4,7 @@
     </a>
     <br>
     <br>
-    <a href="https://php.net/"><img src="https://img.shields.io/badge/php-%5E7.1.0-8892BF.svg?style=flat-square"></a>
+    <a href="https://php.net/"><img src="https://img.shields.io/badge/php-%5E7.3.0-8892BF.svg?style=flat-square"></a>
     <a href="https://codecov.io/gh/narrowspark/framework"><img src="https://img.shields.io/codecov/c/github/narrowspark/framework/master.svg?style=flat-square"></a>
     <a href="https://gitter.im/narrowspark/framework"><img src="https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square"></a>
     <a href="http://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square"></a>
@@ -29,16 +29,6 @@ Community
 
 * Get Narrowspark support on Stack Overflow, [Gitter][3], etc.
 * Follow us on [GitHub][4].
-
-Branch Status
-------------
-
-|     Master    |    Develop    |
-| ------------- | ------------- |
-| [![Travis branch](https://img.shields.io/travis/narrowspark/framework/master.svg?style=flat-square)](https://travis-ci.org/narrowspark/framework) | [![Travis branch](https://img.shields.io/travis/narrowspark/framework/develop.svg?style=flat-square)](https://travis-ci.org/narrowspark/framework) |
- [![Build Status Windows](https://ci.appveyor.com/api/projects/status/3b6tj7k31f4d4l9q/branch/master)](https://ci.appveyor.com/project/prisis/framework/branch/master) | [![Build Status Windows](https://ci.appveyor.com/api/projects/status/3b6tj7k31f4d4l9q/branch/develop)](https://ci.appveyor.com/project/prisis/framework/branch/develop)
-| [![Dependency Status](https://www.versioneye.com/user/projects/58c7f7087a795400457c51ee/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/58c7f7087a795400457c51ee) | [![Dependency Status](https://www.versioneye.com/user/projects/58c7f67e7a79540036c598ca/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/58c7f67e7a79540036c598ca)
-| [![Codecov branch](https://img.shields.io/codecov/c/github/narrowspark/framework/master.svg?style=flat-square)](https://codecov.io/gh/narrowspark/framework/branch/master) | [![Codecov branch](https://img.shields.io/codecov/c/github/narrowspark/framework/develop.svg?style=flat-square)](https://codecov.io/gh/narrowspark/framework/branch/develop)
 
 Contributing
 ------------
